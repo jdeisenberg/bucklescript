@@ -92,7 +92,7 @@ function split(keep_empty, str, on) {
 function quick_split_by_ws(str) {
   return split_by(/* Some */[false], (function (x) {
                 if (x === /* "\t" */9 || x === /* "\n" */10) {
-                  return /* true */1;
+                  return true;
                 } else {
                   return x === /* " " */32;
                 }
@@ -109,7 +109,7 @@ function starts_with(s, beg) {
     };
     return i === beg_len;
   } else {
-    return /* false */0;
+    return false;
   }
 }
 
@@ -214,12 +214,12 @@ function unsafe_for_all_range(s, _start, finish, p) {
   while(true) {
     var start = _start;
     if (start > finish) {
-      return /* true */1;
+      return true;
     } else if (Curry._1(p, s.charCodeAt(start))) {
       _start = start + 1 | 0;
       continue ;
     } else {
-      return /* false */0;
+      return false;
     }
   };
 }
@@ -264,11 +264,11 @@ function unsafe_is_sub(sub, i, s, j, len) {
         _k = k + 1 | 0;
         continue ;
       } else {
-        return /* false */0;
+        return false;
       }
     };
   } else {
-    return /* false */0;
+    return false;
   }
 }
 
@@ -503,7 +503,7 @@ function is_valid_module_file(s) {
     }
     
   } else {
-    return /* false */0;
+    return false;
   }
 }
 
@@ -546,7 +546,7 @@ function is_valid_npm_package_name(s) {
     }
     
   } else {
-    return /* false */0;
+    return false;
   }
 }
 
@@ -579,12 +579,12 @@ function unsafe_no_char(x, ch, _i, last_idx) {
   while(true) {
     var i = _i;
     if (i > last_idx) {
-      return /* true */1;
+      return true;
     } else if (x.charCodeAt(i) !== ch) {
       _i = i + 1 | 0;
       continue ;
     } else {
-      return /* false */0;
+      return false;
     }
   };
 }

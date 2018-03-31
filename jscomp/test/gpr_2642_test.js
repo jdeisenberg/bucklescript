@@ -12,7 +12,7 @@ function isfree(id, _param) {
           continue ;
       case 2 : 
           if (isfree(id, param[0])) {
-            return /* true */1;
+            return true;
           } else {
             _param = param[1];
             continue ;

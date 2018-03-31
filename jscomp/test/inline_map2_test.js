@@ -151,7 +151,7 @@ function Make(Ord) {
       if (param) {
         var c = Curry._2(Ord[/* compare */0], x, param[1]);
         if (c === 0) {
-          return /* true */1;
+          return true;
         } else {
           _param = c < 0 ? param[0] : param[3];
           continue ;
@@ -310,7 +310,7 @@ function Make(Ord) {
           _param = param[3];
           continue ;
         } else {
-          return /* false */0;
+          return false;
         }
       } else {
         return true;
@@ -322,7 +322,7 @@ function Make(Ord) {
       var param = _param;
       if (param) {
         if (Curry._2(p, param[1], param[2]) || exists(p, param[0])) {
-          return /* true */1;
+          return true;
         } else {
           _param = param[3];
           continue ;
@@ -554,14 +554,10 @@ function Make(Ord) {
       var e2 = _e2;
       var e1 = _e1;
       if (e1) {
-        if (e2) {
-          if (Curry._2(Ord[/* compare */0], e1[0], e2[0]) === 0 && Curry._2(cmp, e1[1], e2[1])) {
-            _e2 = cons_enum(e2[2], e2[3]);
-            _e1 = cons_enum(e1[2], e1[3]);
-            continue ;
-          } else {
-            return /* false */0;
-          }
+        if (e2 && Curry._2(Ord[/* compare */0], e1[0], e2[0]) === 0 && Curry._2(cmp, e1[1], e2[1])) {
+          _e2 = cons_enum(e2[2], e2[3]);
+          _e1 = cons_enum(e1[2], e1[3]);
+          continue ;
         } else {
           return false;
         }
@@ -790,7 +786,7 @@ function mem(x, _param) {
     if (param) {
       var c = Caml_primitive.caml_int_compare(x, param[1]);
       if (c === 0) {
-        return /* true */1;
+        return true;
       } else {
         _param = c < 0 ? param[0] : param[3];
         continue ;
@@ -968,7 +964,7 @@ function for_all(p, _param) {
         _param = param[3];
         continue ;
       } else {
-        return /* false */0;
+        return false;
       }
     } else {
       return true;
@@ -981,7 +977,7 @@ function exists(p, _param) {
     var param = _param;
     if (param) {
       if (Curry._2(p, param[1], param[2]) || exists(p, param[0])) {
-        return /* true */1;
+        return true;
       } else {
         _param = param[3];
         continue ;
@@ -1230,14 +1226,10 @@ function equal(cmp, m1, m2) {
     var e2 = _e2;
     var e1 = _e1;
     if (e1) {
-      if (e2) {
-        if (e1[0] === e2[0] && Curry._2(cmp, e1[1], e2[1])) {
-          _e2 = cons_enum(e2[2], e2[3]);
-          _e1 = cons_enum(e1[2], e1[3]);
-          continue ;
-        } else {
-          return /* false */0;
-        }
+      if (e2 && e1[0] === e2[0] && Curry._2(cmp, e1[1], e2[1])) {
+        _e2 = cons_enum(e2[2], e2[3]);
+        _e1 = cons_enum(e1[2], e1[3]);
+        continue ;
       } else {
         return false;
       }
@@ -1497,7 +1489,7 @@ function mem$1(x, _param) {
     if (param) {
       var c = Caml_primitive.caml_string_compare(x, param[1]);
       if (c === 0) {
-        return /* true */1;
+        return true;
       } else {
         _param = c < 0 ? param[0] : param[3];
         continue ;
@@ -1675,7 +1667,7 @@ function for_all$1(p, _param) {
         _param = param[3];
         continue ;
       } else {
-        return /* false */0;
+        return false;
       }
     } else {
       return true;
@@ -1688,7 +1680,7 @@ function exists$1(p, _param) {
     var param = _param;
     if (param) {
       if (Curry._2(p, param[1], param[2]) || exists$1(p, param[0])) {
-        return /* true */1;
+        return true;
       } else {
         _param = param[3];
         continue ;
@@ -1937,14 +1929,10 @@ function equal$1(cmp, m1, m2) {
     var e2 = _e2;
     var e1 = _e1;
     if (e1) {
-      if (e2) {
-        if (Caml_primitive.caml_string_compare(e1[0], e2[0]) === 0 && Curry._2(cmp, e1[1], e2[1])) {
-          _e2 = cons_enum$1(e2[2], e2[3]);
-          _e1 = cons_enum$1(e1[2], e1[3]);
-          continue ;
-        } else {
-          return /* false */0;
-        }
+      if (e2 && Caml_primitive.caml_string_compare(e1[0], e2[0]) === 0 && Curry._2(cmp, e1[1], e2[1])) {
+        _e2 = cons_enum$1(e2[2], e2[3]);
+        _e1 = cons_enum$1(e1[2], e1[3]);
+        continue ;
       } else {
         return false;
       }

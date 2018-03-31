@@ -26,6 +26,14 @@ function eq(loc, x, y) {
   return /* () */0;
 }
 
+var expected_000 = false;
+
+var expected_001 = false;
+
+var expected_002 = true;
+
+var expected_003 = true;
+
 var expected_004 = Caml_primitive.caml_int_compare(false, true);
 
 var expected_005 = Caml_primitive.caml_int_compare(true, false);
@@ -35,10 +43,10 @@ var expected_006 = Caml_primitive.caml_int_compare(false, false);
 var expected_007 = Caml_primitive.caml_int_compare(true, true);
 
 var expected = /* tuple */[
-  /* false */0,
-  /* false */0,
-  /* true */1,
-  /* true */1,
+  expected_000,
+  expected_001,
+  expected_002,
+  expected_003,
   expected_004,
   expected_005,
   expected_006,

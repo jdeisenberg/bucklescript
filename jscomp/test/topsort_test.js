@@ -700,7 +700,7 @@ function mem(x, _param) {
     if (param) {
       var c = Caml_primitive.caml_string_compare(x, param[1]);
       if (c === 0) {
-        return /* true */1;
+        return true;
       } else {
         _param = c < 0 ? param[0] : param[2];
         continue ;
@@ -872,7 +872,7 @@ function subset(_s1, _s2) {
             _s1 = r1;
             continue ;
           } else {
-            return /* false */0;
+            return false;
           }
         } else if (c < 0) {
           if (subset(/* Node */[
@@ -884,7 +884,7 @@ function subset(_s1, _s2) {
             _s1 = r1;
             continue ;
           } else {
-            return /* false */0;
+            return false;
           }
         } else if (subset(/* Node */[
                 /* Empty */0,
@@ -895,7 +895,7 @@ function subset(_s1, _s2) {
           _s1 = l1;
           continue ;
         } else {
-          return /* false */0;
+          return false;
         }
       } else {
         return false;
@@ -942,7 +942,7 @@ function for_all(p, _param) {
         _param = param[2];
         continue ;
       } else {
-        return /* false */0;
+        return false;
       }
     } else {
       return true;
@@ -955,7 +955,7 @@ function exists(p, _param) {
     var param = _param;
     if (param) {
       if (Curry._1(p, param[1]) || exists(p, param[0])) {
-        return /* true */1;
+        return true;
       } else {
         _param = param[2];
         continue ;

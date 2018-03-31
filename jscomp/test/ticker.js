@@ -266,7 +266,7 @@ function mem(x, _param) {
     if (param) {
       var c = Caml_obj.caml_compare(x, param[1]);
       if (c === 0) {
-        return /* true */1;
+        return true;
       } else {
         _param = c < 0 ? param[0] : param[3];
         continue ;
@@ -434,7 +434,7 @@ function for_all(p, _param) {
         _param = param[3];
         continue ;
       } else {
-        return /* false */0;
+        return false;
       }
     } else {
       return true;
@@ -447,7 +447,7 @@ function exists(p, _param) {
     var param = _param;
     if (param) {
       if (Curry._2(p, param[1], param[2]) || exists(p, param[0])) {
-        return /* true */1;
+        return true;
       } else {
         _param = param[3];
         continue ;
@@ -691,14 +691,10 @@ function equal(cmp, m1, m2) {
     var e2 = _e2;
     var e1 = _e1;
     if (e1) {
-      if (e2) {
-        if (Caml_obj.caml_equal(e1[0], e2[0]) && Curry._2(cmp, e1[1], e2[1])) {
-          _e2 = cons_enum(e2[2], e2[3]);
-          _e1 = cons_enum(e1[2], e1[3]);
-          continue ;
-        } else {
-          return /* false */0;
-        }
+      if (e2 && Caml_obj.caml_equal(e1[0], e2[0]) && Curry._2(cmp, e1[1], e2[1])) {
+        _e2 = cons_enum(e2[2], e2[3]);
+        _e1 = cons_enum(e1[2], e1[3]);
+        continue ;
       } else {
         return false;
       }

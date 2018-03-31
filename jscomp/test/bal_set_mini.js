@@ -160,7 +160,7 @@ function mem(x, _param) {
     if (param) {
       var c = compare_int(x, param[1]);
       if (c === 0) {
-        return /* true */1;
+        return true;
       } else {
         _param = c < 0 ? param[0] : param[2];
         continue ;

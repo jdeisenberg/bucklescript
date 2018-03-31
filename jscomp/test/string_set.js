@@ -138,7 +138,7 @@ function mem(x, _tree) {
     if (tree) {
       var c = Caml_primitive.caml_string_compare(x, tree[1]);
       if (c === 0) {
-        return /* true */1;
+        return true;
       } else {
         _tree = c < 0 ? tree[0] : tree[2];
         continue ;
@@ -193,7 +193,7 @@ function subset(_s1, _s2) {
             _s1 = r1;
             continue ;
           } else {
-            return /* false */0;
+            return false;
           }
         } else if (c < 0) {
           if (subset(/* Node */[
@@ -205,7 +205,7 @@ function subset(_s1, _s2) {
             _s1 = r1;
             continue ;
           } else {
-            return /* false */0;
+            return false;
           }
         } else if (subset(/* Node */[
                 /* Empty */0,
@@ -216,7 +216,7 @@ function subset(_s1, _s2) {
           _s1 = l1;
           continue ;
         } else {
-          return /* false */0;
+          return false;
         }
       } else {
         return false;

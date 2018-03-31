@@ -1198,10 +1198,10 @@ let stringswitch (lam : t) cases default : t =
 
 
 let true_ : t =
-  Lconst (Const_pointer ( 1, Pt_constructor "true"))
+  Lconst (Const_pointer ( 1, Pt_builtin_boolean))
 
 let false_ : t =
-  Lconst (Const_pointer( 0, Pt_constructor "false"))
+  Lconst (Const_pointer( 0, Pt_builtin_boolean))
 
 let unit : t =
   Lconst (Const_pointer( 0, Pt_constructor "()"))

@@ -256,7 +256,7 @@ function Make(Ord) {
       if (param) {
         var c = Curry._2(Ord[/* compare */0], x, param[1]);
         if (c === 0) {
-          return /* true */1;
+          return true;
         } else {
           _param = c < 0 ? param[0] : param[2];
           continue ;
@@ -411,7 +411,7 @@ function Make(Ord) {
               _s1 = r1;
               continue ;
             } else {
-              return /* false */0;
+              return false;
             }
           } else if (c < 0) {
             if (subset(/* Node */[
@@ -423,7 +423,7 @@ function Make(Ord) {
               _s1 = r1;
               continue ;
             } else {
-              return /* false */0;
+              return false;
             }
           } else if (subset(/* Node */[
                   /* Empty */0,
@@ -434,7 +434,7 @@ function Make(Ord) {
             _s1 = l1;
             continue ;
           } else {
-            return /* false */0;
+            return false;
           }
         } else {
           return false;
@@ -478,7 +478,7 @@ function Make(Ord) {
           _param = param[2];
           continue ;
         } else {
-          return /* false */0;
+          return false;
         }
       } else {
         return true;
@@ -490,7 +490,7 @@ function Make(Ord) {
       var param = _param;
       if (param) {
         if (Curry._1(p, param[1]) || exists(p, param[0])) {
-          return /* true */1;
+          return true;
         } else {
           _param = param[2];
           continue ;
