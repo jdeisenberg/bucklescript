@@ -7,7 +7,7 @@ var suites_000 = /* tuple */[
   "_NaN <> _NaN",
   (function () {
       return /* Eq */Block.__(0, [
-                /* boolean */0,
+                false,
                 NaN === NaN
               ]);
     })
@@ -18,7 +18,7 @@ var suites_001 = /* :: */[
     "isNaN - _NaN",
     (function () {
         return /* Eq */Block.__(0, [
-                  /* boolean */1,
+                  true,
                   isNaN(NaN)
                 ]);
       })
@@ -28,7 +28,7 @@ var suites_001 = /* :: */[
       "isNaN - 0.",
       (function () {
           return /* Eq */Block.__(0, [
-                    /* boolean */0,
+                    false,
                     isNaN(0)
                   ]);
         })
@@ -38,7 +38,7 @@ var suites_001 = /* :: */[
         "isFinite - infinity",
         (function () {
             return /* Eq */Block.__(0, [
-                      /* boolean */0,
+                      false,
                       isFinite(Number.POSITIVE_INFINITY)
                     ]);
           })
@@ -48,7 +48,7 @@ var suites_001 = /* :: */[
           "isFinite - neg_infinity",
           (function () {
               return /* Eq */Block.__(0, [
-                        /* boolean */0,
+                        false,
                         isFinite(Number.NEGATIVE_INFINITY)
                       ]);
             })
@@ -58,7 +58,7 @@ var suites_001 = /* :: */[
             "isFinite - _NaN",
             (function () {
                 return /* Eq */Block.__(0, [
-                          /* boolean */0,
+                          false,
                           isFinite(NaN)
                         ]);
               })
@@ -68,7 +68,7 @@ var suites_001 = /* :: */[
               "isFinite - 0.",
               (function () {
                   return /* Eq */Block.__(0, [
-                            /* boolean */1,
+                            true,
                             isFinite(0)
                           ]);
                 })
@@ -428,7 +428,7 @@ var suites_001 = /* :: */[
                                                                                       "fromString - invalid string",
                                                                                       (function () {
                                                                                           return /* Eq */Block.__(0, [
-                                                                                                    /* boolean */1,
+                                                                                                    true,
                                                                                                     isNaN(Number("foo"))
                                                                                                   ]);
                                                                                         })

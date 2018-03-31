@@ -54,7 +54,7 @@ function inOrder3(v) {
 }
 
 function inOrder2(v) {
-  var todo = /* boolean */1;
+  var todo = true;
   var cursor = v;
   var s = {
     root: null
@@ -71,7 +71,7 @@ function inOrder2(v) {
       Belt_MutableQueue.add(q, current.value);
       cursor = current.right;
     } else {
-      todo = /* boolean */0;
+      todo = false;
     }
   };
   return /* () */0;

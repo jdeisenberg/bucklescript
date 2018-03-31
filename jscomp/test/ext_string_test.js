@@ -11,7 +11,7 @@ var Caml_exceptions = require("../../lib/js/caml_exceptions.js");
 var Caml_builtin_exceptions = require("../../lib/js/caml_builtin_exceptions.js");
 
 function split_by($staropt$star, is_delim, str) {
-  var keep_empty = $staropt$star ? $staropt$star[0] : /* boolean */0;
+  var keep_empty = $staropt$star ? $staropt$star[0] : false;
   var len = str.length;
   var _acc = /* [] */0;
   var _last_pos = len;
@@ -90,7 +90,7 @@ function split(keep_empty, str, on) {
 }
 
 function quick_split_by_ws(str) {
-  return split_by(/* Some */[/* boolean */0], (function (x) {
+  return split_by(/* Some */[false], (function (x) {
                 if (x === /* "\t" */9 || x === /* "\n" */10) {
                   return /* true */1;
                 } else {
@@ -179,26 +179,26 @@ function escaped(s) {
     while(true) {
       var i = _i;
       if (i >= s.length) {
-        return /* boolean */0;
+        return false;
       } else {
         var match = s.charCodeAt(i);
         if (match >= 32) {
           var switcher = match - 34 | 0;
           if (switcher > 58 || switcher < 0) {
             if (switcher >= 93) {
-              return /* boolean */1;
+              return true;
             } else {
               _i = i + 1 | 0;
               continue ;
             }
           } else if (switcher > 57 || switcher < 1) {
-            return /* boolean */1;
+            return true;
           } else {
             _i = i + 1 | 0;
             continue ;
           }
         } else {
-          return /* boolean */1;
+          return true;
         }
       }
     };
@@ -259,7 +259,7 @@ function unsafe_is_sub(sub, i, s, j, len) {
     while(true) {
       var k = _k;
       if (k === len) {
-        return /* boolean */1;
+        return true;
       } else if (sub[i + k | 0] === s[j + k | 0]) {
         _k = k + 1 | 0;
         continue ;
@@ -464,14 +464,14 @@ function is_valid_module_file(s) {
     var exit = 0;
     if (match >= 91) {
       if (match > 122 || match < 97) {
-        return /* boolean */0;
+        return false;
       } else {
         exit = 1;
       }
     } else if (match >= 65) {
       exit = 1;
     } else {
-      return /* boolean */0;
+      return false;
     }
     if (exit === 1) {
       return unsafe_for_all_range(s, 1, len - 1 | 0, (function (x) {
@@ -479,25 +479,25 @@ function is_valid_module_file(s) {
                       var switcher = x - 91 | 0;
                       if (switcher > 5 || switcher < 0) {
                         if (switcher >= 32) {
-                          return /* boolean */0;
+                          return false;
                         } else {
-                          return /* boolean */1;
+                          return true;
                         }
                       } else if (switcher !== 4) {
-                        return /* boolean */0;
+                        return false;
                       } else {
-                        return /* boolean */1;
+                        return true;
                       }
                     } else if (x >= 48) {
                       if (x >= 58) {
-                        return /* boolean */0;
+                        return false;
                       } else {
-                        return /* boolean */1;
+                        return true;
                       }
                     } else if (x !== 39) {
-                      return /* boolean */0;
+                      return false;
                     } else {
-                      return /* boolean */1;
+                      return true;
                     }
                   }));
     }
@@ -514,12 +514,12 @@ function is_valid_npm_package_name(s) {
     var exit = 0;
     if (match >= 97) {
       if (match >= 123) {
-        return /* boolean */0;
+        return false;
       } else {
         exit = 1;
       }
     } else if (match !== 64) {
-      return /* boolean */0;
+      return false;
     } else {
       exit = 1;
     }
@@ -528,19 +528,19 @@ function is_valid_npm_package_name(s) {
                     if (x >= 58) {
                       if (x >= 97) {
                         if (x >= 123) {
-                          return /* boolean */0;
+                          return false;
                         } else {
-                          return /* boolean */1;
+                          return true;
                         }
                       } else if (x !== 95) {
-                        return /* boolean */0;
+                        return false;
                       } else {
-                        return /* boolean */1;
+                        return true;
                       }
                     } else if (x !== 45 && x < 48) {
-                      return /* boolean */0;
+                      return false;
                     } else {
-                      return /* boolean */1;
+                      return true;
                     }
                   }));
     }

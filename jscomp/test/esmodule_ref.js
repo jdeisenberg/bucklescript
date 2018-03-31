@@ -2,7 +2,7 @@
 
 var Caml_builtin_exceptions = require("../../lib/js/caml_builtin_exceptions.js");
 
-if (!true) {
+if (false) {
   throw [
         Caml_builtin_exceptions.assert_failure,
         [
@@ -13,6 +13,6 @@ if (!true) {
       ];
 }
 
-console.log(/* boolean */0);
+console.log(false);
 
 /*  Not a pure module */

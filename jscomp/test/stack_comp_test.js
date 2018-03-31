@@ -18,7 +18,7 @@ function eq(f, param) {
 function assert_(loc, v) {
   return eq(loc, /* tuple */[
               v,
-              /* boolean */1
+              true
             ]);
 }
 
@@ -51,11 +51,11 @@ var S = /* module */[
 function does_raise(f, s) {
   try {
     Curry._1(f, s);
-    return /* boolean */0;
+    return false;
   }
   catch (exn){
     if (exn === Stack.Empty) {
-      return /* boolean */1;
+      return true;
     } else {
       throw exn;
     }

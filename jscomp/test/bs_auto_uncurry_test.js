@@ -104,7 +104,7 @@ eq("File \"bs_auto_uncurry_test.ml\", line 48, characters 7-14", /* int array */
         3
       ].some((function (x) {
             return x < 1;
-          })), /* boolean */0);
+          })), false);
 
 eq("File \"bs_auto_uncurry_test.ml\", line 52, characters 7-14", /* int array */[
         1,
@@ -112,7 +112,7 @@ eq("File \"bs_auto_uncurry_test.ml\", line 52, characters 7-14", /* int array */
         3
       ].every((function (x) {
             return x > 0;
-          })), /* boolean */1);
+          })), true);
 
 Mt.from_pair_suites("bs_auto_uncurry_test.ml", suites[0]);
 

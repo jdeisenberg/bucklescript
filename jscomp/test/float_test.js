@@ -170,8 +170,8 @@ var param$2 = /* tuple */[
 ];
 
 Mt_global.collect_eq(test_id, suites, "File \"float_test.ml\", line 49, characters 5-12", param$2, /* tuple */[
-      /* boolean */1,
-      /* boolean */1
+      true,
+      true
     ]);
 
 var param$3 = /* int array */[

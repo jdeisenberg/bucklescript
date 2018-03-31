@@ -37,11 +37,11 @@ function idle() {
   Js_vector.filterInPlace((function (param) {
           var dir = param[/* dir */0];
           if (dir === bsconfig || Js_vector.memByRef(dir, watchFiles)) {
-            return /* boolean */1;
+            return true;
           } else {
             console.log(" " + (String(dir) + " is no longer watched"));
             param[/* watcher */1].close();
-            return /* boolean */0;
+            return false;
           }
         }), watchers);
   watchFiles.forEach((function (dir) {

@@ -119,9 +119,9 @@ function string_of_bool(b) {
 function bool_of_string(param) {
   switch (param) {
     case "false" : 
-        return /* boolean */0;
+        return false;
     case "true" : 
-        return /* boolean */1;
+        return true;
     default:
       throw [
             Caml_builtin_exceptions.invalid_argument,

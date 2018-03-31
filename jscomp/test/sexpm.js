@@ -87,11 +87,11 @@ function _must_escape(s) {
       }
       
     }
-    return /* boolean */0;
+    return false;
   }
   catch (exn){
     if (exn === Pervasives.Exit) {
-      return /* boolean */1;
+      return true;
     } else {
       throw exn;
     }
@@ -889,12 +889,12 @@ function next(t) {
 
 function parse_string(s) {
   var n = s.length;
-  var stop = [/* boolean */0];
+  var stop = [false];
   var refill = function (bytes, i, _) {
     if (stop[0]) {
       return 0;
     } else {
-      stop[0] = /* boolean */1;
+      stop[0] = true;
       Bytes.blit_string(s, 0, bytes, i, n);
       return n;
     }

@@ -22,9 +22,9 @@ var B = Caml_module.init_mod([
 
 function even(n) {
   if (n === 0) {
-    return /* boolean */1;
+    return true;
   } else if (n === 1) {
-    return /* boolean */0;
+    return false;
   } else {
     return Curry._1(B[/* odd */0], n - 1 | 0);
   }
@@ -34,9 +34,9 @@ Caml_module.update_mod([[0]], A, /* module */[/* even */even]);
 
 function odd(n) {
   if (n === 1) {
-    return /* boolean */1;
+    return true;
   } else if (n === 0) {
-    return /* boolean */0;
+    return false;
   } else {
     return Curry._1(A[/* even */0], n - 1 | 0);
   }
@@ -64,9 +64,9 @@ var BB = Caml_module.init_mod([
 
 function even$1(n) {
   if (n === 0) {
-    return /* boolean */1;
+    return true;
   } else if (n === 1) {
-    return /* boolean */0;
+    return false;
   } else {
     return Curry._1(BB[/* odd */0], n - 1 | 0);
   }
@@ -86,9 +86,9 @@ Caml_module.update_mod([[
 
 function odd$1(n) {
   if (n === 1) {
-    return /* boolean */1;
+    return true;
   } else if (n === 0) {
-    return /* boolean */0;
+    return false;
   } else {
     return Curry._1(AA[/* even */0], n - 1 | 0);
   }
@@ -325,7 +325,7 @@ function split(x, param) {
     if (c === 0) {
       return /* tuple */[
               l,
-              /* boolean */1,
+              true,
               r
             ];
     } else if (c < 0) {
@@ -346,7 +346,7 @@ function split(x, param) {
   } else {
     return /* tuple */[
             /* Empty */0,
-            /* boolean */0,
+            false,
             /* Empty */0
           ];
   }
@@ -354,9 +354,9 @@ function split(x, param) {
 
 function is_empty(param) {
   if (param) {
-    return /* boolean */0;
+    return false;
   } else {
-    return /* boolean */1;
+    return true;
   }
 }
 
@@ -372,7 +372,7 @@ function mem(x, _param) {
         continue ;
       }
     } else {
-      return /* boolean */0;
+      return false;
     }
   };
 }
@@ -564,10 +564,10 @@ function subset(_s1, _s2) {
           return /* false */0;
         }
       } else {
-        return /* boolean */0;
+        return false;
       }
     } else {
-      return /* boolean */1;
+      return true;
     }
   };
 }
@@ -611,7 +611,7 @@ function for_all(p, _param) {
         return /* false */0;
       }
     } else {
-      return /* boolean */1;
+      return true;
     }
   };
 }
@@ -627,7 +627,7 @@ function exists(p, _param) {
         continue ;
       }
     } else {
-      return /* boolean */0;
+      return false;
     }
   };
 }
@@ -923,10 +923,10 @@ var suites_000 = /* tuple */[
   (function () {
       return /* Eq */Block.__(0, [
                 /* tuple */[
-                  /* boolean */1,
-                  /* boolean */1,
-                  /* boolean */0,
-                  /* boolean */0
+                  true,
+                  true,
+                  false,
+                  false
                 ],
                 /* tuple */[
                   Curry._1(A[/* even */0], 2),
@@ -963,7 +963,7 @@ var suites_001 = /* :: */[
         "test4",
         (function () {
             return /* Eq */Block.__(0, [
-                      /* boolean */1,
+                      true,
                       Curry._1(A[/* even */0], 2)
                     ]);
           })
@@ -973,7 +973,7 @@ var suites_001 = /* :: */[
           "test4",
           (function () {
               return /* Eq */Block.__(0, [
-                        /* boolean */1,
+                        true,
                         Curry._1(AA[/* even */0], 4)
                       ]);
             })
@@ -983,7 +983,7 @@ var suites_001 = /* :: */[
             "test5",
             (function () {
                 return /* Eq */Block.__(0, [
-                          /* boolean */0,
+                          false,
                           Curry._1(B[/* odd */0], 2)
                         ]);
               })

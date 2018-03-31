@@ -1159,7 +1159,7 @@ eq("File \"bs_array_test.ml\", line 279, characters 5-12", every2(/* [] */0, /* 
             /* [] */0
           ])((function (x, y) {
             return x > y;
-          })), /* boolean */1);
+          })), true);
 
 eq("File \"bs_array_test.ml\", line 280, characters 5-12", every2(/* :: */[
             2,
@@ -1172,7 +1172,7 @@ eq("File \"bs_array_test.ml\", line 280, characters 5-12", every2(/* :: */[
             /* [] */0
           ])((function (x, y) {
             return x > y;
-          })), /* boolean */1);
+          })), true);
 
 eq("File \"bs_array_test.ml\", line 281, characters 5-12", every2(/* :: */[
             2,
@@ -1182,7 +1182,7 @@ eq("File \"bs_array_test.ml\", line 281, characters 5-12", every2(/* :: */[
             /* [] */0
           ])((function (x, y) {
             return x > y;
-          })), /* boolean */1);
+          })), true);
 
 eq("File \"bs_array_test.ml\", line 282, characters 5-12", every2(/* :: */[
             2,
@@ -1198,7 +1198,7 @@ eq("File \"bs_array_test.ml\", line 282, characters 5-12", every2(/* :: */[
             ]
           ])((function (x, y) {
             return x > y;
-          })), /* boolean */0);
+          })), false);
 
 eq("File \"bs_array_test.ml\", line 283, characters 5-12", every2(/* :: */[
             2,
@@ -1214,14 +1214,14 @@ eq("File \"bs_array_test.ml\", line 283, characters 5-12", every2(/* :: */[
             ]
           ])((function (x, y) {
             return x > y;
-          })), /* boolean */1);
+          })), true);
 
 eq("File \"bs_array_test.ml\", line 284, characters 5-12", some2(/* [] */0, /* :: */[
             1,
             /* [] */0
           ])((function (x, y) {
             return x > y;
-          })), /* boolean */0);
+          })), false);
 
 eq("File \"bs_array_test.ml\", line 285, characters 5-12", some2(/* :: */[
             2,
@@ -1234,7 +1234,7 @@ eq("File \"bs_array_test.ml\", line 285, characters 5-12", some2(/* :: */[
             /* [] */0
           ])((function (x, y) {
             return x > y;
-          })), /* boolean */1);
+          })), true);
 
 eq("File \"bs_array_test.ml\", line 286, characters 5-12", some2(/* :: */[
             2,
@@ -1250,7 +1250,7 @@ eq("File \"bs_array_test.ml\", line 286, characters 5-12", some2(/* :: */[
             ]
           ])((function (x, y) {
             return x > y;
-          })), /* boolean */1);
+          })), true);
 
 eq("File \"bs_array_test.ml\", line 287, characters 5-12", some2(/* :: */[
             0,
@@ -1266,7 +1266,7 @@ eq("File \"bs_array_test.ml\", line 287, characters 5-12", some2(/* :: */[
             ]
           ])((function (x, y) {
             return x > y;
-          })), /* boolean */0);
+          })), false);
 
 eq("File \"bs_array_test.ml\", line 288, characters 5-12", some2(/* :: */[
             0,
@@ -1282,7 +1282,7 @@ eq("File \"bs_array_test.ml\", line 288, characters 5-12", some2(/* :: */[
             ]
           ])((function (x, y) {
             return x > y;
-          })), /* boolean */1);
+          })), true);
 
 eq("File \"bs_array_test.ml\", line 293, characters 5-12", Belt_Array.concat(/* int array */[], /* int array */[
           1,

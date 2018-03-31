@@ -163,17 +163,21 @@ function eq_list(cmp, _xs, _ys) {
     var ys = _ys;
     var xs = _xs;
     if (xs) {
-      if (ys && Curry._2(cmp, xs[0], ys[0])) {
-        _ys = ys[1];
-        _xs = xs[1];
-        continue ;
+      if (ys) {
+        if (Curry._2(cmp, xs[0], ys[0])) {
+          _ys = ys[1];
+          _xs = xs[1];
+          continue ;
+        } else {
+          return /* false */0;
+        }
       } else {
-        return /* false */0;
+        return false;
       }
     } else if (ys) {
-      return /* boolean */0;
+      return false;
     } else {
-      return /* boolean */1;
+      return true;
     }
   };
 }
@@ -220,7 +224,7 @@ Stream.iter(add, utf8_decode(Stream.of_string("\xe4\xbd\xa0\xe5\xa5\xbdBuckleScr
 var codes = List.rev(v[0]);
 
 eq("File \"utf8_decode_test.ml\", line 125, characters 5-12", /* tuple */[
-      /* boolean */1,
+      true,
       eq_list((function (x, y) {
               return x === y;
             }), codes, /* :: */[

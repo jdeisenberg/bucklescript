@@ -75,7 +75,7 @@ try {
 }
 catch (raw_e){
   var e = Js_exn.internalToOCamlException(raw_e);
-  eq("File \"promise_catch_test.ml\", line 36, characters 7-14", /* boolean */1, Js_option.isSomeValue((function (xxx, y) {
+  eq("File \"promise_catch_test.ml\", line 36, characters 7-14", true, Js_option.isSomeValue((function (xxx, y) {
               return xxx === y;
             }), 2, myHandler(e)));
 }

@@ -2147,7 +2147,7 @@ var suites = Pervasives.$at(/* :: */[
                                                                                       /* hi */0,
                                                                                       /* lo */1
                                                                                     ]) > 0,
-                                                                                /* boolean */1
+                                                                                true
                                                                               ]);
                                                                     })
                                                                 ],
@@ -2179,7 +2179,7 @@ var suites = Pervasives.$at(/* :: */[
                                                                                           /* hi */0,
                                                                                           /* lo */1
                                                                                         ]) > 0,
-                                                                                    /* boolean */1
+                                                                                    true
                                                                                   ]);
                                                                         })
                                                                     ],

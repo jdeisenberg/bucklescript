@@ -33,12 +33,12 @@ function g() {
   var next = function (i, b) {
     called[0] = called[0] + 1 | 0;
     if (b) {
-      Curry._2(v[0], i, /* boolean */0);
+      Curry._2(v[0], i, false);
     }
     return i + 1 | 0;
   };
   Caml_obj.caml_update_dummy(v, [next]);
-  console.log(String(next(0, /* boolean */1)));
+  console.log(String(next(0, true)));
   return /* () */0;
 }
 

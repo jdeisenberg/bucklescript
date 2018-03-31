@@ -189,7 +189,7 @@ var vv = Js_list.foldRight((function (x, y) {
               ];
       }), v, /* [] */0);
 
-eq("File \"js_list_test.ml\", line 27, characters 7-14", /* boolean */1, Js_list.equal((function (x, y) {
+eq("File \"js_list_test.ml\", line 27, characters 7-14", true, Js_list.equal((function (x, y) {
             return x === y;
           }), v, vv));
 
@@ -203,7 +203,7 @@ function f$1(x) {
   return Caml_int32.imul(x, 10);
 }
 
-eq("File \"js_list_test.ml\", line 32, characters 7-14", /* boolean */1, Js_list.equal((function (x, y) {
+eq("File \"js_list_test.ml\", line 32, characters 7-14", true, Js_list.equal((function (x, y) {
             return x === y;
           }), vvv, Js_vector.toList(Js_vector.init(10000, f$1))));
 

@@ -10,19 +10,19 @@ function string_or_number(x) {
   switch (match[0]) {
     case 3 : 
         console.log(v + 3);
-        return /* boolean */1;
+        return true;
     case 4 : 
         console.log(v + "hei");
-        return /* boolean */1;
+        return true;
     case 5 : 
         console.log("Function");
-        return /* boolean */0;
+        return false;
     case 0 : 
     case 1 : 
     case 2 : 
     case 6 : 
     case 7 : 
-        return /* boolean */0;
+        return false;
     
   }
 }
@@ -53,7 +53,7 @@ var suites_001 = /* :: */[
       (function () {
           return /* Eq */Block.__(0, [
                     Js_types.test(3, /* Number */3),
-                    /* boolean */1
+                    true
                   ]);
         })
     ],
@@ -63,7 +63,7 @@ var suites_001 = /* :: */[
         (function () {
             return /* Eq */Block.__(0, [
                       Js_types.test(true, /* Boolean */2),
-                      /* boolean */1
+                      true
                     ]);
           })
       ],
@@ -73,7 +73,7 @@ var suites_001 = /* :: */[
           (function () {
               return /* Eq */Block.__(0, [
                         Js_types.test(undefined, /* Undefined */0),
-                        /* boolean */1
+                        true
                       ]);
             })
         ],
@@ -83,7 +83,7 @@ var suites_001 = /* :: */[
             (function () {
                 return /* Eq */Block.__(0, [
                           string_or_number("xx"),
-                          /* boolean */1
+                          true
                         ]);
               })
           ],
@@ -93,7 +93,7 @@ var suites_001 = /* :: */[
               (function () {
                   return /* Eq */Block.__(0, [
                             string_or_number(3.02),
-                            /* boolean */1
+                            true
                           ]);
                 })
             ],
@@ -105,7 +105,7 @@ var suites_001 = /* :: */[
                               string_or_number((function (x) {
                                       return x;
                                     })),
-                              /* boolean */0
+                              false
                             ]);
                   })
               ],
@@ -115,7 +115,7 @@ var suites_001 = /* :: */[
                   (function () {
                       return /* Eq */Block.__(0, [
                                 Js_types.test("3", /* String */4),
-                                /* boolean */1
+                                true
                               ]);
                     })
                 ],
@@ -125,7 +125,7 @@ var suites_001 = /* :: */[
                     (function () {
                         return /* Eq */Block.__(0, [
                                   Js_types.test(3, /* String */4),
-                                  /* boolean */0
+                                  false
                                 ]);
                       })
                   ],
@@ -137,7 +137,7 @@ var suites_001 = /* :: */[
                                     Js_types.test((function (x) {
                                             return x;
                                           }), /* Function */5),
-                                    /* boolean */1
+                                    true
                                   ]);
                         })
                     ],
@@ -149,7 +149,7 @@ var suites_001 = /* :: */[
                                       Js_types.test({
                                             x: 3
                                           }, /* Object */6),
-                                      /* boolean */1
+                                      true
                                     ]);
                           })
                       ],

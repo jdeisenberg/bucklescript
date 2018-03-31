@@ -70,7 +70,7 @@ var suites_001 = /* :: */[
             if (match !== null) {
               return /* FailWith */Block.__(9, ["regex should not match"]);
             } else {
-              return /* Ok */Block.__(4, [/* boolean */1]);
+              return /* Ok */Block.__(4, [true]);
             }
           })
       ],
@@ -80,7 +80,7 @@ var suites_001 = /* :: */[
           (function () {
               var res = new RegExp("foo").test("#foo#");
               return /* Eq */Block.__(0, [
-                        /* boolean */1,
+                        true,
                         res
                       ]);
             })
@@ -91,7 +91,7 @@ var suites_001 = /* :: */[
             (function () {
                 var res = new RegExp("foo", "g");
                 return /* Eq */Block.__(0, [
-                          /* boolean */1,
+                          true,
                           res.global
                         ]);
               })
@@ -142,7 +142,7 @@ var suites_001 = /* :: */[
                     "t_global",
                     (function () {
                         return /* Eq */Block.__(0, [
-                                  /* boolean */1,
+                                  true,
                                   (/./ig).global
                                 ]);
                       })
@@ -152,7 +152,7 @@ var suites_001 = /* :: */[
                       "t_ignoreCase",
                       (function () {
                           return /* Eq */Block.__(0, [
-                                    /* boolean */1,
+                                    true,
                                     (/./ig).ignoreCase
                                   ]);
                         })
@@ -194,7 +194,7 @@ var suites_001 = /* :: */[
                             "t_multiline",
                             (function () {
                                 return /* Eq */Block.__(0, [
-                                          /* boolean */0,
+                                          false,
                                           (/./ig).multiline
                                         ]);
                               })
@@ -214,7 +214,7 @@ var suites_001 = /* :: */[
                                 "t_sticky",
                                 (function () {
                                     return /* Eq */Block.__(0, [
-                                              /* boolean */1,
+                                              true,
                                               (/./yg).sticky
                                             ]);
                                   })
@@ -224,7 +224,7 @@ var suites_001 = /* :: */[
                                   "t_unicode",
                                   (function () {
                                       return /* Eq */Block.__(0, [
-                                                /* boolean */0,
+                                                false,
                                                 (/./yg).unicode
                                               ]);
                                     })

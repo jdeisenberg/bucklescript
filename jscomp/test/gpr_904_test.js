@@ -45,15 +45,15 @@ function f(check) {
 }
 
 eq("File \"gpr_904_test.ml\", line 23, characters 5-12", f({
-          x: /* boolean */1,
-          y: /* boolean */0
-        }), /* boolean */0);
+          x: true,
+          y: false
+        }), false);
 
 eq("File \"gpr_904_test.ml\", line 26, characters 5-12", check_healty({
-          a: /* boolean */0,
-          b: /* boolean */0,
-          c: /* boolean */1
-        }), /* boolean */0);
+          a: false,
+          b: false,
+          c: true
+        }), false);
 
 Mt.from_pair_suites("gpr_904_test.ml", suites[0]);
 

@@ -75,7 +75,7 @@ function message(content, message_name) {
 function $$import($$public, file_name) {
   return /* record */[
           /* file_name */file_name,
-          /* public */$$public ? /* boolean */1 : /* boolean */0
+          /* public */$$public ? true : false
         ];
 }
 
@@ -1247,9 +1247,9 @@ var yyact = /* array */[
       var litteral = _1[1];
       switch (litteral) {
         case "false" : 
-            return /* Constant_bool */Block.__(1, [/* boolean */0]);
+            return /* Constant_bool */Block.__(1, [false]);
         case "true" : 
-            return /* Constant_bool */Block.__(1, [/* boolean */1]);
+            return /* Constant_bool */Block.__(1, [true]);
         default:
           return /* Constant_litteral */Block.__(4, [litteral]);
       }
@@ -2191,7 +2191,7 @@ function gen_decode_record(and_, param, sc) {
           
         }), /* [] */0, r_fields);
   var string_of_nonpacked_pk = function (pk) {
-    return string_of_payload_kind(/* Some */[/* () */0], pk, /* boolean */0);
+    return string_of_payload_kind(/* Some */[/* () */0], pk, false);
   };
   var process_field_common = function (sc, encoding_number, pk_as_string, f) {
     line$1(sc, Curry._2(Printf.sprintf(/* Format */[
@@ -2859,19 +2859,19 @@ function gen_struct(and_, t, sc) {
     case 0 : 
         tmp = /* tuple */[
           gen_decode_record(and_, match[0], sc),
-          /* boolean */1
+          true
         ];
         break;
     case 1 : 
         tmp = /* tuple */[
           gen_decode_variant(and_, match[0], sc),
-          /* boolean */1
+          true
         ];
         break;
     case 2 : 
         tmp = /* tuple */[
           gen_decode_const_variant(and_, match[0], sc),
-          /* boolean */1
+          true
         ];
         break;
     
@@ -2925,7 +2925,7 @@ function gen_sig(_, t, sc) {
     case 2 : 
         tmp = /* tuple */[
           f(match[0][/* cv_name */0]),
-          /* boolean */1
+          true
         ];
         break;
     
@@ -3395,7 +3395,7 @@ function gen_struct$1(and_, t, sc) {
         break;
     
   }
-  return /* boolean */1;
+  return true;
 }
 
 function gen_sig$1(_, t, sc) {
@@ -3442,7 +3442,7 @@ function gen_sig$1(_, t, sc) {
         break;
     
   }
-  return /* boolean */1;
+  return true;
 }
 
 var Codegen_pp = /* module */[
@@ -3674,7 +3674,7 @@ function reset(g) {
                         /* core */core,
                         /* index : None */0,
                         /* lowlink : None */0,
-                        /* on_stack : boolean */0
+                        /* on_stack */false
                       ];
               }), g);
 }
@@ -3709,7 +3709,7 @@ function strong_connect(g, sccs, stack, index, v) {
     v,
     stack
   ];
-  v[/* on_stack */3] = /* boolean */1;
+  v[/* on_stack */3] = true;
   var match = List.fold_left((function (param, id) {
           var index = param[2];
           var stack = param[1];
@@ -3835,7 +3835,7 @@ function strong_connect(g, sccs, stack, index, v) {
                       splitted
                     ];
             } else {
-              n[/* on_stack */3] = /* boolean */0;
+              n[/* on_stack */3] = false;
               if (n[/* core */0][/* id */0] === v[/* core */0][/* id */0]) {
                 return /* tuple */[
                         /* :: */[
@@ -3843,7 +3843,7 @@ function strong_connect(g, sccs, stack, index, v) {
                           scc
                         ],
                         stack,
-                        /* boolean */1
+                        true
                       ];
               } else {
                 return /* tuple */[
@@ -3852,14 +3852,14 @@ function strong_connect(g, sccs, stack, index, v) {
                           scc
                         ],
                         stack,
-                        /* boolean */0
+                        false
                       ];
               }
             }
           }), /* tuple */[
           /* [] */0,
           /* [] */0,
-          /* boolean */0
+          false
         ], stack$2);
     return /* tuple */[
             /* :: */[
@@ -4203,11 +4203,11 @@ function compile_oneof_p1(param) {
 function not_found(f) {
   try {
     Curry._1(f, /* () */0);
-    return /* boolean */0;
+    return false;
   }
   catch (exn){
     if (exn === Caml_builtin_exceptions.not_found) {
-      return /* boolean */1;
+      return true;
     } else {
       throw exn;
     }
@@ -4405,7 +4405,7 @@ function is_empty_message(param) {
   if (match.tag) {
     return 0 === List.length(match[0][/* message_body */2]);
   } else {
-    return /* boolean */0;
+    return false;
   }
 }
 
@@ -4729,18 +4729,18 @@ function type_decl_of_and(param) {
 function gen_type_record(mutable_, and_, param, sc) {
   var r_fields = param[/* r_fields */1];
   var r_name = param[/* r_name */0];
-  var mutable_$1 = mutable_ ? /* boolean */1 : /* boolean */0;
+  var mutable_$1 = mutable_ ? true : false;
   var is_imperative_type = function (param) {
     switch (param.tag | 0) {
       case 2 : 
       case 3 : 
           if (param[0][0]) {
-            return /* boolean */1;
+            return true;
           } else {
-            return /* boolean */0;
+            return false;
           }
       default:
-        return /* boolean */0;
+        return false;
     }
   };
   var field_prefix = function (field_type, field_mutable) {
@@ -4906,7 +4906,7 @@ function gen_struct$2(and_, t, scope) {
         break;
     
   }
-  return /* boolean */1;
+  return true;
 }
 
 function gen_sig$2(and_, t, scope) {
@@ -4923,7 +4923,7 @@ function gen_sig$2(and_, t, scope) {
         break;
     
   }
-  return /* boolean */1;
+  return true;
 }
 
 var Codegen_type = /* module */[
@@ -5096,7 +5096,7 @@ function gen_encode_record(and_, param, sc) {
                                           ]),
                                         "v.%s"
                                       ]), rf_label);
-                              return gen_encode_field_type(/* Some */[/* () */0], sc, var_name, match[1], match[2], /* boolean */0, match[0]);
+                              return gen_encode_field_type(/* Some */[/* () */0], sc, var_name, match[1], match[2], false, match[0]);
                           case 1 : 
                               var match$1 = rf_field_type[0];
                               var pk = match$1[2];
@@ -5125,7 +5125,7 @@ function gen_encode_record(and_, param, sc) {
                                                 "| Some x -> ("
                                               ]));
                                       scope(sc, (function (sc) {
-                                              return gen_encode_field_type(/* Some */[/* () */0], sc, "x", encoding_number, pk, /* boolean */0, field_type);
+                                              return gen_encode_field_type(/* Some */[/* () */0], sc, "x", encoding_number, pk, false, field_type);
                                             }));
                                       line$1(sc, ")");
                                       return line$1(sc, "| None -> ();");
@@ -5245,7 +5245,7 @@ function gen_encode_record(and_, param, sc) {
                                           ]), encode_basic_type(match$5[0], key_pk)));
                               line$1(sc, "let encode_value = (fun x encoder ->");
                               scope(sc, (function (sc) {
-                                      return gen_encode_field_type(/* None */0, sc, "x", -1, value_pk, /* boolean */0, value_type);
+                                      return gen_encode_field_type(/* None */0, sc, "x", -1, value_pk, false, value_type);
                                     }));
                               line$1(sc, ") in");
                               if (match$3[0]) {
@@ -5254,7 +5254,7 @@ function gen_encode_record(and_, param, sc) {
                                 line$1(sc, "List.iter (fun (k, v) ->");
                               }
                               scope(sc, (function (sc) {
-                                      gen_encode_field_key(sc, encoding_number$2, /* Pk_bytes */2, /* boolean */0);
+                                      gen_encode_field_key(sc, encoding_number$2, /* Pk_bytes */2, false);
                                       line$1(sc, Curry._2(Printf.sprintf(/* Format */[
                                                     /* String_literal */Block.__(11, [
                                                         "let map_entry = (k, Pbrt.",
@@ -5273,7 +5273,7 @@ function gen_encode_record(and_, param, sc) {
                                                           ])
                                                       ]),
                                                     "let map_entry = (k, Pbrt.%s), (v, Pbrt.%s) in"
-                                                  ]), string_of_payload_kind(/* Some */[/* () */0], key_pk, /* boolean */0), string_of_payload_kind(/* Some */[/* () */0], value_pk, /* boolean */0)));
+                                                  ]), string_of_payload_kind(/* Some */[/* () */0], key_pk, false), string_of_payload_kind(/* Some */[/* () */0], value_pk, false)));
                                       return line$1(sc, "Pbrt.Encoder.map_entry ~encode_key ~encode_value map_entry encoder");
                                     }));
                               return line$1(sc, Curry._1(Printf.sprintf(/* Format */[
@@ -5327,7 +5327,7 @@ function gen_encode_record(and_, param, sc) {
                                                                     "| %s x -> ("
                                                                   ]), vc_constructor));
                                                       scope(sc, (function (sc) {
-                                                              return gen_encode_field_type(/* Some */[/* () */0], sc, "x", vc_encoding_number, vc_payload_kind, /* boolean */0, field_type);
+                                                              return gen_encode_field_type(/* Some */[/* () */0], sc, "x", vc_encoding_number, vc_payload_kind, false, field_type);
                                                             }));
                                                       return line$1(sc, ")");
                                                     } else {
@@ -5345,7 +5345,7 @@ function gen_encode_record(and_, param, sc) {
                                                                     "| %s -> ("
                                                                   ]), vc_constructor));
                                                       scope(sc, (function (sc) {
-                                                              gen_encode_field_key(sc, vc_encoding_number, vc_payload_kind, /* boolean */0);
+                                                              gen_encode_field_key(sc, vc_encoding_number, vc_payload_kind, false);
                                                               return line$1(sc, "Pbrt.Encoder.empty_nested encoder");
                                                             }));
                                                       return line$1(sc, ")");
@@ -5408,7 +5408,7 @@ function gen_encode_variant(and_, variant, sc) {
                                               "| %s x -> ("
                                             ]), vc_constructor));
                                 scope(sc, (function (sc) {
-                                        return gen_encode_field_type(/* Some */[/* () */0], sc, "x", vc_encoding_number, vc_payload_kind, /* boolean */0, field_type);
+                                        return gen_encode_field_type(/* Some */[/* () */0], sc, "x", vc_encoding_number, vc_payload_kind, false, field_type);
                                       }));
                                 return line$1(sc, ")");
                               } else {
@@ -5426,7 +5426,7 @@ function gen_encode_variant(and_, variant, sc) {
                                               "| %s -> ("
                                             ]), vc_constructor));
                                 scope(sc, (function (sc) {
-                                        gen_encode_field_key(sc, vc_encoding_number, vc_payload_kind, /* boolean */0);
+                                        gen_encode_field_key(sc, vc_encoding_number, vc_payload_kind, false);
                                         return line$1(sc, "Pbrt.Encoder.empty_nested encoder");
                                       }));
                                 return line$1(sc, ")");
@@ -5517,19 +5517,19 @@ function gen_struct$3(and_, t, sc) {
     case 0 : 
         tmp = /* tuple */[
           gen_encode_record(and_, match[0], sc),
-          /* boolean */1
+          true
         ];
         break;
     case 1 : 
         tmp = /* tuple */[
           gen_encode_variant(and_, match[0], sc),
-          /* boolean */1
+          true
         ];
         break;
     case 2 : 
         tmp = /* tuple */[
           gen_encode_const_variant(and_, match[0], sc),
-          /* boolean */1
+          true
         ];
         break;
     
@@ -5580,7 +5580,7 @@ function gen_sig$3(_, t, sc) {
     case 2 : 
         tmp = /* tuple */[
           f(match[0][/* cv_name */0]),
-          /* boolean */1
+          true
         ];
         break;
     
@@ -6088,19 +6088,19 @@ function gen_struct$4(and_, t, sc) {
         var r = match[0];
         tmp = /* tuple */[
           (gen_default_record(/* None */0, and_, r, sc), line$1(sc, ""), gen_default_record(/* Some */[/* () */0], /* Some */[/* () */0], r, sc)),
-          /* boolean */1
+          true
         ];
         break;
     case 1 : 
         tmp = /* tuple */[
           gen_default_variant(and_, match[0], sc),
-          /* boolean */1
+          true
         ];
         break;
     case 2 : 
         tmp = /* tuple */[
           gen_default_const_variant(/* None */0, match[0], sc),
-          /* boolean */1
+          true
         ];
         break;
     
@@ -6215,14 +6215,14 @@ function gen_sig$4(_, t, sc) {
     case 0 : 
         tmp = /* tuple */[
           gen_sig_record(sc, match[0]),
-          /* boolean */1
+          true
         ];
         break;
     case 1 : 
     case 2 : 
         tmp = /* tuple */[
           f(match[0][/* cv_name */0]),
-          /* boolean */1
+          true
         ];
         break;
     
@@ -6268,7 +6268,7 @@ function rev_split_by_naming_convention(s) {
               return /* tuple */[
                       add_sub_string(start_i, i, l),
                       i,
-                      /* boolean */1
+                      true
                     ];
             } else {
               return /* tuple */[
@@ -6281,13 +6281,13 @@ function rev_split_by_naming_convention(s) {
             return /* tuple */[
                     add_sub_string(start_i, i, l),
                     i + 1 | 0,
-                    /* boolean */0
+                    false
                   ];
           }
         }), /* tuple */[
         /* [] */0,
         0,
-        /* boolean */0
+        false
       ], s);
   var len = s.length;
   return add_sub_string(match[1], len, match[0]);
@@ -6420,7 +6420,7 @@ function encoding_info_of_field_type(all_types, field_type) {
     switch (field_type) {
       case 6 : 
       case 7 : 
-          return /* Pk_varint */[/* boolean */1];
+          return /* Pk_varint */[true];
       case 1 : 
       case 8 : 
       case 10 : 
@@ -6434,7 +6434,7 @@ function encoding_info_of_field_type(all_types, field_type) {
       case 4 : 
       case 5 : 
       case 12 : 
-          return /* Pk_varint */[/* boolean */0];
+          return /* Pk_varint */[false];
       case 13 : 
       case 14 : 
           return /* Pk_bytes */2;
@@ -6445,7 +6445,7 @@ function encoding_info_of_field_type(all_types, field_type) {
     if (match[/* spec */4].tag) {
       return /* Pk_bytes */2;
     } else {
-      return /* Pk_varint */[/* boolean */0];
+      return /* Pk_varint */[false];
     }
   }
 }
@@ -6465,7 +6465,7 @@ function encoding_of_field(all_types, field) {
           ];
     }
   } else {
-    packed = /* boolean */0;
+    packed = false;
   }
   var pk = encoding_info_of_field_type(all_types, field_type(field));
   return /* tuple */[
@@ -6566,7 +6566,7 @@ function compile_field_type(field_name, all_types, file_options, field_options, 
         return /* Ft_unit */0;
       } else {
         var udt_nested;
-        udt_nested = t[/* spec */4].tag ? /* boolean */1 : /* boolean */0;
+        udt_nested = t[/* spec */4].tag ? true : false;
         var field_type_module = module_of_file_name(t[/* file_name */2]);
         var match$6 = type_scope_of_type(t);
         var udt_type_name = type_name(match$6[/* message_names */1], type_name_of_type(t));
@@ -6602,7 +6602,7 @@ function is_mutable(field_name, field_options) {
           ];
     }
   } else {
-    return /* boolean */0;
+    return false;
   }
 }
 
@@ -6840,10 +6840,11 @@ function compile(proto_definition) {
                                           var variant = variant_of_oneof(/* Some */[/* () */0], outer_message_names, all_types$1, file_options, file_name$1, field$1);
                                           var record_field_000$1 = /* rf_label */label_name_of_field_name(field$1[/* oneof_name */0]);
                                           var record_field_001 = /* rf_field_type : Rft_variant_field */Block.__(4, [variant]);
+                                          var record_field_002 = /* rf_mutable */false;
                                           var record_field$1 = /* record */[
                                             record_field_000$1,
                                             record_field_001,
-                                            /* rf_mutable : boolean */0
+                                            record_field_002
                                           ];
                                           var variants_000 = /* record */[
                                             /* module_ */module_,
@@ -6930,11 +6931,11 @@ function compile(proto_definition) {
                                                 ]
                                               ]]);
                                           var record_field_000$2 = /* rf_label */label_name_of_field_name(map_name);
-                                          var record_field_002 = /* rf_mutable */is_mutable(/* Some */[map_name], map_options);
+                                          var record_field_002$1 = /* rf_mutable */is_mutable(/* Some */[map_name], map_options);
                                           var record_field$2 = /* record */[
                                             record_field_000$2,
                                             /* rf_field_type */record_field_type$1,
-                                            record_field_002
+                                            record_field_002$1
                                           ];
                                           return /* tuple */[
                                                   variants,
@@ -7007,7 +7008,7 @@ function compile(proto_definition) {
                                         } else {
                                           return /* false */0;
                                         }
-                                      }), /* boolean */1, types);
+                                      }), true, types);
                                 return /* () */0;
                               }), otypes);
                 }), fs);

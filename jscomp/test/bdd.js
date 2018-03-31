@@ -9,9 +9,9 @@ function $$eval(_bdd, vars) {
     var bdd = _bdd;
     if (typeof bdd === "number") {
       if (bdd !== 0) {
-        return /* boolean */0;
+        return false;
       } else {
-        return /* boolean */1;
+        return true;
       }
     } else if (Caml_array.caml_array_get(vars, bdd[1])) {
       _bdd = bdd[3];
@@ -337,7 +337,7 @@ function random() {
 }
 
 function random_vars(n) {
-  var vars = Caml_array.caml_make_vect(n, /* boolean */0);
+  var vars = Caml_array.caml_make_vect(n, false);
   for(var i = 0 ,i_finish = n - 1 | 0; i <= i_finish; ++i){
     Caml_array.caml_array_set(vars, i, random(/* () */0));
   }
@@ -347,14 +347,14 @@ function random_vars(n) {
 function bool_equal(a, b) {
   if (a) {
     if (b) {
-      return /* boolean */1;
+      return true;
     } else {
-      return /* boolean */0;
+      return false;
     }
   } else if (b) {
-    return /* boolean */0;
+    return false;
   } else {
-    return /* boolean */1;
+    return true;
   }
 }
 
@@ -366,12 +366,12 @@ function test_hwb(bdd, vars) {
     }
     
   }
-  return bool_equal($$eval(bdd, vars), ntrue > 0 ? Caml_array.caml_array_get(vars, ntrue - 1 | 0) : /* boolean */0);
+  return bool_equal($$eval(bdd, vars), ntrue > 0 ? Caml_array.caml_array_get(vars, ntrue - 1 | 0) : false);
 }
 
 function main() {
   var bdd = hwb(22);
-  var succeeded = /* boolean */1;
+  var succeeded = true;
   for(var i = 1; i <= 100; ++i){
     succeeded = succeeded && test_hwb(bdd, random_vars(22));
   }

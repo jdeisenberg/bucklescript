@@ -16,7 +16,7 @@ function split(x, tree) {
     if (c === 0) {
       return /* tuple */[
               l,
-              /* boolean */1,
+              true,
               r
             ];
     } else if (c < 0) {
@@ -37,7 +37,7 @@ function split(x, tree) {
   } else {
     return /* tuple */[
             /* Empty */0,
-            /* boolean */0,
+            false,
             /* Empty */0
           ];
   }
@@ -144,7 +144,7 @@ function mem(x, _tree) {
         continue ;
       }
     } else {
-      return /* boolean */0;
+      return false;
     }
   };
 }
@@ -219,10 +219,10 @@ function subset(_s1, _s2) {
           return /* false */0;
         }
       } else {
-        return /* boolean */0;
+        return false;
       }
     } else {
-      return /* boolean */1;
+      return true;
     }
   };
 }

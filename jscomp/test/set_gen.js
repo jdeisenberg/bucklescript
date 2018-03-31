@@ -68,9 +68,9 @@ function max_elt(_param) {
 
 function is_empty(param) {
   if (param) {
-    return /* boolean */0;
+    return false;
   } else {
-    return /* boolean */1;
+    return true;
   }
 }
 
@@ -152,7 +152,7 @@ function for_all(p, _param) {
         return /* false */0;
       }
     } else {
-      return /* boolean */1;
+      return true;
     }
   };
 }
@@ -168,7 +168,7 @@ function exists(p, _param) {
         continue ;
       }
     } else {
-      return /* boolean */0;
+      return false;
     }
   };
 }

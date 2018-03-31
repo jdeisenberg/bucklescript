@@ -217,7 +217,7 @@ function Make(Ord) {
       if (c === 0) {
         return /* tuple */[
                 l,
-                /* boolean */1,
+                true,
                 r
               ];
       } else if (c < 0) {
@@ -238,16 +238,16 @@ function Make(Ord) {
     } else {
       return /* tuple */[
               /* Empty */0,
-              /* boolean */0,
+              false,
               /* Empty */0
             ];
     }
   };
   var is_empty = function (param) {
     if (param) {
-      return /* boolean */0;
+      return false;
     } else {
-      return /* boolean */1;
+      return true;
     }
   };
   var mem = function (x, _param) {
@@ -262,7 +262,7 @@ function Make(Ord) {
           continue ;
         }
       } else {
-        return /* boolean */0;
+        return false;
       }
     };
   };
@@ -437,10 +437,10 @@ function Make(Ord) {
             return /* false */0;
           }
         } else {
-          return /* boolean */0;
+          return false;
         }
       } else {
-        return /* boolean */1;
+        return true;
       }
     };
   };
@@ -481,7 +481,7 @@ function Make(Ord) {
           return /* false */0;
         }
       } else {
-        return /* boolean */1;
+        return true;
       }
     };
   };
@@ -496,7 +496,7 @@ function Make(Ord) {
           continue ;
         }
       } else {
-        return /* boolean */0;
+        return false;
       }
     };
   };

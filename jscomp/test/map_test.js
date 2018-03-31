@@ -175,17 +175,21 @@ function equal(cmp, m1, m2) {
     var e2 = _e2;
     var e1 = _e1;
     if (e1) {
-      if (e2 && e1[0] === e2[0] && Curry._2(cmp, e1[1], e2[1])) {
-        _e2 = cons_enum(e2[2], e2[3]);
-        _e1 = cons_enum(e1[2], e1[3]);
-        continue ;
+      if (e2) {
+        if (e1[0] === e2[0] && Curry._2(cmp, e1[1], e2[1])) {
+          _e2 = cons_enum(e2[2], e2[3]);
+          _e1 = cons_enum(e1[2], e1[3]);
+          continue ;
+        } else {
+          return /* false */0;
+        }
       } else {
-        return /* false */0;
+        return false;
       }
     } else if (e2) {
-      return /* boolean */0;
+      return false;
     } else {
-      return /* boolean */1;
+      return true;
     }
   };
 }
@@ -450,7 +454,7 @@ var int_map_suites_001 = /* :: */[
                 ]
               ]);
           return /* Eq */Block.__(0, [
-                    /* boolean */1,
+                    true,
                     equal((function (x, y) {
                             return x === y;
                           }), u, v)

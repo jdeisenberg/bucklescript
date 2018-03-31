@@ -39,7 +39,7 @@ var suites_001 = /* :: */[
           5
         ];
         return /* Eq */Block.__(0, [
-                  /* boolean */1,
+                  true,
                   (Js_vector.filterInPlace((function (x) {
                             return x > 10;
                           }), x), x.length === 0)
@@ -51,7 +51,7 @@ var suites_001 = /* :: */[
       "isArray_array",
       (function () {
           return /* Eq */Block.__(0, [
-                    /* boolean */1,
+                    true,
                     Array.isArray(/* array */[])
                   ]);
         })
@@ -61,7 +61,7 @@ var suites_001 = /* :: */[
         "isArray_int",
         (function () {
             return /* Eq */Block.__(0, [
-                      /* boolean */0,
+                      false,
                       Array.isArray(34)
                     ]);
           })
@@ -520,7 +520,7 @@ var suites_001 = /* :: */[
                                                           "includes",
                                                           (function () {
                                                               return /* Eq */Block.__(0, [
-                                                                        /* boolean */1,
+                                                                        true,
                                                                         /* int array */[
                                                                             1,
                                                                             2,
@@ -709,7 +709,7 @@ var suites_001 = /* :: */[
                                                                                   "every",
                                                                                   (function () {
                                                                                       return /* Eq */Block.__(0, [
-                                                                                                /* boolean */1,
+                                                                                                true,
                                                                                                 /* int array */[
                                                                                                     1,
                                                                                                     2,
@@ -725,7 +725,7 @@ var suites_001 = /* :: */[
                                                                                     "everyi",
                                                                                     (function () {
                                                                                         return /* Eq */Block.__(0, [
-                                                                                                  /* boolean */0,
+                                                                                                  false,
                                                                                                   /* int array */[
                                                                                                       1,
                                                                                                       2,
@@ -1033,7 +1033,7 @@ var suites_001 = /* :: */[
                                                                                                                       "some",
                                                                                                                       (function () {
                                                                                                                           return /* Eq */Block.__(0, [
-                                                                                                                                    /* boolean */0,
+                                                                                                                                    false,
                                                                                                                                     /* int array */[
                                                                                                                                         1,
                                                                                                                                         2,
@@ -1050,7 +1050,7 @@ var suites_001 = /* :: */[
                                                                                                                         "somei",
                                                                                                                         (function () {
                                                                                                                             return /* Eq */Block.__(0, [
-                                                                                                                                      /* boolean */1,
+                                                                                                                                      true,
                                                                                                                                       /* int array */[
                                                                                                                                           1,
                                                                                                                                           2,
