@@ -58,7 +58,7 @@ var suites_001 = /* :: */[
       "js_bool_neq_acml_bool",
       (function () {
           return /* Eq */Block.__(0, [
-                    false,
+                    true,
                     true === (true)
                   ]);
         })
