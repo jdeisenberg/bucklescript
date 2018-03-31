@@ -37,11 +37,11 @@ var Q = /* module */[
 function does_raise(f, q) {
   try {
     Curry._1(f, q);
-    return /* false */0;
+    return /* boolean */0;
   }
   catch (exn){
     if (exn === Queue.Empty) {
-      return /* true */1;
+      return /* boolean */1;
     } else {
       throw exn;
     }

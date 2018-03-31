@@ -34,9 +34,9 @@ if (List.length(/* [] */0) < 0) {
   huntGrootCondition2 = +(List.length(x$1) === 0);
 }
 
-eq("File \"gpr_2608_test.ml\", line 23, characters 5-12", huntGrootCondition, /* false */0);
+eq("File \"gpr_2608_test.ml\", line 23, characters 5-12", huntGrootCondition, /* boolean */0);
 
-eq("File \"gpr_2608_test.ml\", line 24, characters 5-12", huntGrootCondition2, /* true */1);
+eq("File \"gpr_2608_test.ml\", line 24, characters 5-12", huntGrootCondition2, /* boolean */1);
 
 Mt.from_pair_suites("gpr_2608_test.ml", suites[0]);
 

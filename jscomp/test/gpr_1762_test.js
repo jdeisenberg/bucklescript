@@ -28,7 +28,7 @@ var v = [3];
 
 function update() {
   v[0] = v[0] + 1 | 0;
-  return /* true */1;
+  return /* boolean */1;
 }
 
 v[0] = v[0] + 1 | 0;

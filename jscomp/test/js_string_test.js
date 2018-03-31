@@ -139,7 +139,7 @@ var suites_001 = /* :: */[
                             "endsWith",
                             (function () {
                                 return /* Eq */Block.__(0, [
-                                          /* true */1,
+                                          /* boolean */1,
                                           +"foobar".endsWith("bar")
                                         ]);
                               })
@@ -149,7 +149,7 @@ var suites_001 = /* :: */[
                               "endsWithFrom",
                               (function () {
                                   return /* Eq */Block.__(0, [
-                                            /* false */0,
+                                            /* boolean */0,
                                             +"foobar".endsWith("bar", 1)
                                           ]);
                                 })
@@ -159,7 +159,7 @@ var suites_001 = /* :: */[
                                 "includes",
                                 (function () {
                                     return /* Eq */Block.__(0, [
-                                              /* true */1,
+                                              /* boolean */1,
                                               +"foobarbaz".includes("bar")
                                             ]);
                                   })
@@ -169,7 +169,7 @@ var suites_001 = /* :: */[
                                   "includesFrom",
                                   (function () {
                                       return /* Eq */Block.__(0, [
-                                                /* false */0,
+                                                /* boolean */0,
                                                 +"foobarbaz".includes("bar", 4)
                                               ]);
                                     })
@@ -454,7 +454,7 @@ var suites_001 = /* :: */[
                                                                                   "startsWith",
                                                                                   (function () {
                                                                                       return /* Eq */Block.__(0, [
-                                                                                                /* true */1,
+                                                                                                /* boolean */1,
                                                                                                 +"foobarbaz".startsWith("foo")
                                                                                               ]);
                                                                                     })
@@ -464,7 +464,7 @@ var suites_001 = /* :: */[
                                                                                     "startsWithFrom",
                                                                                     (function () {
                                                                                         return /* Eq */Block.__(0, [
-                                                                                                  /* false */0,
+                                                                                                  /* boolean */0,
                                                                                                   +"foobarbaz".startsWith("foo", 1)
                                                                                                 ]);
                                                                                       })

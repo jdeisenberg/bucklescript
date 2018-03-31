@@ -59,19 +59,19 @@ function makeEventObj() {
 
 function makeLock() {
   return {
-          isBuilding: /* false */0,
+          isBuilding: /* boolean */0,
           acquire: (function () {
               var self = this ;
               if (self.isBuilding) {
-                return /* false */0;
+                return /* boolean */0;
               } else {
-                self.isBuilding = /* true */1;
-                return /* true */1;
+                self.isBuilding = /* boolean */1;
+                return /* boolean */1;
               }
             }),
           release: (function () {
               var self = this ;
-              self.isBuilding = /* false */0;
+              self.isBuilding = /* boolean */0;
               return /* () */0;
             })
         };

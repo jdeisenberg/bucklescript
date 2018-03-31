@@ -27,7 +27,7 @@ function eq(loc, x, y) {
 +((function () {
         return 0;
       })((function (_, _$1) {
-          return /* false */0;
+          return /* boolean */0;
         })) === 0);
 
 eq("File \"gpr_1667_test.ml\", line 18, characters 7-14", 0, 0);

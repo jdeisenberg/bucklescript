@@ -874,11 +874,15 @@ and transl_exp0 e =
       with Not_constant ->
         Lprim(Pmakeblock(0,  tag_info, Immutable), ll, e.exp_loc)
       end
-  | Texp_construct(_, cstr, args) ->
+  | Texp_construct(lid, cstr, args) ->
       let ll = transl_list args in
       begin match cstr.cstr_tag with
         Cstr_constant n ->
-          Lconst(Const_pointer (n, Lambda.Pt_constructor cstr.cstr_name))
+          Lconst(Const_pointer (n,
+            match lid.txt with
+            | Lident ("false"|"true") -> Pt_builtin_boolean
+            | _ -> (Lambda.Pt_constructor cstr.cstr_name)
+            ))
       | Cstr_block n ->
           let tag_info = (Lambda.Blk_constructor (cstr.cstr_name, cstr.cstr_nonconsts)) in
           begin try

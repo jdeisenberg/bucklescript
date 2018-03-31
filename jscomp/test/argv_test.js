@@ -9,9 +9,9 @@ function anno_fun() {
 
 var usage_msg = "Usage:\n";
 
-var compile = [/* false */0];
+var compile = [/* boolean */0];
 
-var test = [/* true */1];
+var test = [/* boolean */1];
 
 var arg_spec_000 = /* tuple */[
   "-c",

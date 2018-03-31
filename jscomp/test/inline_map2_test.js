@@ -94,9 +94,9 @@ function Make(Ord) {
   };
   var is_empty = function (param) {
     if (param) {
-      return /* false */0;
+      return /* boolean */0;
     } else {
-      return /* true */1;
+      return /* boolean */1;
     }
   };
   var add = function (x, data, param) {
@@ -157,7 +157,7 @@ function Make(Ord) {
           continue ;
         }
       } else {
-        return /* false */0;
+        return /* boolean */0;
       }
     };
   };
@@ -313,7 +313,7 @@ function Make(Ord) {
           return /* false */0;
         }
       } else {
-        return /* true */1;
+        return /* boolean */1;
       }
     };
   };
@@ -328,7 +328,7 @@ function Make(Ord) {
           continue ;
         }
       } else {
-        return /* false */0;
+        return /* boolean */0;
       }
     };
   };
@@ -562,9 +562,9 @@ function Make(Ord) {
           return /* false */0;
         }
       } else if (e2) {
-        return /* false */0;
+        return /* boolean */0;
       } else {
-        return /* true */1;
+        return /* boolean */1;
       }
     };
   };
@@ -726,9 +726,9 @@ function bal(l, x, d, r) {
 
 function is_empty(param) {
   if (param) {
-    return /* false */0;
+    return /* boolean */0;
   } else {
-    return /* true */1;
+    return /* boolean */1;
   }
 }
 
@@ -792,7 +792,7 @@ function mem(x, _param) {
         continue ;
       }
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   };
 }
@@ -967,7 +967,7 @@ function for_all(p, _param) {
         return /* false */0;
       }
     } else {
-      return /* true */1;
+      return /* boolean */1;
     }
   };
 }
@@ -983,7 +983,7 @@ function exists(p, _param) {
         continue ;
       }
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   };
 }
@@ -1234,9 +1234,9 @@ function equal(cmp, m1, m2) {
         return /* false */0;
       }
     } else if (e2) {
-      return /* false */0;
+      return /* boolean */0;
     } else {
-      return /* true */1;
+      return /* boolean */1;
     }
   };
 }
@@ -1429,9 +1429,9 @@ function bal$1(l, x, d, r) {
 
 function is_empty$1(param) {
   if (param) {
-    return /* false */0;
+    return /* boolean */0;
   } else {
-    return /* true */1;
+    return /* boolean */1;
   }
 }
 
@@ -1495,7 +1495,7 @@ function mem$1(x, _param) {
         continue ;
       }
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   };
 }
@@ -1670,7 +1670,7 @@ function for_all$1(p, _param) {
         return /* false */0;
       }
     } else {
-      return /* true */1;
+      return /* boolean */1;
     }
   };
 }
@@ -1686,7 +1686,7 @@ function exists$1(p, _param) {
         continue ;
       }
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   };
 }
@@ -1937,9 +1937,9 @@ function equal$1(cmp, m1, m2) {
         return /* false */0;
       }
     } else if (e2) {
-      return /* false */0;
+      return /* boolean */0;
     } else {
-      return /* true */1;
+      return /* boolean */1;
     }
   };
 }

@@ -30,7 +30,7 @@ function eq(f, param) {
 function test(loc, b) {
   return eq(loc, /* tuple */[
               b,
-              /* true */1
+              /* boolean */1
             ]);
 }
 
@@ -555,8 +555,8 @@ function test6() {
                         b1,
                         b2
                       ], /* tuple */[
-                        /* true */1,
-                        /* true */1
+                        /* boolean */1,
+                        /* boolean */1
                       ]);
           })) && Curry._1(Scanf.bscanf(Scanf.Scanning[/* from_string */6]("truefalse"), /* Format */[
               /* Bool */Block.__(9, [/* Bool */Block.__(9, [/* End_of_format */0])]),
@@ -566,8 +566,8 @@ function test6() {
                         b1,
                         b2
                       ], /* tuple */[
-                        /* true */1,
-                        /* false */0
+                        /* boolean */1,
+                        /* boolean */0
                       ]);
           })) && Curry._1(Scanf.bscanf(Scanf.Scanning[/* from_string */6]("falsetrue"), /* Format */[
               /* Bool */Block.__(9, [/* Bool */Block.__(9, [/* End_of_format */0])]),
@@ -577,8 +577,8 @@ function test6() {
                         b1,
                         b2
                       ], /* tuple */[
-                        /* false */0,
-                        /* true */1
+                        /* boolean */0,
+                        /* boolean */1
                       ]);
           })) && Curry._1(Scanf.bscanf(Scanf.Scanning[/* from_string */6]("falsefalse"), /* Format */[
               /* Bool */Block.__(9, [/* Bool */Block.__(9, [/* End_of_format */0])]),
@@ -588,8 +588,8 @@ function test6() {
                         b1,
                         b2
                       ], /* tuple */[
-                        /* false */0,
-                        /* false */0
+                        /* boolean */0,
+                        /* boolean */0
                       ]);
           }))) {
     return Curry._1(Scanf.bscanf(Scanf.Scanning[/* from_string */6]("true false"), /* Format */[
@@ -603,8 +603,8 @@ function test6() {
                               b1,
                               b2
                             ], /* tuple */[
-                              /* true */1,
-                              /* false */0
+                              /* boolean */1,
+                              /* boolean */0
                             ]);
                 }));
   } else {
@@ -833,7 +833,7 @@ function test10() {
           return s1 + (s2 + (s3 + (s4 + (s5 + s6))));
         }));
   if (res === "Unechaine:celle-cietcelle-la!" && unit("\"a\\\n  b\"") === "ab" && unit("\"\\\n  ab\"") === "ab" && unit("\"\n\\\n  ab\"") === "\nab" && unit("\"\n\\\n  a\nb\"") === "\na\nb" && unit("\"\n\\\n  \\\n  a\nb\"") === "\na\nb" && unit("\"\n\\\n  a\n\\\nb\\\n\"") === "\na\nb" && unit("\"a\\\n  \"") === "a") {
-    return /* true */1;
+    return /* boolean */1;
   } else {
     return /* false */0;
   }
@@ -3013,7 +3013,7 @@ function test37() {
   if (Curry._1(Scanf.sscanf("", /* Format */[
               /* End_of_format */0,
               ""
-            ]), /* true */1) && Curry._2(Scanf.sscanf("", /* Format */[
+            ]), /* boolean */1) && Curry._2(Scanf.sscanf("", /* Format */[
               /* End_of_format */0,
               ""
             ]), (function (x) {
@@ -3039,47 +3039,47 @@ function test38() {
                   /* Flush */Block.__(10, [/* End_of_format */0])
                 ]),
               "a%!"
-            ]), /* true */1) && Curry._1(Scanf.sscanf("a", /* Format */[
+            ]), /* boolean */1) && Curry._1(Scanf.sscanf("a", /* Format */[
               /* Char_literal */Block.__(12, [
                   /* "a" */97,
                   /* Flush */Block.__(10, [/* Flush */Block.__(10, [/* End_of_format */0])])
                 ]),
               "a%!%!"
-            ]), /* true */1) && Curry._1(Scanf.sscanf(" a", /* Format */[
+            ]), /* boolean */1) && Curry._1(Scanf.sscanf(" a", /* Format */[
               /* String_literal */Block.__(11, [
                   " a",
                   /* Flush */Block.__(10, [/* End_of_format */0])
                 ]),
               " a%!"
-            ]), /* true */1) && Curry._1(Scanf.sscanf("a ", /* Format */[
+            ]), /* boolean */1) && Curry._1(Scanf.sscanf("a ", /* Format */[
               /* String_literal */Block.__(11, [
                   "a ",
                   /* Flush */Block.__(10, [/* End_of_format */0])
                 ]),
               "a %!"
-            ]), /* true */1) && Curry._1(Scanf.sscanf("", /* Format */[
+            ]), /* boolean */1) && Curry._1(Scanf.sscanf("", /* Format */[
               /* Flush */Block.__(10, [/* End_of_format */0]),
               "%!"
-            ]), /* true */1) && Curry._1(Scanf.sscanf(" ", /* Format */[
+            ]), /* boolean */1) && Curry._1(Scanf.sscanf(" ", /* Format */[
               /* Char_literal */Block.__(12, [
                   /* " " */32,
                   /* Flush */Block.__(10, [/* End_of_format */0])
                 ]),
               " %!"
-            ]), /* true */1) && Curry._1(Scanf.sscanf("", /* Format */[
+            ]), /* boolean */1) && Curry._1(Scanf.sscanf("", /* Format */[
               /* Char_literal */Block.__(12, [
                   /* " " */32,
                   /* Flush */Block.__(10, [/* End_of_format */0])
                 ]),
               " %!"
-            ]), /* true */1)) {
+            ]), /* boolean */1)) {
     return Curry._1(Scanf.sscanf("", /* Format */[
                     /* Char_literal */Block.__(12, [
                         /* " " */32,
                         /* Flush */Block.__(10, [/* Flush */Block.__(10, [/* End_of_format */0])])
                       ]),
                     " %!%!"
-                  ]), /* true */1);
+                  ]), /* boolean */1);
   } else {
     return /* false */0;
   }
@@ -4484,7 +4484,7 @@ function test58() {
 
 test("File \"tscanf_test.ml\", line 1367, characters 5-12", test58(/* () */0));
 
-test("File \"tscanf_test.ml\", line 1371, characters 14-21", /* true */1);
+test("File \"tscanf_test.ml\", line 1371, characters 14-21", /* boolean */1);
 
 function test60() {
   if (Curry._1(Scanf.sscanf("abc", /* Format */[

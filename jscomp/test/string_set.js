@@ -16,7 +16,7 @@ function split(x, tree) {
     if (c === 0) {
       return /* tuple */[
               l,
-              /* true */1,
+              /* boolean */1,
               r
             ];
     } else if (c < 0) {
@@ -37,7 +37,7 @@ function split(x, tree) {
   } else {
     return /* tuple */[
             /* Empty */0,
-            /* false */0,
+            /* boolean */0,
             /* Empty */0
           ];
   }
@@ -101,7 +101,7 @@ function inter(s1, s2) {
     var l1 = s1[0];
     var match = split(v1, s2);
     var l2 = match[0];
-    if (match[1] !== 0) {
+    if (match[1]) {
       return Set_gen.internal_join(inter(l1, l2), v1, inter(r1, match[2]));
     } else {
       return Set_gen.internal_concat(inter(l1, l2), inter(r1, match[2]));
@@ -119,7 +119,7 @@ function diff(s1, s2) {
       var l1 = s1[0];
       var match = split(v1, s2);
       var l2 = match[0];
-      if (match[1] !== 0) {
+      if (match[1]) {
         return Set_gen.internal_concat(diff(l1, l2), diff(r1, match[2]));
       } else {
         return Set_gen.internal_join(diff(l1, l2), v1, diff(r1, match[2]));
@@ -144,7 +144,7 @@ function mem(x, _tree) {
         continue ;
       }
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   };
 }
@@ -219,10 +219,10 @@ function subset(_s1, _s2) {
           return /* false */0;
         }
       } else {
-        return /* false */0;
+        return /* boolean */0;
       }
     } else {
-      return /* true */1;
+      return /* boolean */1;
     }
   };
 }

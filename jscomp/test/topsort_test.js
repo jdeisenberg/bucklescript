@@ -659,7 +659,7 @@ function split(x, param) {
     if (c === 0) {
       return /* tuple */[
               l,
-              /* true */1,
+              /* boolean */1,
               r
             ];
     } else if (c < 0) {
@@ -680,7 +680,7 @@ function split(x, param) {
   } else {
     return /* tuple */[
             /* Empty */0,
-            /* false */0,
+            /* boolean */0,
             /* Empty */0
           ];
   }
@@ -688,9 +688,9 @@ function split(x, param) {
 
 function is_empty(param) {
   if (param) {
-    return /* false */0;
+    return /* boolean */0;
   } else {
-    return /* true */1;
+    return /* boolean */1;
   }
 }
 
@@ -706,7 +706,7 @@ function mem(x, _param) {
         continue ;
       }
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   };
 }
@@ -774,7 +774,7 @@ function inter(s1, s2) {
     var l1 = s1[0];
     var match = split(v1, s2);
     var l2 = match[0];
-    if (match[1] !== 0) {
+    if (match[1]) {
       return join(inter(l1, l2), v1, inter(r1, match[2]));
     } else {
       return concat(inter(l1, l2), inter(r1, match[2]));
@@ -792,7 +792,7 @@ function diff(s1, s2) {
       var l1 = s1[0];
       var match = split(v1, s2);
       var l2 = match[0];
-      if (match[1] !== 0) {
+      if (match[1]) {
         return concat(diff(l1, l2), diff(r1, match[2]));
       } else {
         return join(diff(l1, l2), v1, diff(r1, match[2]));
@@ -898,10 +898,10 @@ function subset(_s1, _s2) {
           return /* false */0;
         }
       } else {
-        return /* false */0;
+        return /* boolean */0;
       }
     } else {
-      return /* true */1;
+      return /* boolean */1;
     }
   };
 }
@@ -945,7 +945,7 @@ function for_all(p, _param) {
         return /* false */0;
       }
     } else {
-      return /* true */1;
+      return /* boolean */1;
     }
   };
 }
@@ -961,7 +961,7 @@ function exists(p, _param) {
         continue ;
       }
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   };
 }

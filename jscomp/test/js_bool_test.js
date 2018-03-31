@@ -5,9 +5,9 @@ var Block = require("../../lib/js/block.js");
 
 function f(x) {
   if (x) {
-    return /* true */1;
+    return /* boolean */1;
   } else {
-    return /* false */0;
+    return /* boolean */0;
   }
 }
 
@@ -27,7 +27,7 @@ function f4(x) {
   }
 }
 
-var f3 = /* true */1;
+var f3 = /* boolean */1;
 
 var u = ( 1);
 
@@ -38,7 +38,7 @@ var suites_000 = /* tuple */[
   (function () {
       return /* Eq */Block.__(0, [
                 u,
-                /* true */1
+                /* boolean */1
               ]);
     })
 ];
@@ -58,8 +58,8 @@ var suites_001 = /* :: */[
       "js_bool_neq_acml_bool",
       (function () {
           return /* Eq */Block.__(0, [
-                    /* false */0,
-                    +(/* true */1 === (true))
+                    /* boolean */0,
+                    +(/* boolean */1 === (true))
                   ]);
         })
     ],

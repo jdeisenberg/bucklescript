@@ -43,13 +43,13 @@ function tFromJs(param) {
 
 var v0 = {
   x: /* x */3,
-  y: /* y : false */0,
-  z: /* z : false */0
+  y: /* y : boolean */0,
+  z: /* z : boolean */0
 };
 
 var v1 = {
   x: /* x */3,
-  y: /* y : false */0,
+  y: /* y : boolean */0,
   z: /* z */""
 };
 

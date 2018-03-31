@@ -16,7 +16,7 @@ var Actors = /* module */[];
 var Dom_html = /* module */[];
 
 function setup_sprite($staropt$star, $staropt$star$1, $staropt$star$2, img_src, max_frames, max_ticks, frame_size, src_offset) {
-  var loop = $staropt$star ? $staropt$star[0] : /* true */1;
+  var loop = $staropt$star ? $staropt$star[0] : /* boolean */1;
   var bbox_offset = $staropt$star$1 ? $staropt$star$1[0] : /* tuple */[
       0,
       0
@@ -60,7 +60,7 @@ function make_enemy(param) {
                     128
                   ]);
     case 1 : 
-        if (dir !== 0) {
+        if (dir) {
           return setup_sprite(/* None */0, /* Some */[/* tuple */[
                         1,
                         10
@@ -90,7 +90,7 @@ function make_enemy(param) {
                     ]);
         }
     case 2 : 
-        if (dir !== 0) {
+        if (dir) {
           return setup_sprite(/* None */0, /* Some */[/* tuple */[
                         1,
                         10
@@ -253,10 +253,10 @@ function make_type(typ, dir) {
           typ[1],
           dir
         ];
-        if (pt !== 0) {
+        if (pt) {
           var param = spr_type;
           var typ$1 = param[0];
-          if (param[1] !== 0) {
+          if (param[1]) {
             switch (typ$1) {
               case 0 : 
                   return setup_sprite(/* None */0, /* Some */[/* tuple */[
@@ -380,7 +380,7 @@ function make_type(typ, dir) {
         } else {
           var param$1 = spr_type;
           var typ$2 = param$1[0];
-          if (param$1[1] !== 0) {
+          if (param$1[1]) {
             switch (typ$2) {
               case 0 : 
                   return setup_sprite(/* None */0, /* Some */[/* tuple */[
@@ -735,7 +735,7 @@ function make$1($staropt$star, $staropt$star$1, part_type, pos, ctx) {
           /* pos */pos$1,
           /* vel */vel$1,
           /* acc */acc$1,
-          /* kill : false */0,
+          /* kill : boolean */0,
           /* life */params[/* lifetime */2]
         ];
 }
@@ -775,7 +775,7 @@ function update_vel(part) {
 function $$process(part) {
   part[/* life */6] = part[/* life */6] - 1 | 0;
   if (part[/* life */6] === 0) {
-    part[/* kill */5] = /* true */1;
+    part[/* kill */5] = /* boolean */1;
   }
   update_vel(part);
   var part$1 = part;
@@ -793,7 +793,7 @@ var Particle = /* module */[
 var id_counter = [Pervasives.min_int];
 
 function setup_obj($staropt$star, $staropt$star$1, _) {
-  var has_gravity = $staropt$star ? $staropt$star[0] : /* true */1;
+  var has_gravity = $staropt$star ? $staropt$star[0] : /* boolean */1;
   var speed = $staropt$star$1 ? $staropt$star$1[0] : 1;
   return /* record */[
           /* has_gravity */has_gravity,
@@ -804,7 +804,7 @@ function setup_obj($staropt$star, $staropt$star$1, _) {
 function set_vel_to_speed(obj) {
   var speed = obj[/* params */0][/* speed */1];
   var match = obj[/* dir */6];
-  if (match !== 0) {
+  if (match) {
     obj[/* vel */2][/* x */0] = speed;
     return /* () */0;
   } else {
@@ -827,12 +827,12 @@ function make_type$2(param) {
     case 2 : 
         var param$2 = param[0];
         if (param$2 >= 3) {
-          return setup_obj(/* Some */[/* false */0], /* None */0, /* () */0);
+          return setup_obj(/* Some */[/* boolean */0], /* None */0, /* () */0);
         } else {
           return setup_obj(/* None */0, /* None */0, /* () */0);
         }
     case 3 : 
-        return setup_obj(/* Some */[/* false */0], /* None */0, /* () */0);
+        return setup_obj(/* Some */[/* boolean */0], /* None */0, /* () */0);
     
   }
 }
@@ -859,13 +859,13 @@ function make$2($staropt$star, $staropt$star$1, spawnable, context, param) {
       0.0
     ],
     /* id */id$1,
-    /* jumping : false */0,
-    /* grounded : false */0,
+    /* jumping : boolean */0,
+    /* grounded : boolean */0,
     /* dir */dir,
     /* invuln */0,
-    /* kill : false */0,
+    /* kill : boolean */0,
     /* health */1,
-    /* crouch : false */0,
+    /* crouch : boolean */0,
     /* score */0
   ];
   return /* tuple */[
@@ -921,17 +921,17 @@ function get_obj(param) {
 
 function is_player(param) {
   if (param.tag) {
-    return /* false */0;
+    return /* boolean */0;
   } else {
-    return /* true */1;
+    return /* boolean */1;
   }
 }
 
 function is_enemy(param) {
   if (param.tag === 1) {
-    return /* true */1;
+    return /* boolean */1;
   } else {
-    return /* false */0;
+    return /* boolean */0;
   }
 }
 
@@ -980,8 +980,8 @@ function update_player(player, keys, context) {
                 }
             case 2 : 
                 if (!player$1[/* jumping */4] && player$1[/* grounded */5]) {
-                  player$1[/* jumping */4] = /* true */1;
-                  player$1[/* grounded */5] = /* false */0;
+                  player$1[/* jumping */4] = /* boolean */1;
+                  player$1[/* grounded */5] = /* boolean */0;
                   player$1[/* vel */2][/* y */1] = Caml_primitive.caml_float_max(player$1[/* vel */2][/* y */1] - (5.7 + Math.abs(player$1[/* vel */2][/* x */0]) * 0.25), -6);
                   return /* () */0;
                 } else {
@@ -989,7 +989,7 @@ function update_player(player, keys, context) {
                 }
             case 3 : 
                 if (!player$1[/* jumping */4] && player$1[/* grounded */5]) {
-                  player$1[/* crouch */10] = /* true */1;
+                  player$1[/* crouch */10] = /* boolean */1;
                   return /* () */0;
                 } else {
                   return 0;
@@ -1072,7 +1072,7 @@ function process_obj(obj, mapy) {
   update_vel$1(obj);
   update_pos(obj);
   if (obj[/* pos */1][/* y */1] > mapy) {
-    obj[/* kill */8] = /* true */1;
+    obj[/* kill */8] = /* boolean */1;
     return /* () */0;
   } else {
     return 0;
@@ -1089,7 +1089,7 @@ function normalize_origin(pos, spr) {
 }
 
 function collide_block($staropt$star, dir, obj) {
-  var check_x = $staropt$star ? $staropt$star[0] : /* true */1;
+  var check_x = $staropt$star ? $staropt$star[0] : /* boolean */1;
   if (dir !== 1) {
     if (dir !== 0) {
       if (check_x) {
@@ -1104,23 +1104,15 @@ function collide_block($staropt$star, dir, obj) {
     }
   } else {
     obj[/* vel */2][/* y */1] = 0;
-    obj[/* grounded */5] = /* true */1;
-    obj[/* jumping */4] = /* false */0;
+    obj[/* grounded */5] = /* boolean */1;
+    obj[/* jumping */4] = /* boolean */0;
     return /* () */0;
-  }
-}
-
-function opposite_dir(dir) {
-  if (dir !== 0) {
-    return /* Left */0;
-  } else {
-    return /* Right */1;
   }
 }
 
 function reverse_left_right(obj) {
   obj[/* vel */2][/* x */0] = -obj[/* vel */2][/* x */0];
-  obj[/* dir */6] = opposite_dir(obj[/* dir */6]);
+  obj[/* dir */6] = obj[/* dir */6] ? /* Left */0 : /* Right */1;
   return /* () */0;
 }
 
@@ -1128,7 +1120,7 @@ function evolve_enemy(player_dir, typ, spr, obj, context) {
   var exit = 0;
   switch (typ) {
     case 0 : 
-        obj[/* kill */8] = /* true */1;
+        obj[/* kill */8] = /* boolean */1;
         return /* None */0;
     case 1 : 
         var match = make$2(/* None */0, /* Some */[obj[/* dir */6]], /* SEnemy */Block.__(1, [/* GKoopaShell */3]), context, /* tuple */[
@@ -1184,7 +1176,7 @@ function rev_dir(o, t, s) {
 function dec_health(obj) {
   var health = obj[/* health */9] - 1 | 0;
   if (health === 0) {
-    obj[/* kill */8] = /* true */1;
+    obj[/* kill */8] = /* boolean */1;
     return /* () */0;
   } else if (obj[/* invuln */7] === 0) {
     obj[/* health */9] = health;
@@ -1214,7 +1206,7 @@ function spawn_above(player_dir, obj, typ, context) {
       ]);
   var item_obj = item[2];
   item_obj[/* pos */1][/* y */1] = item_obj[/* pos */1][/* y */1] - item[1][/* params */0][/* frame_size */3][1];
-  item_obj[/* dir */6] = opposite_dir(player_dir);
+  item_obj[/* dir */6] = player_dir ? /* Left */0 : /* Right */1;
   set_vel_to_speed(item_obj);
   return item;
 }
@@ -1246,26 +1238,26 @@ function col_bypass(c1, c2) {
   var ctypes;
   switch (c1.tag | 0) {
     case 0 : 
-        ctypes = c2.tag === 1 && c1[2][/* invuln */7] > 0 ? /* true */1 : /* false */0;
+        ctypes = c2.tag === 1 && c1[2][/* invuln */7] > 0 ? /* boolean */1 : /* boolean */0;
         break;
     case 1 : 
-        ctypes = c2.tag === 2 ? /* true */1 : /* false */0;
+        ctypes = c2.tag === 2 ? /* boolean */1 : /* boolean */0;
         break;
     case 2 : 
         switch (c2.tag | 0) {
           case 1 : 
           case 2 : 
-              ctypes = /* true */1;
+              ctypes = /* boolean */1;
               break;
           case 0 : 
           case 3 : 
-              ctypes = /* false */0;
+              ctypes = /* boolean */0;
               break;
           
         }
         break;
     case 3 : 
-        ctypes = /* false */0;
+        ctypes = /* boolean */0;
         break;
     
   }
@@ -1590,10 +1582,10 @@ var Viewport = /* module */[
 ];
 
 var pressed_keys = /* record */[
-  /* left : false */0,
-  /* right : false */0,
-  /* up : false */0,
-  /* down : false */0,
+  /* left : boolean */0,
+  /* right : boolean */0,
+  /* up : boolean */0,
+  /* down : boolean */0,
   /* bbox */0
 ];
 
@@ -1934,8 +1926,8 @@ function process_collision(dir, c1, c2, state) {
         var state$1 = state;
         var context$1 = context;
         o1$7[/* invuln */7] = 10;
-        o1$7[/* jumping */4] = /* false */0;
-        o1$7[/* grounded */5] = /* true */1;
+        o1$7[/* jumping */4] = /* boolean */0;
+        o1$7[/* grounded */5] = /* boolean */1;
         if (typ$2 >= 3) {
           var r2 = evolve_enemy(o1$7[/* dir */6], typ$2, s2$4, o2$8, context$1);
           o1$7[/* vel */2][/* y */1] = -4;
@@ -2106,7 +2098,7 @@ function update_collidable(state, collid, all_collids) {
   obj[/* invuln */7] = obj[/* invuln */7] > 0 ? obj[/* invuln */7] - 1 | 0 : 0;
   var viewport_filter = in_viewport(state[/* vpt */2], obj[/* pos */1]) || is_player(collid) || out_of_viewport_below(state[/* vpt */2], obj[/* pos */1][/* y */1]);
   if (!obj[/* kill */8] && viewport_filter) {
-    obj[/* grounded */5] = /* false */0;
+    obj[/* grounded */5] = /* boolean */0;
     process_obj(obj, state[/* map */3]);
     var evolved = check_collisions(collid, all_collids, state);
     var vpt_adj_xy = coord_to_viewport(state[/* vpt */2], obj[/* pos */1]);
@@ -2185,7 +2177,7 @@ function run_update_collid(state, collid, all_collids) {
   } else {
     var o = collid[2];
     var keys = translate_keys(/* () */0);
-    o[/* crouch */10] = /* false */0;
+    o[/* crouch */10] = /* boolean */0;
     var match = update_player(o, keys, state[/* ctx */1]);
     var player;
     if (match) {
@@ -2223,11 +2215,11 @@ function update_loop(canvas, param, map_dim) {
     /* score */0,
     /* coins */0,
     /* multiplier */1,
-    /* game_over : false */0
+    /* game_over : boolean */0
   ];
   state[/* ctx */1].scale(1, 1);
   var update_helper = function (time, state, player, objs, parts) {
-    if (state[/* game_over */7] === /* true */1) {
+    if (state[/* game_over */7] === /* boolean */1) {
       return game_win(state[/* ctx */1]);
     } else {
       collid_objs[0] = /* [] */0;
@@ -2239,7 +2231,7 @@ function update_loop(canvas, param, map_dim) {
       var bgd_width = state[/* bgd */0][/* params */0][/* frame_size */3][0] | 0;
       draw_bgd(state[/* bgd */0], Caml_int32.mod_(vpos_x_int, bgd_width));
       var player$1 = run_update_collid(state, player, objs);
-      if (player$1[2][/* kill */8] === /* true */1) {
+      if (player$1[2][/* kill */8] === /* boolean */1) {
         return game_loss(state[/* ctx */1]);
       } else {
         var newrecord = state.slice();
@@ -2287,16 +2279,16 @@ function keydown(evt) {
     if (!(switcher > 22 || switcher < 0)) {
       switch (switcher) {
         case 0 : 
-            pressed_keys[/* left */0] = /* true */1;
+            pressed_keys[/* left */0] = /* boolean */1;
             break;
         case 1 : 
             pressed_keys[/* bbox */4] = (pressed_keys[/* bbox */4] + 1 | 0) % 2;
             break;
         case 3 : 
-            pressed_keys[/* right */1] = /* true */1;
+            pressed_keys[/* right */1] = /* boolean */1;
             break;
         case 18 : 
-            pressed_keys[/* down */3] = /* true */1;
+            pressed_keys[/* down */3] = /* boolean */1;
             break;
         case 2 : 
         case 4 : 
@@ -2318,7 +2310,7 @@ function keydown(evt) {
         case 21 : 
             break;
         case 22 : 
-            pressed_keys[/* up */2] = /* true */1;
+            pressed_keys[/* up */2] = /* boolean */1;
             break;
         
       }
@@ -2332,17 +2324,17 @@ function keydown(evt) {
       case 4 : 
           break;
       case 5 : 
-          pressed_keys[/* left */0] = /* true */1;
+          pressed_keys[/* left */0] = /* boolean */1;
           break;
       case 0 : 
       case 6 : 
-          pressed_keys[/* up */2] = /* true */1;
+          pressed_keys[/* up */2] = /* boolean */1;
           break;
       case 7 : 
-          pressed_keys[/* right */1] = /* true */1;
+          pressed_keys[/* right */1] = /* boolean */1;
           break;
       case 8 : 
-          pressed_keys[/* down */3] = /* true */1;
+          pressed_keys[/* down */3] = /* boolean */1;
           break;
       
     }
@@ -2358,17 +2350,17 @@ function keyup(evt) {
         if (match >= 69) {
           
         } else {
-          pressed_keys[/* right */1] = /* false */0;
+          pressed_keys[/* right */1] = /* boolean */0;
         }
       } else {
-        pressed_keys[/* up */2] = /* false */0;
+        pressed_keys[/* up */2] = /* boolean */0;
       }
     } else {
-      pressed_keys[/* down */3] = /* false */0;
+      pressed_keys[/* down */3] = /* boolean */0;
     }
   } else if (match >= 41) {
     if (match === 65) {
-      pressed_keys[/* left */0] = /* false */0;
+      pressed_keys[/* left */0] = /* boolean */0;
     }
     
   } else if (match >= 32) {
@@ -2379,17 +2371,17 @@ function keyup(evt) {
       case 4 : 
           break;
       case 5 : 
-          pressed_keys[/* left */0] = /* false */0;
+          pressed_keys[/* left */0] = /* boolean */0;
           break;
       case 0 : 
       case 6 : 
-          pressed_keys[/* up */2] = /* false */0;
+          pressed_keys[/* up */2] = /* boolean */0;
           break;
       case 7 : 
-          pressed_keys[/* right */1] = /* false */0;
+          pressed_keys[/* right */1] = /* boolean */0;
           break;
       case 8 : 
-          pressed_keys[/* down */3] = /* false */0;
+          pressed_keys[/* down */3] = /* boolean */0;
           break;
       
     }
@@ -2408,13 +2400,13 @@ function mem_loc(checkloc, _loclist) {
     var loclist = _loclist;
     if (loclist) {
       if (Caml_obj.caml_equal(checkloc, loclist[0][1])) {
-        return /* true */1;
+        return /* boolean */1;
       } else {
         _loclist = loclist[1];
         continue ;
       }
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   };
 }

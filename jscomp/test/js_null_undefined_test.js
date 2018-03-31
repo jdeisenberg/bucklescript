@@ -60,7 +60,7 @@ var suites_001 = /* :: */[
             "test - null",
             (function () {
                 return /* Eq */Block.__(0, [
-                          /* true */1,
+                          /* boolean */1,
                           /* true */1
                         ]);
               })
@@ -70,7 +70,7 @@ var suites_001 = /* :: */[
               "test - undefined",
               (function () {
                   return /* Eq */Block.__(0, [
-                            /* true */1,
+                            /* boolean */1,
                             /* true */1
                           ]);
                 })
@@ -80,7 +80,7 @@ var suites_001 = /* :: */[
                 "test - empty",
                 (function () {
                     return /* Eq */Block.__(0, [
-                              /* true */1,
+                              /* boolean */1,
                               /* true */1
                             ]);
                   })
@@ -90,7 +90,7 @@ var suites_001 = /* :: */[
                   "test - 'a",
                   (function () {
                       return /* Eq */Block.__(0, [
-                                /* false */0,
+                                /* boolean */0,
                                 /* false */0
                               ]);
                     })
@@ -147,13 +147,13 @@ var suites_001 = /* :: */[
                           /* tuple */[
                             "iter - null",
                             (function () {
-                                var hit = [/* false */0];
+                                var hit = [/* boolean */0];
                                 Js_null_undefined.iter(null, (function () {
-                                        hit[0] = /* true */1;
+                                        hit[0] = /* boolean */1;
                                         return /* () */0;
                                       }));
                                 return /* Eq */Block.__(0, [
-                                          /* false */0,
+                                          /* boolean */0,
                                           hit[0]
                                         ]);
                               })
@@ -162,13 +162,13 @@ var suites_001 = /* :: */[
                             /* tuple */[
                               "iter - undefined",
                               (function () {
-                                  var hit = [/* false */0];
+                                  var hit = [/* boolean */0];
                                   Js_null_undefined.iter(undefined, (function () {
-                                          hit[0] = /* true */1;
+                                          hit[0] = /* boolean */1;
                                           return /* () */0;
                                         }));
                                   return /* Eq */Block.__(0, [
-                                            /* false */0,
+                                            /* boolean */0,
                                             hit[0]
                                           ]);
                                 })
@@ -177,13 +177,13 @@ var suites_001 = /* :: */[
                               /* tuple */[
                                 "iter - empty",
                                 (function () {
-                                    var hit = [/* false */0];
+                                    var hit = [/* boolean */0];
                                     Js_null_undefined.iter(undefined, (function () {
-                                            hit[0] = /* true */1;
+                                            hit[0] = /* boolean */1;
                                             return /* () */0;
                                           }));
                                     return /* Eq */Block.__(0, [
-                                              /* false */0,
+                                              /* boolean */0,
                                               hit[0]
                                             ]);
                                   })

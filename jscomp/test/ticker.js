@@ -206,9 +206,9 @@ function bal(l, x, d, r) {
 
 function is_empty(param) {
   if (param) {
-    return /* false */0;
+    return /* boolean */0;
   } else {
-    return /* true */1;
+    return /* boolean */1;
   }
 }
 
@@ -272,7 +272,7 @@ function mem(x, _param) {
         continue ;
       }
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   };
 }
@@ -437,7 +437,7 @@ function for_all(p, _param) {
         return /* false */0;
       }
     } else {
-      return /* true */1;
+      return /* boolean */1;
     }
   };
 }
@@ -453,7 +453,7 @@ function exists(p, _param) {
         continue ;
       }
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   };
 }
@@ -699,9 +699,9 @@ function equal(cmp, m1, m2) {
         return /* false */0;
       }
     } else if (e2) {
-      return /* false */0;
+      return /* boolean */0;
     } else {
-      return /* true */1;
+      return /* boolean */1;
     }
   };
 }
@@ -860,7 +860,7 @@ function process_quote(ticker_map, new_ticker, new_value) {
                   if (match$2 && match$3) {
                     var y = match$3[0];
                     var x = match$2[0];
-                    value = match$1[/* op */0] !== 0 ? /* Some */[x - y] : /* Some */[x + y];
+                    value = match$1[/* op */0] ? /* Some */[x - y] : /* Some */[x + y];
                   } else {
                     value = /* None */0;
                   }

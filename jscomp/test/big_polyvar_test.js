@@ -1219,7 +1219,7 @@ function eq(x, y) {
     if (y) {
       return +(x[0] === y[0]);
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   } else {
     return +(y === /* None */0);

@@ -19,9 +19,9 @@ function copy(o) {
 }
 
 var params = /* record */[
-  /* compact_table : true */1,
-  /* copy_parent : true */1,
-  /* clean_when_copying : true */1,
+  /* compact_table : boolean */1,
+  /* copy_parent : boolean */1,
+  /* clean_when_copying : boolean */1,
   /* retry_count */3,
   /* bucket_small_size */16
 ];
@@ -131,9 +131,9 @@ function bal(l, x, d, r) {
 
 function is_empty(param) {
   if (param) {
-    return /* false */0;
+    return /* boolean */0;
   } else {
-    return /* true */1;
+    return /* boolean */1;
   }
 }
 
@@ -197,7 +197,7 @@ function mem(x, _param) {
         continue ;
       }
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   };
 }
@@ -362,7 +362,7 @@ function for_all(p, _param) {
         return /* false */0;
       }
     } else {
-      return /* true */1;
+      return /* boolean */1;
     }
   };
 }
@@ -378,7 +378,7 @@ function exists(p, _param) {
         continue ;
       }
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   };
 }
@@ -624,9 +624,9 @@ function equal(cmp, m1, m2) {
         return /* false */0;
       }
     } else if (e2) {
-      return /* false */0;
+      return /* boolean */0;
     } else {
-      return /* true */1;
+      return /* boolean */1;
     }
   };
 }
@@ -780,9 +780,9 @@ function bal$1(l, x, d, r) {
 
 function is_empty$1(param) {
   if (param) {
-    return /* false */0;
+    return /* boolean */0;
   } else {
-    return /* true */1;
+    return /* boolean */1;
   }
 }
 
@@ -846,7 +846,7 @@ function mem$1(x, _param) {
         continue ;
       }
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   };
 }
@@ -1011,7 +1011,7 @@ function for_all$1(p, _param) {
         return /* false */0;
       }
     } else {
-      return /* true */1;
+      return /* boolean */1;
     }
   };
 }
@@ -1027,7 +1027,7 @@ function exists$1(p, _param) {
         continue ;
       }
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   };
 }
@@ -1273,9 +1273,9 @@ function equal$1(cmp, m1, m2) {
         return /* false */0;
       }
     } else if (e2) {
-      return /* false */0;
+      return /* boolean */0;
     } else {
-      return /* true */1;
+      return /* boolean */1;
     }
   };
 }
@@ -1429,9 +1429,9 @@ function bal$2(l, x, d, r) {
 
 function is_empty$2(param) {
   if (param) {
-    return /* false */0;
+    return /* boolean */0;
   } else {
-    return /* true */1;
+    return /* boolean */1;
   }
 }
 
@@ -1495,7 +1495,7 @@ function mem$2(x, _param) {
         continue ;
       }
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   };
 }
@@ -1660,7 +1660,7 @@ function for_all$2(p, _param) {
         return /* false */0;
       }
     } else {
-      return /* true */1;
+      return /* boolean */1;
     }
   };
 }
@@ -1676,7 +1676,7 @@ function exists$2(p, _param) {
         continue ;
       }
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   };
 }
@@ -1922,9 +1922,9 @@ function equal$2(cmp, m1, m2) {
         return /* false */0;
       }
     } else if (e2) {
-      return /* false */0;
+      return /* boolean */0;
     } else {
-      return /* true */1;
+      return /* boolean */1;
     }
   };
 }
@@ -2067,7 +2067,7 @@ function get_method_label(table, name) {
     if (exn === Caml_builtin_exceptions.not_found) {
       var label = new_method(table);
       table[/* methods_by_name */2] = add$1(name, label, table[/* methods_by_name */2]);
-      table[/* methods_by_label */3] = add$2(label, /* true */1, table[/* methods_by_label */3]);
+      table[/* methods_by_label */3] = add$2(label, /* boolean */1, table[/* methods_by_label */3]);
       return label;
     } else {
       throw exn;
@@ -2156,7 +2156,7 @@ function narrow(table, vars, virt_meths, concr_meths) {
           }
           catch (exn){
             if (exn === Caml_builtin_exceptions.not_found) {
-              tmp = /* true */1;
+              tmp = /* boolean */1;
             } else {
               throw exn;
             }
@@ -2166,7 +2166,7 @@ function narrow(table, vars, virt_meths, concr_meths) {
         }), concr_meths$1, concr_meth_labs);
   List.iter2((function (met, label) {
           by_name[0] = add$1(met, label, by_name[0]);
-          by_label[0] = add$2(label, /* false */0, by_label[0]);
+          by_label[0] = add$2(label, /* boolean */0, by_label[0]);
           return /* () */0;
         }), virt_meths$1, virt_meth_labs);
   table[/* methods_by_name */2] = by_name[0];
@@ -2294,7 +2294,7 @@ function create_table(public_methods) {
     $$Array.iteri((function (i, met) {
             var lab = (i << 1) + 2 | 0;
             table[/* methods_by_name */2] = add$1(met, lab, table[/* methods_by_name */2]);
-            table[/* methods_by_label */3] = add$2(lab, /* true */1, table[/* methods_by_label */3]);
+            table[/* methods_by_label */3] = add$2(lab, /* boolean */1, table[/* methods_by_label */3]);
             return /* () */0;
           }), public_methods);
     return table;

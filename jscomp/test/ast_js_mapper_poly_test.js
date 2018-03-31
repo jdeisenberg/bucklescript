@@ -58,22 +58,22 @@ function eqUOpt(x, y) {
     if (y) {
       return +(x[0] === y[0]);
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   } else if (y) {
-    return /* false */0;
+    return /* boolean */0;
   } else {
-    return /* true */1;
+    return /* boolean */1;
   }
 }
 
-eq("File \"ast_js_mapper_poly_test.ml\", line 25, characters 5-12", eqUOpt(uFromJs("x"), /* Some */[/* f */102]), /* true */1);
+eq("File \"ast_js_mapper_poly_test.ml\", line 25, characters 5-12", eqUOpt(uFromJs("x"), /* Some */[/* f */102]), /* boolean */1);
 
-eq("File \"ast_js_mapper_poly_test.ml\", line 26, characters 5-12", eqUOpt(uFromJs("D"), /* Some */[/* D */68]), /* true */1);
+eq("File \"ast_js_mapper_poly_test.ml\", line 26, characters 5-12", eqUOpt(uFromJs("D"), /* Some */[/* D */68]), /* boolean */1);
 
-eq("File \"ast_js_mapper_poly_test.ml\", line 27, characters 5-12", eqUOpt(uFromJs("C"), /* Some */[/* C */67]), /* true */1);
+eq("File \"ast_js_mapper_poly_test.ml\", line 27, characters 5-12", eqUOpt(uFromJs("C"), /* Some */[/* C */67]), /* boolean */1);
 
-eq("File \"ast_js_mapper_poly_test.ml\", line 28, characters 5-12", eqUOpt(uFromJs("f"), /* None */0), /* true */1);
+eq("File \"ast_js_mapper_poly_test.ml\", line 28, characters 5-12", eqUOpt(uFromJs("f"), /* None */0), /* boolean */1);
 
 eq("File \"ast_js_mapper_poly_test.ml\", line 29, characters 5-12", $$Array.map(uToJs, /* array */[
           /* D */68,
@@ -109,12 +109,12 @@ function eqVOpt(x, y) {
     if (y) {
       return +(x[0] === y[0]);
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   } else if (y) {
-    return /* false */0;
+    return /* boolean */0;
   } else {
-    return /* true */1;
+    return /* boolean */1;
   }
 }
 

@@ -183,9 +183,9 @@ function equal(cmp, m1, m2) {
         return /* false */0;
       }
     } else if (e2) {
-      return /* false */0;
+      return /* boolean */0;
     } else {
-      return /* true */1;
+      return /* boolean */1;
     }
   };
 }
@@ -450,7 +450,7 @@ var int_map_suites_001 = /* :: */[
                 ]
               ]);
           return /* Eq */Block.__(0, [
-                    /* true */1,
+                    /* boolean */1,
                     equal((function (x, y) {
                             return +(x === y);
                           }), u, v)

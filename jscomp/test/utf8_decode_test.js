@@ -171,9 +171,9 @@ function eq_list(cmp, _xs, _ys) {
         return /* false */0;
       }
     } else if (ys) {
-      return /* false */0;
+      return /* boolean */0;
     } else {
-      return /* true */1;
+      return /* boolean */1;
     }
   };
 }
@@ -220,7 +220,7 @@ Stream.iter(add, utf8_decode(Stream.of_string("\xe4\xbd\xa0\xe5\xa5\xbdBuckleScr
 var codes = List.rev(v[0]);
 
 eq("File \"utf8_decode_test.ml\", line 125, characters 5-12", /* tuple */[
-      /* true */1,
+      /* boolean */1,
       eq_list((function (x, y) {
               return +(x === y);
             }), codes, /* :: */[

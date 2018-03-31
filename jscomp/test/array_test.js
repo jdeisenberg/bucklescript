@@ -14,12 +14,12 @@ function is_sorted(x) {
   while(true) {
     var i = _i;
     if (i >= (len - 1 | 0)) {
-      return /* true */1;
+      return /* boolean */1;
     } else if (Caml_obj.caml_lessthan(Caml_array.caml_array_get(x, i), Caml_array.caml_array_get(x, i + 1 | 0))) {
       _i = i + 1 | 0;
       continue ;
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   };
 }
@@ -199,7 +199,7 @@ var array_suites_001 = /* :: */[
                                     1,
                                     3
                                   ], u),
-                              /* true */1
+                              /* boolean */1
                             ]);
                   })
               ],
@@ -212,7 +212,7 @@ var array_suites_001 = /* :: */[
                             }));
                       $$Array.sort(Caml_primitive.caml_int_compare, v);
                       return /* Eq */Block.__(0, [
-                                /* true */1,
+                                /* boolean */1,
                                 is_sorted(v)
                               ]);
                     })

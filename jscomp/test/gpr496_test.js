@@ -26,13 +26,13 @@ function eq(loc, x, y) {
   return /* () */0;
 }
 
-var expected_004 = Caml_primitive.caml_int_compare(/* false */0, /* true */1);
+var expected_004 = Caml_primitive.caml_int_compare(/* boolean */0, /* boolean */1);
 
-var expected_005 = Caml_primitive.caml_int_compare(/* true */1, /* false */0);
+var expected_005 = Caml_primitive.caml_int_compare(/* boolean */1, /* boolean */0);
 
-var expected_006 = Caml_primitive.caml_int_compare(/* false */0, /* false */0);
+var expected_006 = Caml_primitive.caml_int_compare(/* boolean */0, /* boolean */0);
 
-var expected_007 = Caml_primitive.caml_int_compare(/* true */1, /* true */1);
+var expected_007 = Caml_primitive.caml_int_compare(/* boolean */1, /* boolean */1);
 
 var expected = /* tuple */[
   /* false */0,

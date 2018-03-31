@@ -25,10 +25,10 @@ function is_mocha() {
         return +(exec === "_mocha");
       }
     } else {
-      return /* false */0;
+      return /* boolean */0;
     }
   } else {
-    return /* false */0;
+    return /* boolean */0;
   }
 }
 
