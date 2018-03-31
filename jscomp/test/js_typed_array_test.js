@@ -642,12 +642,7 @@ var suites_001 = /* :: */[
                                                                                               2,
                                                                                               3
                                                                                             ]).every((function (n) {
-                                                                                              var b = n > 0;
-                                                                                              if (b) {
-                                                                                                return true;
-                                                                                              } else {
-                                                                                                return false;
-                                                                                              }
+                                                                                              return n > 0;
                                                                                             }))
                                                                                     ]);
                                                                           })
@@ -663,12 +658,7 @@ var suites_001 = /* :: */[
                                                                                                 2,
                                                                                                 3
                                                                                               ]).every((function (_, i) {
-                                                                                                var b = i > 0;
-                                                                                                if (b) {
-                                                                                                  return true;
-                                                                                                } else {
-                                                                                                  return false;
-                                                                                                }
+                                                                                                return i > 0;
                                                                                               }))
                                                                                       ]);
                                                                             })
@@ -708,12 +698,7 @@ var suites_001 = /* :: */[
                                                                                                     3,
                                                                                                     4
                                                                                                   ]).filter((function (_, i) {
-                                                                                                    var b = i % 2 === 0;
-                                                                                                    if (b) {
-                                                                                                      return true;
-                                                                                                    } else {
-                                                                                                      return false;
-                                                                                                    }
+                                                                                                    return i % 2 === 0;
                                                                                                   }))
                                                                                           ]);
                                                                                 })
@@ -948,12 +933,7 @@ var suites_001 = /* :: */[
                                                                                                                               3,
                                                                                                                               4
                                                                                                                             ]).some((function (n) {
-                                                                                                                              var b = n <= 0;
-                                                                                                                              if (b) {
-                                                                                                                                return true;
-                                                                                                                              } else {
-                                                                                                                                return false;
-                                                                                                                              }
+                                                                                                                              return n <= 0;
                                                                                                                             }))
                                                                                                                     ]);
                                                                                                           })
@@ -970,12 +950,7 @@ var suites_001 = /* :: */[
                                                                                                                                 3,
                                                                                                                                 4
                                                                                                                               ]).some((function (_, i) {
-                                                                                                                                var b = i <= 0;
-                                                                                                                                if (b) {
-                                                                                                                                  return true;
-                                                                                                                                } else {
-                                                                                                                                  return false;
-                                                                                                                                }
+                                                                                                                                return i <= 0;
                                                                                                                               }))
                                                                                                                       ]);
                                                                                                             })

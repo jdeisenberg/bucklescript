@@ -194,7 +194,6 @@ type primitive =
   | Pis_null
   | Pis_undefined
   | Pis_null_undefined
-  | Pjs_boolean_to_bool
   | Pjs_typeof
   | Pjs_function_length
 
@@ -1068,7 +1067,6 @@ let apply fn args loc status : t =
                                 Pnull_undefined_to_opt |
                                 Pis_null |
                                 Pis_null_undefined |
-                                Pjs_boolean_to_bool |
                                 Pjs_typeof ) as wrap;
                              args = [Lprim ({primitive; args = inner_args} as primitive_call)]
                             }
@@ -1472,8 +1470,6 @@ let result_wrap loc (result_type : External_ffi_types.return_wrapper) result  =
   | Return_null_to_opt -> prim ~primitive:Pnull_to_opt ~args:[result] loc
   | Return_null_undefined_to_opt -> prim ~primitive:Pnull_undefined_to_opt ~args:[result] loc
   | Return_undefined_to_opt -> prim ~primitive:Pundefined_to_opt ~args:[result] loc
-  | Return_to_ocaml_bool ->
-    prim ~primitive:Pjs_boolean_to_bool ~args:[result] loc
   | Return_unset
   | Return_identity ->
     result
@@ -1881,8 +1877,6 @@ let convert exports lam : _ * _  =
            we can get rid of it*)
         | "#obj_set_length" -> Pcaml_obj_set_length
         | "#obj_length" -> Pcaml_obj_length
-        | "#boolean_to_bool" -> Pjs_boolean_to_bool
-
         | "#function_length" -> Pjs_function_length
 
         | "#unsafe_lt" -> Pjscomp Clt

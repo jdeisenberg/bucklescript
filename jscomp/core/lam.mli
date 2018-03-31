@@ -1,5 +1,5 @@
 (* Copyright (C) 2015-2016 Bloomberg Finance L.P.
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -17,21 +17,21 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA. *)
 
 type array_kind = Lambda.array_kind
 type boxed_integer = Lambda.boxed_integer
-type comparison = Lambda.comparison 
+type comparison = Lambda.comparison
 type bigarray_kind = Lambda.bigarray_kind
 type bigarray_layout = Lambda.bigarray_layout
 type compile_time_constant = Lambda.compile_time_constant
 
 type tag_info = Lambda.tag_info
 type mutable_flag = Asttypes.mutable_flag
-type field_dbg_info = Lambda.field_dbg_info 
+type field_dbg_info = Lambda.field_dbg_info
 type set_field_dbg_info = Lambda.set_field_dbg_info
 
 type ident = Ident.t
@@ -42,24 +42,24 @@ type let_kind = Lambda.let_kind
     | StrictOpt
     | Variable
 
-type meth_kind = Lambda.meth_kind 
-  = Self 
-  | Public of string option 
-  | Cached 
+type meth_kind = Lambda.meth_kind
+  = Self
+  | Public of string option
+  | Cached
 
-type function_kind 
+type function_kind
    = Curried
    (* | Tupled *)
 
-type constant = 
-  | Const_js_null 
-  | Const_js_undefined 
+type constant =
+  | Const_js_null
+  | Const_js_undefined
   | Const_js_true
-  | Const_js_false  
+  | Const_js_false
   | Const_int of int
   | Const_char of char
-  | Const_string of string 
-  | Const_unicode of string 
+  | Const_string of string
+  | Const_unicode of string
   | Const_float of string
   | Const_int32 of int32
   | Const_int64 of int64
@@ -69,10 +69,10 @@ type constant =
   | Const_float_array of string list
   | Const_immstring of string
 
-type primitive = 
+type primitive =
   | Pbytes_to_string
   | Pbytes_of_string
-  | Pglobal_exception of ident 
+  | Pglobal_exception of ident
   | Pmakeblock of int * Lambda.tag_info * Asttypes.mutable_flag
   | Pfield of int * Lambda.field_dbg_info
   | Psetfield of int * bool * Lambda.set_field_dbg_info
@@ -81,7 +81,7 @@ type primitive =
   | Pduprecord of Types.record_representation * int
   | Plazyforce
 
-  | Pccall of  Primitive.description    
+  | Pccall of  Primitive.description
   | Pjs_call of
     (* Location.t *  [loc] is passed down *)
     string *  (* prim_name *)
@@ -89,7 +89,7 @@ type primitive =
     External_ffi_types.attr  (* ffi *)
   | Pjs_object_create of External_ffi_types.obj_create
 
-  | Praise 
+  | Praise
   | Psequand | Psequor | Pnot
   | Pnegint | Paddint | Psubint | Pmulint | Pdivint | Pmodint
   | Pandint | Porint | Pxorint
@@ -104,13 +104,13 @@ type primitive =
   | Pjscomp of Lambda.comparison
   | Pjs_apply (*[f;arg0;arg1; arg2; ... argN]*)
   | Pjs_runtime_apply (* [f; [...]] *)
-  | Pstringlength 
-  | Pstringrefu 
+  | Pstringlength
+  | Pstringrefu
   | Pstringrefs
-  | Pstringadd    
+  | Pstringadd
   | Pbyteslength
   | Pbytesrefu
-  | Pbytessetu 
+  | Pbytessetu
   | Pbytesrefs
   | Pbytessets
   (* Array operations *)
@@ -175,33 +175,32 @@ type primitive =
   | Pinit_mod
   | Pupdate_mod
 
-  | Praw_js_code_exp of string 
-  | Praw_js_code_stmt of string 
-  
-  | Pjs_fn_make of int 
-  | Pjs_fn_run of int 
-  | Pjs_fn_method of int 
-  | Pjs_fn_runmethod of int 
+  | Praw_js_code_exp of string
+  | Praw_js_code_stmt of string
+
+  | Pjs_fn_make of int
+  | Pjs_fn_run of int
+  | Pjs_fn_method of int
+  | Pjs_fn_runmethod of int
   | Pundefined_to_opt
   | Pnull_to_opt
-  | Pnull_undefined_to_opt 
-  
+  | Pnull_undefined_to_opt
+
   | Pis_null
   | Pis_undefined
   | Pis_null_undefined
 
-  | Pjs_boolean_to_bool
   | Pjs_typeof
-  | Pjs_function_length 
+  | Pjs_function_length
 
   | Pjs_string_of_small_array
   (* | Pjs_is_instance_array *)
   | Pcaml_obj_length
   | Pcaml_obj_set_length
-  | Pwrap_exn (* convert either JS exception or OCaml exception into OCaml format *)  
+  | Pwrap_exn (* convert either JS exception or OCaml exception into OCaml format *)
 
   (* | Pcreate_exception of string  *)
-  | Pcreate_extension of string 
+  | Pcreate_extension of string
 
 type switch  =
   { sw_numconsts: int;
@@ -212,24 +211,24 @@ type switch  =
 and apply_status =
   | App_na
   | App_ml_full
-  | App_js_full      
+  | App_js_full
 and apply_info = private
-  { fn : t ; 
-    args : t list ; 
+  { fn : t ;
+    args : t list ;
     loc : Location.t;
     status : apply_status
   }
 
 and prim_info = private
-  { primitive : primitive ; 
-    args : t list ; 
-    loc : Location.t 
+  { primitive : primitive ;
+    args : t list ;
+    loc : Location.t
   }
 and function_info = private
-  { arity : int ; 
-    function_kind : function_kind ; 
+  { arity : int ;
+    function_kind : function_kind ;
     params : ident list ;
-    body : t 
+    body : t
   }
 and  t =  private
   | Lvar of ident
@@ -252,8 +251,8 @@ and  t =  private
   | Lassign of ident * t
   | Lsend of Lambda.meth_kind * t * t * t list * Location.t
   | Lifused of ident * t
-  (* | Levent of t * Lambda.lambda_event 
-     [Levent] in the branch hurt pattern match, 
+  (* | Levent of t * Lambda.lambda_event
+     [Levent] in the branch hurt pattern match,
      we should use record for trivial debugger info
   *)
 
@@ -261,43 +260,43 @@ and  t =  private
 
 
 
-type binop = t -> t -> t 
+type binop = t -> t -> t
 
-type triop = t -> t -> t -> t 
+type triop = t -> t -> t -> t
 
 type unop = t ->  t
 
 val inner_map : (t -> t) -> t -> t
-val inner_iter : (t -> unit) -> t -> unit 
+val inner_iter : (t -> unit) -> t -> unit
 val free_variables : t -> Ident_set.t
 
-val no_bounded_variables : t -> bool 
+val no_bounded_variables : t -> bool
 
 val hit_any_variables : Ident_set.t -> t -> bool
-val check : string -> t -> t 
+val check : string -> t -> t
 type bindings = (Ident.t * t) list
 
-val scc_bindings : bindings -> bindings list 
-val scc : bindings -> t -> t  -> t 
+val scc_bindings : bindings -> bindings list
+val scc : bindings -> t -> t  -> t
 
 val var : ident -> t
-val global_module : ident -> t 
+val global_module : ident -> t
 val const : constant -> t
 
 val apply : t -> t list -> Location.t -> apply_status -> t
-val function_ : 
+val function_ :
   arity:int ->
   function_kind:function_kind -> params:ident list -> body:t -> t
 
 val let_ : let_kind -> ident -> t -> t -> t
 val letrec : (ident * t) list -> t -> t
 val if_ : triop
-val switch : t -> switch  -> t 
-val stringswitch : t -> (string * t) list -> t option -> t 
+val switch : t -> switch  -> t
+val stringswitch : t -> (string * t) list -> t option -> t
 
-val true_ : t 
-val false_ : t 
-val unit : t 
+val true_ : t
+val false_ : t
+val unit : t
 
 val sequor : binop
 val sequand : binop
@@ -305,47 +304,47 @@ val not_ : Location.t ->  unop
 val seq : binop
 val while_ : binop
 (* val event : t -> Lambda.lambda_event -> t   *)
-val try_ : t -> ident -> t  -> t 
+val try_ : t -> ident -> t  -> t
 val ifused : ident -> t -> t
-val assign : ident -> t -> t 
+val assign : ident -> t -> t
 
-val send : 
+val send :
   Lambda.meth_kind ->
-  t -> t -> t list -> 
-  Location.t -> t 
+  t -> t -> t list ->
+  Location.t -> t
 
 val prim : primitive:primitive -> args:t list -> Location.t  ->  t
 
-val staticcatch : 
+val staticcatch :
   t -> int * ident list -> t -> t
 
-val staticraise : 
+val staticraise :
   int -> t list -> t
 
-val for_ : 
+val for_ :
   ident ->
   t  ->
-  t -> Asttypes.direction_flag -> t -> t 
+  t -> Asttypes.direction_flag -> t -> t
 
 
 
 
-(** 
+(**
   [convert exports lam]
   it also collect [exit_map] and a collection of potential depended modules [may_depends]
-  In this pass we also synchronized aliases so that 
+  In this pass we also synchronized aliases so that
     {[
-      let a1 = a0 in 
-      let a2 = a1 in 
-      let a3 = a2 in 
-      let a4 = a3 in 
+      let a1 = a0 in
+      let a2 = a1 in
+      let a3 = a2 in
+      let a4 = a3 in
     ]}
-    converted to 
+    converted to
     {[
-      let a1 = a0 in 
-      let a2 = a0 in 
-      let a3 = a0 in 
-      let a4 = a0 in 
+      let a1 = a0 in
+      let a2 = a0 in
+      let a3 = a0 in
+      let a4 = a0 in
     ]}
     we dont eliminate unused let bindings to leave it for {!Lam_pass_lets_dce}
     we should remove all those let aliases, otherwise, it will be

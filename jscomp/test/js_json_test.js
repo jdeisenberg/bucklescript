@@ -5,7 +5,6 @@ var $$Array = require("../../lib/js/array.js");
 var Block = require("../../lib/js/block.js");
 var Js_json = require("../../lib/js/js_json.js");
 var Caml_array = require("../../lib/js/caml_array.js");
-var Js_boolean = require("../../lib/js/js_boolean.js");
 var Js_primitive = require("../../lib/js/js_primitive.js");
 var Caml_builtin_exceptions = require("../../lib/js/caml_builtin_exceptions.js");
 
@@ -430,19 +429,15 @@ var a$2 = /* int array */[
   true
 ];
 
-var json$9 = JSON.parse(JSON.stringify($$Array.map(Js_boolean.to_js_boolean, a$2)));
+var json$9 = JSON.parse(JSON.stringify($$Array.map((function (prim) {
+                return prim;
+              }), a$2)));
 
-var b$1 = Caml_array.caml_array_get(a$2, 0);
+eq_at_i("File \"js_json_test.ml\", line 249, characters 10-17", json$9, 0, /* Boolean */4, Caml_array.caml_array_get(a$2, 0));
 
-eq_at_i("File \"js_json_test.ml\", line 249, characters 10-17", json$9, 0, /* Boolean */4, b$1 ? true : false);
+eq_at_i("File \"js_json_test.ml\", line 250, characters 10-17", json$9, 1, /* Boolean */4, Caml_array.caml_array_get(a$2, 1));
 
-var b$2 = Caml_array.caml_array_get(a$2, 1);
-
-eq_at_i("File \"js_json_test.ml\", line 250, characters 10-17", json$9, 1, /* Boolean */4, b$2 ? true : false);
-
-var b$3 = Caml_array.caml_array_get(a$2, 2);
-
-eq_at_i("File \"js_json_test.ml\", line 251, characters 10-17", json$9, 2, /* Boolean */4, b$3 ? true : false);
+eq_at_i("File \"js_json_test.ml\", line 251, characters 10-17", json$9, 2, /* Boolean */4, Caml_array.caml_array_get(a$2, 2));
 
 function make_d(s, i) {
   var d = { };

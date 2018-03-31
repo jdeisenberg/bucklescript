@@ -1860,25 +1860,24 @@ function from_pair_suites(name, suites) {
                                           Assert.notStrictEqual(match[0], match[1]);
                                           return /* () */0;
                                       case 4 : 
-                                          var b = match[0];
-                                          Assert.ok(b ? true : false);
+                                          Assert.ok(match[0]);
                                           return /* () */0;
                                       case 5 : 
-                                          var b$1 = match[1];
+                                          var b = match[1];
                                           var a = match[0];
-                                          if (close_enough(/* None */0, a, b$1)) {
+                                          if (close_enough(/* None */0, a, b)) {
                                             return 0;
                                           } else {
-                                            Assert.deepEqual(a, b$1);
+                                            Assert.deepEqual(a, b);
                                             return /* () */0;
                                           }
                                       case 6 : 
-                                          var b$2 = match[2];
+                                          var b$1 = match[2];
                                           var a$1 = match[1];
-                                          if (close_enough(/* Some */[match[0]], a$1, b$2)) {
+                                          if (close_enough(/* Some */[match[0]], a$1, b$1)) {
                                             return 0;
                                           } else {
-                                            Assert.deepEqual(a$1, b$2);
+                                            Assert.deepEqual(a$1, b$1);
                                             return /* () */0;
                                           }
                                       case 7 : 

@@ -2,7 +2,7 @@
 
 var Mt = require("./mt.js");
 var Block = require("../../lib/js/block.js");
-var Caml_obj = require("../../lib/js/caml_obj.js");
+var Curry = require("../../lib/js/curry.js");
 var Caml_primitive = require("../../lib/js/caml_primitive.js");
 
 var suites = [/* [] */0];
@@ -53,6 +53,17 @@ var expected = /* tuple */[
   expected_007
 ];
 
+var expected2 = /* tuple */[
+  false,
+  false,
+  true,
+  true,
+  -1,
+  1,
+  0,
+  0
+];
+
 var u_000 = true === false;
 
 var u_001 = false === true;
@@ -61,13 +72,13 @@ var u_002 = false === false;
 
 var u_003 = true === true;
 
-var u_004 = Caml_obj.caml_compare(false, true);
+var u_004 = Caml_primitive.caml_int_compare(false, true);
 
-var u_005 = Caml_obj.caml_compare(true, false);
+var u_005 = Caml_primitive.caml_int_compare(true, false);
 
-var u_006 = Caml_obj.caml_compare(false, false);
+var u_006 = Caml_primitive.caml_int_compare(false, false);
 
-var u_007 = Caml_obj.caml_compare(true, true);
+var u_007 = Caml_primitive.caml_int_compare(true, true);
 
 var u = /* tuple */[
   u_000,
@@ -80,7 +91,15 @@ var u = /* tuple */[
   u_007
 ];
 
-eq("File \"gpr496_test.ml\", line 32, characters 12-19", expected, u);
+eq("File \"gpr496_test.ml\", line 42, characters 12-19", expected, u);
+
+eq("File \"gpr496_test.ml\", line 44, characters 12-19", expected, expected2);
+
+function ff(x, y) {
+  return Caml_primitive.caml_int_min(x, Curry._1(y, /* () */0));
+}
+
+eq("File \"gpr496_test.ml\", line 48, characters 5-12", true < false ? true : false, false);
 
 Mt.from_pair_suites("gpr496_test.ml", suites[0]);
 
@@ -88,5 +107,7 @@ exports.suites = suites;
 exports.test_id = test_id;
 exports.eq = eq;
 exports.expected = expected;
+exports.expected2 = expected2;
 exports.u = u;
+exports.ff = ff;
 /* expected Not a pure module */

@@ -18,7 +18,7 @@ open Types
 
 
 let rec struct_const ppf (cst : Lam.constant) =
-  match cst with 
+  match cst with
   | Const_js_true -> fprintf ppf "#true"
   | Const_js_false -> fprintf ppf "#false"
   | Const_js_null -> fprintf ppf "#null"
@@ -47,7 +47,7 @@ let rec struct_const ppf (cst : Lam.constant) =
     fprintf ppf "@[<1>[|@[%s%a@]|]@]" f1 floats fl
 
 let boxed_integer_name (i : Lambda.boxed_integer) =
-  match i with 
+  match i with
   | Pnativeint -> "nativeint"
   | Pint32 -> "int32"
   | Pint64 -> "int64"
@@ -58,8 +58,8 @@ let print_boxed_integer name ppf bi =
 let print_boxed_integer_conversion ppf bi1 bi2 =
   fprintf ppf "%s_of_%s" (boxed_integer_name bi2) (boxed_integer_name bi1)
 
-let boxed_integer_mark name (i : Lambda.boxed_integer) = 
-  match i with 
+let boxed_integer_mark name (i : Lambda.boxed_integer) =
+  match i with
   | Pnativeint -> Printf.sprintf "Nativeint.%s" name
   | Pint32 -> Printf.sprintf "Int32.%s" name
   | Pint64 -> Printf.sprintf "Int64.%s" name
@@ -67,7 +67,7 @@ let boxed_integer_mark name (i : Lambda.boxed_integer) =
 let print_boxed_integer name ppf bi =
   fprintf ppf "%s" (boxed_integer_mark name bi);;
 
-let print_bigarray name unsafe (kind : Lambda.bigarray_kind) ppf 
+let print_bigarray name unsafe (kind : Lambda.bigarray_kind) ppf
     (layout : Lambda.bigarray_layout) =
   fprintf ppf "Bigarray.%s[%s,%s]"
     (if unsafe then "unsafe_"^ name else name)
@@ -97,16 +97,16 @@ let record_rep ppf r =
 ;;
 
 let string_of_loc_kind (loc : Lambda.loc_kind) =
-  match loc with 
+  match loc with
   | Loc_FILE -> "loc_FILE"
   | Loc_LINE -> "loc_LINE"
   | Loc_MODULE -> "loc_MODULE"
   | Loc_POS -> "loc_POS"
   | Loc_LOC -> "loc_LOC"
 
-let primitive ppf (prim : Lam.primitive) = match prim with 
+let primitive ppf (prim : Lam.primitive) = match prim with
   (* | Pcreate_exception s -> fprintf ppf "[exn-create]%S" s  *)
-  | Pcreate_extension s -> fprintf ppf "[ext-create]%S" s 
+  | Pcreate_extension s -> fprintf ppf "[ext-create]%S" s
   | Pwrap_exn -> fprintf ppf "#exn"
   | Pjs_string_of_small_array -> fprintf ppf "#string_of_small_array"
   (* | Pjs_is_instance_array -> fprintf ppf "#is_instance_array" *)
@@ -118,23 +118,22 @@ let primitive ppf (prim : Lam.primitive) = match prim with
   | Pbytes_of_string -> fprintf ppf "bytes_of_string"
   | Pjs_apply -> fprintf ppf "#apply"
   | Pjs_runtime_apply -> fprintf ppf "#runtime_apply"
-  | Pjs_unsafe_downgrade (s,_loc) -> fprintf ppf "##%s" s 
+  | Pjs_unsafe_downgrade (s,_loc) -> fprintf ppf "##%s" s
   | Pjs_function_length -> fprintf ppf "#function_length"
-  | Pjs_fn_run i -> fprintf ppf "#fn_run_%i" i 
+  | Pjs_fn_run i -> fprintf ppf "#fn_run_%i" i
   | Pjs_fn_make i -> fprintf ppf "js_fn_make_%i" i
-  | Pjs_fn_method i -> fprintf ppf "js_fn_method_%i" i 
-  | Pjs_fn_runmethod i -> fprintf ppf "js_fn_runmethod_%i" i 
+  | Pjs_fn_method i -> fprintf ppf "js_fn_method_%i" i
+  | Pjs_fn_runmethod i -> fprintf ppf "js_fn_runmethod_%i" i
   | Pdebugger -> fprintf ppf "debugger"
   | Lam.Praw_js_code_exp _ -> fprintf ppf "[raw.exp]"
   | Lam.Praw_js_code_stmt _ -> fprintf ppf "[raw.stmt]"
   | Pglobal_exception id ->
-    fprintf ppf "global exception %a" Ident.print id       
-  | Pjs_boolean_to_bool -> fprintf ppf "[boolean->bool]"
+    fprintf ppf "global exception %a" Ident.print id
   | Pjs_typeof -> fprintf ppf "[typeof]"
-  | Pnull_to_opt -> fprintf ppf "[null->opt]"              
-  | Pundefined_to_opt -> fprintf ppf "[undefined->opt]"     
-  | Pnull_undefined_to_opt -> 
-    fprintf ppf "[null/undefined->opt]"         
+  | Pnull_to_opt -> fprintf ppf "[null->opt]"
+  | Pundefined_to_opt -> fprintf ppf "[undefined->opt]"
+  | Pnull_undefined_to_opt ->
+    fprintf ppf "[null/undefined->opt]"
   | Pis_null -> fprintf ppf "[?null]"
   | Pis_undefined -> fprintf ppf "[?undefined]"
   | Pis_null_undefined -> fprintf ppf "[?null?undefined]"
@@ -150,9 +149,9 @@ let primitive ppf (prim : Lam.primitive) = match prim with
   | Pduprecord (rep, size) -> fprintf ppf "duprecord %a %i" record_rep rep size
   | Plazyforce -> fprintf ppf "force"
   | Pccall p -> fprintf ppf "%s" p.prim_name
-  | Pjs_call (prim_name, _, _) -> 
-    fprintf ppf  "%s[js]" prim_name 
-  | Pjs_object_create obj_create -> 
+  | Pjs_call (prim_name, _, _) ->
+    fprintf ppf  "%s[js]" prim_name
+  | Pjs_object_create obj_create ->
     fprintf ppf "[js.obj]"
   | Praise  -> fprintf ppf "raise"
   | Psequand -> fprintf ppf "&&"
@@ -160,7 +159,7 @@ let primitive ppf (prim : Lam.primitive) = match prim with
   | Pnot -> fprintf ppf "not"
   | Pnegint -> fprintf ppf "~"
   | Paddint -> fprintf ppf "+"
-  | Pstringadd -> fprintf ppf "+*"                 
+  | Pstringadd -> fprintf ppf "+*"
   | Psubint -> fprintf ppf "-"
   | Pmulint -> fprintf ppf "*"
   | Pdivint -> fprintf ppf "/"
@@ -292,93 +291,93 @@ let primitive ppf (prim : Lam.primitive) = match prim with
   | Pbbswap(bi) -> print_boxed_integer "bswap" ppf bi
 
 
-type print_kind = 
-  | Alias 
-  | Strict 
-  | StrictOpt 
-  | Variable 
-  | Recursive 
+type print_kind =
+  | Alias
+  | Strict
+  | StrictOpt
+  | Variable
+  | Recursive
 
 let kind = function
   | Alias -> "a"
   | Strict -> ""
   | StrictOpt -> "o"
-  | Variable -> "v" 
+  | Variable -> "v"
   | Recursive -> "r"
 
-let to_print_kind (k : Lam.let_kind) : print_kind = 
-  match k with 
-  | Alias -> Alias 
+let to_print_kind (k : Lam.let_kind) : print_kind =
+  match k with
+  | Alias -> Alias
   | Strict -> Strict
   | StrictOpt -> StrictOpt
   | Variable -> Variable
 
-let rec aux (acc : (print_kind * Ident.t * Lam.t ) list) (lam : Lam.t) = 
-  match lam with 
+let rec aux (acc : (print_kind * Ident.t * Lam.t ) list) (lam : Lam.t) =
+  match lam with
   | Llet (str3, id3, arg3, body3) ->
     aux ((to_print_kind str3,id3, arg3)::acc) body3
   | Lletrec (bind_args, body) ->
-    aux 
+    aux
       (Ext_list.map_append (fun (id,l) -> (Recursive,id,l)) bind_args
        acc) body
-  | e ->  (acc , e) 
+  | e ->  (acc , e)
 
-type left_var = 
+type left_var =
   {
     kind : print_kind ;
     id : Ident.t
   }
 
-type left = 
+type left =
   | Id of left_var
   | Nop
 
 
 
 
-let  flatten (lam : Lam.t) : (print_kind * Ident.t * Lam.t ) list * Lam.t = 
-  match lam with 
+let  flatten (lam : Lam.t) : (print_kind * Ident.t * Lam.t ) list * Lam.t =
+  match lam with
   | Llet(str,id, arg, body) ->
     aux [to_print_kind str, id, arg] body
   | Lletrec(bind_args, body) ->
-    aux 
-      (Ext_list.map (fun (id,l) -> (Recursive, id,l)) bind_args) 
+    aux
+      (Ext_list.map (fun (id,l) -> (Recursive, id,l)) bind_args)
       body
   | _ -> assert false
 
 
-let get_string ((id : Ident.t), (pos : int)) (env : Env.t) : string = 
-  match  Env.find_module (Pident id) env with 
-  | {md_type = Mty_signature signature  ; _ } -> 
+let get_string ((id : Ident.t), (pos : int)) (env : Env.t) : string =
+  match  Env.find_module (Pident id) env with
+  | {md_type = Mty_signature signature  ; _ } ->
     (* Env.prefix_idents, could be cached  *)
-    let serializable_sigs = 
+    let serializable_sigs =
       List.filter (fun x ->
-          match x with 
-          | Sig_typext _ 
+          match x with
+          | Sig_typext _
           | Sig_module _
           | Sig_class _ -> true
           | Sig_value(_, {val_kind = Val_prim _}) -> false
           | Sig_value _ -> true
           | _ -> false
         ) signature  in
-    (begin match List.nth  serializable_sigs  pos  with 
-       | Sig_value (i,_) 
-       | Sig_module (i,_,_) -> i 
-       | Sig_typext (i,_,_) -> i 
-       | Sig_modtype(i,_) -> i 
-       | Sig_class (i,_,_) -> i 
-       | Sig_class_type(i,_,_) -> i 
-       | Sig_type(i,_,_) -> i 
+    (begin match List.nth  serializable_sigs  pos  with
+       | Sig_value (i,_)
+       | Sig_module (i,_,_) -> i
+       | Sig_typext (i,_,_) -> i
+       | Sig_modtype(i,_) -> i
+       | Sig_class (i,_,_) -> i
+       | Sig_class_type(i,_,_) -> i
+       | Sig_type(i,_,_) -> i
      end).name
   | _ -> assert false
 
 
 
 let lambda use_env env ppf v  =
-  let rec lam ppf (l : Lam.t) = match l with 
+  let rec lam ppf (l : Lam.t) = match l with
     | Lvar id ->
       Ident.print ppf id
-    | Lam.Lglobal_module id -> 
+    | Lam.Lglobal_module id ->
       fprintf ppf "global %a" Ident.print id
     | Lconst cst ->
       struct_const ppf cst
@@ -414,14 +413,14 @@ let lambda use_env env ppf v  =
       fprintf ppf
         "@[<2>(let@ (@[<hv 1>%a@]" bindings (List.rev args);
       fprintf ppf ")@ %a)@]"  lam body
-    | Lprim { 
-        primitive = Pfield (n,_); 
+    | Lprim {
+        primitive = Pfield (n,_);
         args = [ Lglobal_module id ]
         ;  _} when use_env ->
       fprintf ppf "%s.%s/%d" id.name (get_string (id,n) env) n
 
-    | Lprim { 
-        primitive  = Psetfield (n,_,_); 
+    | Lprim {
+        primitive  = Psetfield (n,_,_);
         args = [ Lglobal_module id  ;
                  e ]
         ;  _} when use_env  ->
@@ -515,52 +514,52 @@ let lambda use_env env ppf v  =
       fprintf ppf "%a@ %a" sequence l1 sequence l2
     | l ->
       lam ppf l
-  in 
+  in
   lam ppf v
 
 let structured_constant = struct_const
 
-let env_lambda = lambda true 
+let env_lambda = lambda true
 let lambda = lambda false Env.empty
 
 let rec flatten_seq acc (lam : Lam.t) =
-  match lam with 
-  | Lsequence(l1,l2) -> 
+  match lam with
+  | Lsequence(l1,l2) ->
     flatten_seq (flatten_seq acc l1) l2
-  | x -> x :: acc 
+  | x -> x :: acc
 
 exception Not_a_module
 
-let rec flat (acc : (left * Lam.t) list ) (lam : Lam.t) = 
-  match lam with 
+let rec flat (acc : (left * Lam.t) list ) (lam : Lam.t) =
+  match lam with
   | Llet (str,id,arg,body) ->
-    flat ( (Id {kind = to_print_kind str;  id}, arg) :: acc) body 
+    flat ( (Id {kind = to_print_kind str;  id}, arg) :: acc) body
   | Lletrec (bind_args, body) ->
-    flat 
+    flat
       (Ext_list.map_append
-        (fun (id, arg ) -> (Id {kind = Recursive;  id}, arg)) bind_args  acc) 
-      body 
-  | Lsequence (l,r) -> 
+        (fun (id, arg ) -> (Id {kind = Recursive;  id}, arg)) bind_args  acc)
+      body
+  | Lsequence (l,r) ->
     flat (flat acc l) r
-  | x -> (Nop, x) :: acc 
+  | x -> (Nop, x) :: acc
 
-let lambda_as_module env  ppf (lam : Lam.t) = 
+let lambda_as_module env  ppf (lam : Lam.t) =
   try
     (* match lam with *)
     (* | Lprim {primitive = Psetglobal id ; args =  [biglambda]; _} *)
-    (* might be wrong in toplevel *) 
+    (* might be wrong in toplevel *)
     (* -> *)
 
-    begin match flat [] lam  with 
+    begin match flat [] lam  with
       | (Nop, Lprim {primitive = Pmakeblock (_, _, _); args =  toplevels; _})
         :: rest ->
         (* let spc = ref false in *)
         List.iter
           (fun (left, l) ->
-             match left with 
+             match left with
              | Id { kind = k; id } ->
                fprintf ppf "@[<2>%a =%s@ %a@]@." Ident.print id (kind k) (env_lambda env) l
-             | Nop -> 
+             | Nop ->
 
                fprintf ppf "@[<2>%a@]@."   (env_lambda env) l
           )
@@ -571,7 +570,7 @@ let lambda_as_module env  ppf (lam : Lam.t) =
       | _ -> raise Not_a_module
     end
   (* | _ -> raise Not_a_module *)
-  with _ -> 
+  with _ ->
     env_lambda env ppf lam;
     fprintf ppf "; lambda-failure"
 
@@ -590,7 +589,7 @@ let seriaize env (filename : string) (lam : Lam.t) : unit =
 
 
 
-let lambda_to_string = Format.asprintf "%a" lambda   
+let lambda_to_string = Format.asprintf "%a" lambda
 
 
 let primitive_to_string = Format.asprintf "%a" primitive
