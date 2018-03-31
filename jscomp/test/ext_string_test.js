@@ -56,10 +56,10 @@ function trim(s) {
   var i = 0;
   var j = s.length;
   while((function () {
-          var tmp = /* false */0;
+          var tmp = false;
           if (i < j) {
             var u = s.charCodeAt(i);
-            tmp = +(u === /* "\t" */9 || u === /* "\n" */10 || u === /* " " */32);
+            tmp = u === /* "\t" */9 || u === /* "\n" */10 || u === /* " " */32;
           }
           return tmp;
         })()) {
@@ -67,10 +67,10 @@ function trim(s) {
   };
   var k = j - 1 | 0;
   while((function () {
-          var tmp = /* false */0;
+          var tmp = false;
           if (k >= i) {
             var u = s.charCodeAt(k);
-            tmp = +(u === /* "\t" */9 || u === /* "\n" */10 || u === /* " " */32);
+            tmp = u === /* "\t" */9 || u === /* "\n" */10 || u === /* " " */32;
           }
           return tmp;
         })()) {
@@ -84,7 +84,7 @@ function split(keep_empty, str, on) {
     return /* [] */0;
   } else {
     return split_by(keep_empty, (function (x) {
-                  return +(x === on);
+                  return x === on;
                 }), str);
   }
 }
@@ -94,7 +94,7 @@ function quick_split_by_ws(str) {
                 if (x === /* "\t" */9 || x === /* "\n" */10) {
                   return /* true */1;
                 } else {
-                  return +(x === /* " " */32);
+                  return x === /* " " */32;
                 }
               }), str);
 }
@@ -107,7 +107,7 @@ function starts_with(s, beg) {
     while(i < beg_len && s[i] === beg[i]) {
       i = i + 1 | 0;
     };
-    return +(i === beg_len);
+    return i === beg_len;
   } else {
     return /* false */0;
   }
@@ -138,7 +138,7 @@ function ends_with_index(s, end_) {
 }
 
 function ends_with(s, end_) {
-  return +(ends_with_index(s, end_) >= 0);
+  return ends_with_index(s, end_) >= 0;
 }
 
 function ends_with_then_chop(s, beg) {
@@ -241,7 +241,7 @@ function for_all(p, s) {
 }
 
 function is_empty(s) {
-  return +(s.length === 0);
+  return s.length === 0;
 }
 
 function repeat(n, s) {
@@ -298,7 +298,7 @@ function find($staropt$star, sub, s) {
 }
 
 function contain_substring(s, sub) {
-  return +(find(/* None */0, sub, s) >= 0);
+  return find(/* None */0, sub, s) >= 0;
 }
 
 function non_overlap_count(sub, s) {
@@ -398,7 +398,7 @@ function starts_with_and_number(s, offset, beg) {
 }
 
 function equal(x, y) {
-  return +(x === y);
+  return x === y;
 }
 
 function unsafe_concat_with_length(len, sep, l) {

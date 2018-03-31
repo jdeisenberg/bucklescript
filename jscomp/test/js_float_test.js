@@ -8,7 +8,7 @@ var suites_000 = /* tuple */[
   (function () {
       return /* Eq */Block.__(0, [
                 /* boolean */0,
-                +(NaN === NaN)
+                NaN === NaN
               ]);
     })
 ];
@@ -19,7 +19,7 @@ var suites_001 = /* :: */[
     (function () {
         return /* Eq */Block.__(0, [
                   /* boolean */1,
-                  +isNaN(NaN)
+                  isNaN(NaN)
                 ]);
       })
   ],
@@ -29,7 +29,7 @@ var suites_001 = /* :: */[
       (function () {
           return /* Eq */Block.__(0, [
                     /* boolean */0,
-                    +isNaN(0)
+                    isNaN(0)
                   ]);
         })
     ],
@@ -39,7 +39,7 @@ var suites_001 = /* :: */[
         (function () {
             return /* Eq */Block.__(0, [
                       /* boolean */0,
-                      +isFinite(Number.POSITIVE_INFINITY)
+                      isFinite(Number.POSITIVE_INFINITY)
                     ]);
           })
       ],
@@ -49,7 +49,7 @@ var suites_001 = /* :: */[
           (function () {
               return /* Eq */Block.__(0, [
                         /* boolean */0,
-                        +isFinite(Number.NEGATIVE_INFINITY)
+                        isFinite(Number.NEGATIVE_INFINITY)
                       ]);
             })
         ],
@@ -59,7 +59,7 @@ var suites_001 = /* :: */[
             (function () {
                 return /* Eq */Block.__(0, [
                           /* boolean */0,
-                          +isFinite(NaN)
+                          isFinite(NaN)
                         ]);
               })
           ],
@@ -69,7 +69,7 @@ var suites_001 = /* :: */[
               (function () {
                   return /* Eq */Block.__(0, [
                             /* boolean */1,
-                            +isFinite(0)
+                            isFinite(0)
                           ]);
                 })
             ],
@@ -429,7 +429,7 @@ var suites_001 = /* :: */[
                                                                                       (function () {
                                                                                           return /* Eq */Block.__(0, [
                                                                                                     /* boolean */1,
-                                                                                                    +isNaN(Number("foo"))
+                                                                                                    isNaN(Number("foo"))
                                                                                                   ]);
                                                                                         })
                                                                                     ],

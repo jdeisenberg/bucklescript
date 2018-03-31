@@ -268,7 +268,7 @@ function exists(p, a) {
 }
 
 function is_empty(arr) {
-  return +(arr.length === 0);
+  return arr.length === 0;
 }
 
 function unsafe_loop(_index, len, p, xs, ys) {

@@ -189,7 +189,7 @@ var suites = Pervasives.$at(from_of_string(of_string), Pervasives.$at(/* :: */[
             (function () {
                 return /* Eq */Block.__(0, [
                           /* boolean */1,
-                          +(Caml_float.caml_classify_float(Caml_format.caml_float_of_string("nan")) === /* FP_nan */4)
+                          Caml_float.caml_classify_float(Caml_format.caml_float_of_string("nan")) === /* FP_nan */4
                         ]);
               })
           ],

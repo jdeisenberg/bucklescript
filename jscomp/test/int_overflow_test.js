@@ -45,7 +45,7 @@ Mt.from_pair_suites("int_overflow_test.ml", /* :: */[
         (function () {
             return /* Eq */Block.__(0, [
                       /* boolean */1,
-                      +((Int32.max_int + 1 | 0) === Int32.min_int)
+                      (Int32.max_int + 1 | 0) === Int32.min_int
                     ]);
           })
       ],
@@ -55,7 +55,7 @@ Mt.from_pair_suites("int_overflow_test.ml", /* :: */[
           (function () {
               return /* Eq */Block.__(0, [
                         /* boolean */1,
-                        +((Int32.min_int - Int32.one | 0) === Int32.max_int)
+                        (Int32.min_int - Int32.one | 0) === Int32.max_int
                       ]);
             })
         ],

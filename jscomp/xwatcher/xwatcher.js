@@ -46,7 +46,7 @@ function idle() {
         }), watchers);
   watchFiles.forEach((function (dir) {
           if (watchers.some((function (param) {
-                    return +(param[/* dir */0] === dir);
+                    return param[/* dir */0] === dir;
                   }))) {
             return 0;
           } else {

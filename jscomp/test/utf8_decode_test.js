@@ -222,7 +222,7 @@ var codes = List.rev(v[0]);
 eq("File \"utf8_decode_test.ml\", line 125, characters 5-12", /* tuple */[
       /* boolean */1,
       eq_list((function (x, y) {
-              return +(x === y);
+              return x === y;
             }), codes, /* :: */[
             20320,
             /* :: */[

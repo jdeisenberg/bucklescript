@@ -684,7 +684,7 @@ function is_ordered(cmp, tree) {
       return /* Empty */50834029;
     }
   };
-  return +(is_ordered_min_max(tree) !== /* No */17505);
+  return is_ordered_min_max(tree) !== /* No */17505;
 }
 
 function invariant(cmp, t) {

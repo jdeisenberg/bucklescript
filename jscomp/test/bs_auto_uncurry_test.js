@@ -98,20 +98,20 @@ eq("File \"bs_auto_uncurry_test.ml\", line 44, characters 7-14", /* int array */
             return (x + y | 0) + i | 0;
           }), 0), 9);
 
-eq("File \"bs_auto_uncurry_test.ml\", line 48, characters 7-14", +/* int array */[
+eq("File \"bs_auto_uncurry_test.ml\", line 48, characters 7-14", /* int array */[
         1,
         2,
         3
       ].some((function (x) {
-            return +(x < 1);
+            return x < 1;
           })), /* boolean */0);
 
-eq("File \"bs_auto_uncurry_test.ml\", line 52, characters 7-14", +/* int array */[
+eq("File \"bs_auto_uncurry_test.ml\", line 52, characters 7-14", /* int array */[
         1,
         2,
         3
       ].every((function (x) {
-            return +(x > 0);
+            return x > 0;
           })), /* boolean */1);
 
 Mt.from_pair_suites("bs_auto_uncurry_test.ml", suites[0]);

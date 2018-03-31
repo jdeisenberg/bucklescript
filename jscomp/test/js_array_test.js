@@ -21,7 +21,7 @@ var suites_000 = /* tuple */[
                   4
                 ],
                 (Js_vector.filterInPlace((function (x) {
-                          return +(x % 2 === 0);
+                          return x % 2 === 0;
                         }), x), x)
               ]);
     })
@@ -41,8 +41,8 @@ var suites_001 = /* :: */[
         return /* Eq */Block.__(0, [
                   /* boolean */1,
                   (Js_vector.filterInPlace((function (x) {
-                            return +(x > 10);
-                          }), x), +(x.length === 0))
+                            return x > 10;
+                          }), x), x.length === 0)
                 ]);
       })
   ],
@@ -52,7 +52,7 @@ var suites_001 = /* :: */[
       (function () {
           return /* Eq */Block.__(0, [
                     /* boolean */1,
-                    +Array.isArray(/* array */[])
+                    Array.isArray(/* array */[])
                   ]);
         })
     ],
@@ -62,7 +62,7 @@ var suites_001 = /* :: */[
         (function () {
             return /* Eq */Block.__(0, [
                       /* boolean */0,
-                      +Array.isArray(34)
+                      Array.isArray(34)
                     ]);
           })
       ],
@@ -521,7 +521,7 @@ var suites_001 = /* :: */[
                                                           (function () {
                                                               return /* Eq */Block.__(0, [
                                                                         /* boolean */1,
-                                                                        +/* int array */[
+                                                                        /* int array */[
                                                                             1,
                                                                             2,
                                                                             3
@@ -710,12 +710,12 @@ var suites_001 = /* :: */[
                                                                                   (function () {
                                                                                       return /* Eq */Block.__(0, [
                                                                                                 /* boolean */1,
-                                                                                                +/* int array */[
+                                                                                                /* int array */[
                                                                                                     1,
                                                                                                     2,
                                                                                                     3
                                                                                                   ].every((function (n) {
-                                                                                                        return +(n > 0);
+                                                                                                        return n > 0;
                                                                                                       }))
                                                                                               ]);
                                                                                     })
@@ -726,12 +726,12 @@ var suites_001 = /* :: */[
                                                                                     (function () {
                                                                                         return /* Eq */Block.__(0, [
                                                                                                   /* boolean */0,
-                                                                                                  +/* int array */[
+                                                                                                  /* int array */[
                                                                                                       1,
                                                                                                       2,
                                                                                                       3
                                                                                                     ].every((function (_, i) {
-                                                                                                          return +(i > 0);
+                                                                                                          return i > 0;
                                                                                                         }))
                                                                                                 ]);
                                                                                       })
@@ -751,7 +751,7 @@ var suites_001 = /* :: */[
                                                                                                         3,
                                                                                                         4
                                                                                                       ].filter((function (n) {
-                                                                                                            return +(n % 2 === 0);
+                                                                                                            return n % 2 === 0;
                                                                                                           }))
                                                                                                   ]);
                                                                                         })
@@ -771,7 +771,7 @@ var suites_001 = /* :: */[
                                                                                                           3,
                                                                                                           4
                                                                                                         ].filter((function (_, i) {
-                                                                                                              return +(i % 2 === 0);
+                                                                                                              return i % 2 === 0;
                                                                                                             }))
                                                                                                     ]);
                                                                                           })
@@ -788,7 +788,7 @@ var suites_001 = /* :: */[
                                                                                                                 3,
                                                                                                                 4
                                                                                                               ].find((function (n) {
-                                                                                                                    return +(n % 2 === 0);
+                                                                                                                    return n % 2 === 0;
                                                                                                                   })))
                                                                                                       ]);
                                                                                             })
@@ -805,7 +805,7 @@ var suites_001 = /* :: */[
                                                                                                                   3,
                                                                                                                   4
                                                                                                                 ].find((function (n) {
-                                                                                                                      return +(n % 2 === 5);
+                                                                                                                      return n % 2 === 5;
                                                                                                                     })))
                                                                                                         ]);
                                                                                               })
@@ -822,7 +822,7 @@ var suites_001 = /* :: */[
                                                                                                                     3,
                                                                                                                     4
                                                                                                                   ].find((function (_, i) {
-                                                                                                                        return +(i % 2 === 0);
+                                                                                                                        return i % 2 === 0;
                                                                                                                       })))
                                                                                                           ]);
                                                                                                 })
@@ -839,7 +839,7 @@ var suites_001 = /* :: */[
                                                                                                                       3,
                                                                                                                       4
                                                                                                                     ].find((function (_, i) {
-                                                                                                                          return +(i % 2 === 5);
+                                                                                                                          return i % 2 === 5;
                                                                                                                         })))
                                                                                                             ]);
                                                                                                   })
@@ -856,7 +856,7 @@ var suites_001 = /* :: */[
                                                                                                                     3,
                                                                                                                     4
                                                                                                                   ].findIndex((function (n) {
-                                                                                                                        return +(n % 2 === 0);
+                                                                                                                        return n % 2 === 0;
                                                                                                                       }))
                                                                                                               ]);
                                                                                                     })
@@ -873,7 +873,7 @@ var suites_001 = /* :: */[
                                                                                                                       3,
                                                                                                                       4
                                                                                                                     ].findIndex((function (_, i) {
-                                                                                                                          return +(i % 2 === 0);
+                                                                                                                          return i % 2 === 0;
                                                                                                                         }))
                                                                                                                 ]);
                                                                                                       })
@@ -1034,13 +1034,13 @@ var suites_001 = /* :: */[
                                                                                                                       (function () {
                                                                                                                           return /* Eq */Block.__(0, [
                                                                                                                                     /* boolean */0,
-                                                                                                                                    +/* int array */[
+                                                                                                                                    /* int array */[
                                                                                                                                         1,
                                                                                                                                         2,
                                                                                                                                         3,
                                                                                                                                         4
                                                                                                                                       ].some((function (n) {
-                                                                                                                                            return +(n <= 0);
+                                                                                                                                            return n <= 0;
                                                                                                                                           }))
                                                                                                                                   ]);
                                                                                                                         })
@@ -1051,13 +1051,13 @@ var suites_001 = /* :: */[
                                                                                                                         (function () {
                                                                                                                             return /* Eq */Block.__(0, [
                                                                                                                                       /* boolean */1,
-                                                                                                                                      +/* int array */[
+                                                                                                                                      /* int array */[
                                                                                                                                           1,
                                                                                                                                           2,
                                                                                                                                           3,
                                                                                                                                           4
                                                                                                                                         ].some((function (_, i) {
-                                                                                                                                              return +(i <= 0);
+                                                                                                                                              return i <= 0;
                                                                                                                                             }))
                                                                                                                                     ]);
                                                                                                                           })

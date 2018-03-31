@@ -452,7 +452,7 @@ var int_map_suites_001 = /* :: */[
           return /* Eq */Block.__(0, [
                     /* boolean */1,
                     equal((function (x, y) {
-                            return +(x === y);
+                            return x === y;
                           }), u, v)
                   ]);
         })

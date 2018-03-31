@@ -936,7 +936,7 @@ function is_enemy(param) {
 }
 
 function equals(col1, col2) {
-  return +(col1[2][/* id */3] === col2[2][/* id */3]);
+  return col1[2][/* id */3] === col2[2][/* id */3];
 }
 
 function normalize_pos(pos, p1, p2) {
@@ -1540,7 +1540,7 @@ function in_viewport(v, pos) {
   var x = pos[/* x */0];
   var y = pos[/* y */1];
   if (x >= v_min_x && x <= v_max_x && y >= v_min_y) {
-    return +(y <= v_max_y);
+    return y <= v_max_y;
   } else {
     return /* false */0;
   }
@@ -1548,7 +1548,7 @@ function in_viewport(v, pos) {
 
 function out_of_viewport_below(v, y) {
   var v_max_y = v[/* pos */0][/* y */1] + v[/* v_dim */1][/* y */1];
-  return +(y >= v_max_y);
+  return y >= v_max_y;
 }
 
 function coord_to_viewport(viewport, coord) {

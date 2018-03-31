@@ -363,7 +363,7 @@ function make($staropt$star, refill) {
 
 function _is_digit(c) {
   if (/* "0" */48 <= c) {
-    return +(c <= /* "9" */57);
+    return c <= /* "9" */57;
   } else {
     return /* false */0;
   }
@@ -994,7 +994,7 @@ function MakeDecode(funarg) {
   };
   var _is_digit = function (c) {
     if (/* "0" */48 <= c) {
-      return +(c <= /* "9" */57);
+      return c <= /* "9" */57;
     } else {
       return /* false */0;
     }

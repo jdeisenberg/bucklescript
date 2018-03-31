@@ -4845,7 +4845,7 @@ function lex_env($staropt$star, env) {
 function is_line_terminator(env) {
   var match = env[/* last_loc */4][0];
   if (match) {
-    return +(loc(/* None */0, env)[/* start */1][/* line */0] > match[0][/* start */1][/* line */0]);
+    return loc(/* None */0, env)[/* start */1][/* line */0] > match[0][/* start */1][/* line */0];
   } else {
     return /* boolean */0;
   }
@@ -4909,7 +4909,7 @@ function is_function($staropt$star, env) {
   if (token$2(/* Some */[i], env) === /* T_FUNCTION */13) {
     return /* true */1;
   } else if (token$2(/* Some */[i], env) === /* T_ASYNC */61) {
-    return +(token$2(/* Some */[i + 1 | 0], env) === /* T_FUNCTION */13);
+    return token$2(/* Some */[i + 1 | 0], env) === /* T_FUNCTION */13;
   } else {
     return /* false */0;
   }
@@ -5959,7 +5959,7 @@ function primary(env) {
     case 2 : 
         var raw$2 = Curry._2(Parser_env_048[/* value */1], /* None */0, env);
         token$4(env, token$5);
-        var value$2 = +(token$5 === /* T_TRUE */29);
+        var value$2 = token$5 === /* T_TRUE */29;
         return /* tuple */[
                 loc,
                 /* BooleanLiteral */Block.__(11, [/* record */[
@@ -6818,7 +6818,7 @@ function identifier_no_dupe_check(param, param$1) {
 
 function strict_post_check(env, strict, simple, id, params) {
   if (strict || !simple) {
-    var env$1 = strict ? with_strict(1 - env[/* in_strict_mode */5], env) : env;
+    var env$1 = strict ? with_strict(!env[/* in_strict_mode */5], env) : env;
     if (id) {
       var match = id[0];
       var name = match[1][/* name */0];
@@ -6886,7 +6886,7 @@ function param_list(env, _param) {
       case 1 : 
           var match = param$1(env);
           var $$default = match[1];
-          var has_default$1 = has_default || +($$default !== /* None */0);
+          var has_default$1 = has_default || $$default !== /* None */0;
           if (Curry._2(Parser_env_048[/* token */0], /* None */0, env) !== /* T_RPAREN */4) {
             token$4(env, /* T_COMMA */8);
           }
@@ -7210,7 +7210,7 @@ function variable(env) {
 function is_tighter(a, b) {
   var a_prec;
   a_prec = a.tag ? a[0] - 1 | 0 : a[0];
-  return +(a_prec >= b[0]);
+  return a_prec >= b[0];
 }
 
 function is_lhs(param) {
@@ -7997,7 +7997,7 @@ function primary$1(env) {
     case 2 : 
         var raw$4 = Curry._2(Parser_env_048[/* value */1], /* None */0, env);
         token$4(env, token$5);
-        var value$4 = /* Boolean */Block.__(1, [+(token$5 === /* T_TRUE */29)]);
+        var value$4 = /* Boolean */Block.__(1, [token$5 === /* T_TRUE */29]);
         return /* tuple */[
                 loc,
                 /* Literal */Block.__(19, [/* record */[
@@ -8225,7 +8225,7 @@ function assignment(env) {
         error$1(env$1, /* IllegalYield */24);
       }
       var delegate = maybe(env$1, /* T_MULT */97);
-      var has_argument = 1 - (+(Curry._2(Parser_env_048[/* token */0], /* None */0, env$1) === /* T_SEMICOLON */7) || Curry._1(Parser_env_048[/* is_implicit_semicolon */6], env$1));
+      var has_argument = !(Curry._2(Parser_env_048[/* token */0], /* None */0, env$1) === /* T_SEMICOLON */7 || Curry._1(Parser_env_048[/* is_implicit_semicolon */6], env$1));
       var argument = delegate || has_argument ? /* Some */[Curry._1(assignment, env$1)] : /* None */0;
       var end_loc;
       if (argument) {
@@ -8572,7 +8572,7 @@ function binary(env) {
   while(true) {
     var stack = _stack;
     var start_loc = Curry._2(Parser_env_048[/* loc */2], /* None */0, env$1);
-    var is_unary = +(peek_unary_op(env$1) !== /* None */0);
+    var is_unary = peek_unary_op(env$1) !== /* None */0;
     var right = unary(with_no_in(/* boolean */0, env$1));
     var match = env$1[/* last_loc */4][0];
     var end_loc = match ? match[0] : right[0];
@@ -8924,7 +8924,7 @@ function error_callback$1(_, param) {
 function try_arrow_function(env) {
   var env$1 = with_error_callback(error_callback$1, env);
   var start_loc = Curry._2(Parser_env_048[/* loc */2], /* None */0, env$1);
-  var async$1 = +(Curry._2(Parser_env_048[/* token */0], /* Some */[1], env$1) !== /* T_ARROW */10) && async(env$1);
+  var async$1 = Curry._2(Parser_env_048[/* token */0], /* Some */[1], env$1) !== /* T_ARROW */10 && async(env$1);
   var typeParameters = Curry._1(type_parameter_declaration$1, env$1);
   var match;
   if (Curry._2(Parser_env_048[/* is_identifier */8], /* None */0, env$1) && typeParameters === /* None */0) {
@@ -9737,7 +9737,7 @@ function class_element(env) {
   var start_loc = Curry._2(Parser_env_048[/* loc */2], /* None */0, env);
   var decorators = decorator_list(env);
   var $$static = maybe(env, /* T_STATIC */40);
-  var async$1 = +(Curry._2(Parser_env_048[/* token */0], /* Some */[1], env) !== /* T_LPAREN */3) && +(Curry._2(Parser_env_048[/* token */0], /* Some */[1], env) !== /* T_COLON */77) && async(env);
+  var async$1 = Curry._2(Parser_env_048[/* token */0], /* Some */[1], env) !== /* T_LPAREN */3 && Curry._2(Parser_env_048[/* token */0], /* Some */[1], env) !== /* T_COLON */77 && async(env);
   var generator$1 = generator(env, async$1);
   var match = key(env);
   var exit = 0;
@@ -11035,7 +11035,7 @@ function case_list(env, _param) {
         token$4(env, /* T_CASE */31);
         test = /* Some */[Curry._1(Parse[/* expression */6], env)];
       }
-      var seen_default$1 = seen_default || +(test === /* None */0);
+      var seen_default$1 = seen_default || test === /* None */0;
       var end_loc = Curry._2(Parser_env_048[/* loc */2], /* None */0, env);
       token$4(env, /* T_COLON */77);
       var term_fn = function (param) {
@@ -11886,7 +11886,7 @@ function attributes(env, _acc) {
 function opening_element_without_lt(env, start_loc) {
   var name$1 = name(env);
   var attributes$1 = attributes(env, /* [] */0);
-  var selfClosing = +(Curry._2(Parser_env_048[/* token */0], /* None */0, env) === /* T_DIV */96);
+  var selfClosing = Curry._2(Parser_env_048[/* token */0], /* None */0, env) === /* T_DIV */96;
   if (selfClosing) {
     token$4(env, /* T_DIV */96);
   }
@@ -13383,7 +13383,7 @@ function statement_list(_env, term_fn, item_fn, _param) {
             } else {
               var loc = match$1[0];
               var len = loc[/* _end */2][/* column */1] - loc[/* start */1][/* column */1] | 0;
-              var strict = env[/* in_strict_mode */5] || +(match$3[0] === "use strict" && len === 12);
+              var strict = env[/* in_strict_mode */5] || match$3[0] === "use strict" && len === 12;
               var string_tokens$1 = /* :: */[
                 string_token,
                 string_tokens
@@ -13631,7 +13631,7 @@ function block_body(env) {
   var start_loc = Curry._2(Parser_env_048[/* loc */2], /* None */0, env);
   token$4(env, /* T_LCURLY */1);
   var term_fn = function (t) {
-    return +(t === /* T_RCURLY */2);
+    return t === /* T_RCURLY */2;
   };
   var body = Curry._2(statement_list$1, term_fn, env);
   var end_loc = Curry._2(Parser_env_048[/* loc */2], /* None */0, env);
@@ -13646,7 +13646,7 @@ function function_block_body(env) {
   var start_loc = Curry._2(Parser_env_048[/* loc */2], /* None */0, env);
   token$4(env, /* T_LCURLY */1);
   var term_fn = function (t) {
-    return +(t === /* T_RCURLY */2);
+    return t === /* T_RCURLY */2;
   };
   var match = statement_list_with_directives(term_fn, env);
   var end_loc = Curry._2(Parser_env_048[/* loc */2], /* None */0, env);

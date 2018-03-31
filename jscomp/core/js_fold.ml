@@ -75,7 +75,7 @@ class virtual fold =
             o#list
               (fun o ->
                  (* Copyright (C) 2015-2016 Bloomberg Finance L.P.
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -93,92 +93,93 @@ class virtual fold =
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA. *)
                  (** Javascript IR
-  
+
     It's a subset of Javascript AST specialized for OCaml lambda backend
 
     Note it's not exactly the same as Javascript, the AST itself follows lexical
-    convention and [Block] is just a sequence of statements, which means it does 
+    convention and [Block] is just a sequence of statements, which means it does
     not introduce new scope
 *)
-                 (** object literal, if key is ident, in this case, it might be renamed by 
+                 (** object literal, if key is ident, in this case, it might be renamed by
     Google Closure  optimizer,
     currently we always use quote
  *)
                  (* Since camldot is only available for toplevel module accessors,
        we don't need print  `A.length$2`
        just print `A.length` - it's guarateed to be unique
-       
-       when the third one is None, it means the whole module 
 
-       TODO: 
-       invariant, when [kind] is [Runtime], then we can ignore [ident], 
-       since all [runtime] functions are unique, when do the 
+       when the third one is None, it means the whole module
+
+       TODO:
+       invariant, when [kind] is [Runtime], then we can ignore [ident],
+       since all [runtime] functions are unique, when do the
        pattern match we can ignore the first one for simplicity
-       for example       
+       for example
        {[
-         Qualified (_, Runtime, Some "caml_int_compare")         
-       ]}       
+         Qualified (_, Runtime, Some "caml_int_compare")
+       ]}
      *)
                  (** where we use a trick [== null ] *)
                  (* used in [#create_array] primitive, note having
-       uninitilized array is not as bad as in ocaml, 
+       uninitilized array is not as bad as in ocaml,
        since GC does not rely on it
      *)
                  (* shallow copy, like [x.slice] *)
                  (* For [caml_array_append]*)
-                 (* | Tag_ml_obj of expression *) (* js true/false*)
-                 (* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence 
-     [typeof] is an operator     
+                 (* | Tag_ml_obj of expression *)
+                 (* | Int_of_boolean of expression  *) (* js true/false*)
+                 (* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
+     [typeof] is an operator
   *)
                  (* 1 - v *) (* !v *)
                  (* String.fromCharCode.apply(null, args) *)
-                 (* Convert JS boolean into OCaml boolean 
+                 (* Convert JS boolean into OCaml boolean
        like [+true], note this ast talks using js
-       terminnology unless explicity stated                       
+       terminnology unless explicity stated
      *)
                  (* TODO: in the future, it might make sense to group primitivie by type,
      which makes optimizations easier
      {[ JSON.stringify(value, replacer[, space]) ]}
   *)
-                 (* for debugging utitlites, 
-     TODO:  [Dump] is not necessary with this primitive 
-     Note that the semantics is slightly different from [JSON.stringify]     
+                 (* for debugging utitlites,
+     TODO:  [Dump] is not necessary with this primitive
+     Note that the semantics is slightly different from [JSON.stringify]
      {[
-       JSON.stringify("x")       
+       JSON.stringify("x")
      ]}
      {[
-       ""x""       
-     ]}     
+       ""x""
+     ]}
      {[
-       JSON.stringify(undefined)       
-     ]}     
+       JSON.stringify(undefined)
+     ]}
      {[
-       undefined       
+       undefined
      ]}
      {[ '' + undefined
-     ]}     
+     ]}
      {[ 'undefined'
-     ]}     
+     ]}
   *)
-                 (* TODO: 
-     add 
-     {[ Assert of bool * expression ]}     
+                 (* TODO:
+     add
+     {[ Assert of bool * expression ]}
   *)
-                 (* to support 
+                 (* to support
        val log1 : 'a -> unit
-       val log2 : 'a -> 'b -> unit 
-       val log3 : 'a -> 'b -> 'c -> unit 
+       val log2 : 'a -> 'b -> unit
+       val log3 : 'a -> 'b -> 'c -> unit
      *)
                  (* TODO: Add some primitives so that [js inliner] can do a better job *)
-                 (* [int_op] will guarantee return [int32] bits 
+                 (* [int_op] will guarantee return [int32] bits
      https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators  *)
                  (* | Int32_bin of int_op * expression * expression *)
-                 (* f.apply(null,args) -- Fully applied guaranteed 
+                 (* f.apply(null,args) -- Fully applied guaranteed
        TODO: once we know args's shape --
        if it's know at compile time, we can turn it into
        f(args[0], args[1], ... )
@@ -187,19 +188,19 @@ class virtual fold =
      is literally
      {[ a.bind(b) ]}
   *)
-                 (* Analysze over J expression is hard since, 
-        some primitive  call is translated 
+                 (* Analysze over J expression is hard since,
+        some primitive  call is translated
         into a plain call, it's better to keep them
     *)
-                 (* Invariant: 
+                 (* Invariant:
        The second argument has to be type of [int],
-       This can be constructed either in a static way [E.index] or a dynamic way 
+       This can be constructed either in a static way [E.index] or a dynamic way
        [E.access]
      *)
-                 (* The third argument bool indicates whether we should 
-       print it as 
+                 (* The third argument bool indicates whether we should
+       print it as
        a["idd"] -- false
-       or 
+       or
        a.idd  -- true
        There are several kinds of properties
        1. OCaml module dot (need to be escaped or not)
@@ -207,56 +208,56 @@ class virtual fold =
        2. Javascript dot (need to be preserved/or using quote)
      *)
                  (* TODO: option remove *)
-                 (* The first parameter by default is false, 
+                 (* The first parameter by default is false,
      it will be true when it's a method
   *)
                  (* A string is UTF-8 encoded, the string may contain
        escape sequences.
        The first argument is used to mark it is non-pure, please
-       don't optimize it, since it does have side effec, 
-       examples like "use asm;" and our compiler may generate "error;..." 
+       don't optimize it, since it does have side effec,
+       examples like "use asm;" and our compiler may generate "error;..."
        which is better to leave it alone
        The last argument is passed from as `j` from `{j||j}`
      *)
                  (* It is escaped string, print delimited by '"'*)
-                 (* literally raw JS code 
+                 (* literally raw JS code
   *)
                  (* The third argument is [tag] , forth is [tag_info] *)
                  (* | Caml_uninitialized_obj of expression * expression *)
                  (* [tag] and [size] tailed  for [Obj.new_block] *)
-                 (* For setter, it still return the value of expression, 
-     we can not use 
+                 (* For setter, it still return the value of expression,
+     we can not use
      {[
        type 'a access = Get | Set of 'a
      ]}
      in another module, since it will break our code generator
-     [Caml_block_tag] can return [undefined], 
-     you have to use [E.tag] in a safe way     
+     [Caml_block_tag] can return [undefined],
+     you have to use [E.tag] in a safe way
   *)
-                 (* It will just fetch tag, to make it safe, when creating it, 
-     we need apply "|0", we don't do it in the 
+                 (* It will just fetch tag, to make it safe, when creating it,
+     we need apply "|0", we don't do it in the
      last step since "|0" can potentially be optimized
   *)
                  (* pure*) (* pure *)
                  (* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/block
-   block can be nested, specified in ES3 
+   block can be nested, specified in ES3
  *)
                  (* Delay some units like [primitive] into JS layer ,
    benefit: better cross module inlining, and smaller IR size?
  *)
-                 (* 
+                 (*
   [closure] captured loop mutable values in the outer loop
 
   check if it contains loop mutable values, happens in nested loop
-  when closured, it's no longer loop mutable value. 
+  when closured, it's no longer loop mutable value.
   which means the outer loop mutable value can not peek into the inner loop
   {[
   var i = f ();
   for(var finish = 32; i < finish; ++i){
   }
   ]}
-  when [for_ident_expression] is [None], [var i] has to 
-  be initialized outside, so 
+  when [for_ident_expression] is [None], [var i] has to
+  be initialized outside, so
 
   {[
   var i = f ()
@@ -266,22 +267,22 @@ class virtual fold =
   ]}
   This happens rare it's okay
 
-  this is because [i] has to be initialized outside, if [j] 
+  this is because [i] has to be initialized outside, if [j]
   contains a block side effect
   TODO: create such example
 *)
-                 (* Since in OCaml, 
-   
+                 (* Since in OCaml,
+
   [for i = 0 to k end do done ]
   k is only evaluated once , to encode this invariant in JS IR,
   make sure [ident] is defined in the first b
 
-  TODO: currently we guarantee that [bound] was only 
+  TODO: currently we guarantee that [bound] was only
   excecuted once, should encode this in AST level
 *)
                  (* Can be simplified to keep the semantics of OCaml
    For (var i, e, ...){
-     let  j = ... 
+     let  j = ...
    }
 
    if [i] or [j] is captured inside closure
@@ -374,7 +375,6 @@ class virtual fold =
           let o = o#expression _x in let o = o#expression _x_i1 in o
       | String_append (_x, _x_i1) ->
           let o = o#expression _x in let o = o#expression _x_i1 in o
-      | Int_of_boolean _x -> let o = o#expression _x in o
       | Anything_to_number _x -> let o = o#expression _x in o
       | Bool _x -> let o = o#bool _x in o
       | Typeof _x -> let o = o#expression _x in o
@@ -450,14 +450,14 @@ class virtual fold =
     method code_info : code_info -> 'self_type = o#unknown
     method case_clause :
       (* since in ocaml, it's expression oriented langauge, [return] in
-    general has no jumps, it only happens when we do 
+    general has no jumps, it only happens when we do
     tailcall conversion, in that case there is a jump.
     However, currently  a single [break] is good to cover
-    our compilation strategy 
+    our compilation strategy
 
-    Attention: we should not insert [break] arbitrarily, otherwise 
+    Attention: we should not insert [break] arbitrarily, otherwise
     it would break the semantics
-    A more robust signature would be 
+    A more robust signature would be
     {[ goto : label option ; ]}
   *)
         'a. ('self_type -> 'a -> 'self_type) -> 'a case_clause -> 'self_type =
@@ -468,8 +468,8 @@ class virtual fold =
             _x_i1
         in o
     method block : block -> 'self_type = (* true means break *)
-      (* TODO: For efficency: block should not be a list, it should be able to 
-   be concatenated in both ways 
+      (* TODO: For efficency: block should not be a list, it should be able to
+   be concatenated in both ways
  *)
       o#list (fun o -> o#statement)
     method binop : binop -> 'self_type = o#unknown

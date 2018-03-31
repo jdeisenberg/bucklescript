@@ -250,7 +250,7 @@ function mem(c, _s) {
     if (s) {
       var match = s[0];
       if (c <= match[1]) {
-        return +(c >= match[0]);
+        return c >= match[0];
       } else {
         _s = s[1];
         continue ;
@@ -419,7 +419,7 @@ function is_empty(param) {
 }
 
 function intersect(x, y) {
-  return +((x & y) !== 0);
+  return (x & y) !== 0;
 }
 
 function $plus$plus(x, y) {
@@ -1168,7 +1168,7 @@ function filter_marks(b, e, marks) {
                     if (i < b) {
                       return /* true */1;
                     } else {
-                      return +(i > e);
+                      return i > e;
                     }
                   }))(marks[/* marks */0]),
           /* pmarks */marks[/* pmarks */1]
@@ -3019,7 +3019,7 @@ function parse(multiline, dollar_endonly, dotall, ungreedy, s) {
   var l = s.length;
   var test = function (c) {
     if (i[0] !== l) {
-      return +(Caml_string.get(s, i[0]) === c);
+      return Caml_string.get(s, i[0]) === c;
     } else {
       return /* false */0;
     }
@@ -3063,7 +3063,7 @@ function parse(multiline, dollar_endonly, dotall, ungreedy, s) {
   };
   var greedy_mod = function (r) {
     var gr = accept(/* "?" */63);
-    var gr$1 = ungreedy ? 1 - gr : gr;
+    var gr$1 = ungreedy ? !gr : gr;
     if (gr$1) {
       return /* Sem_greedy */Block.__(5, [
                 /* Non_greedy */620821490,

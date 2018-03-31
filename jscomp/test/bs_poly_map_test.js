@@ -138,21 +138,21 @@ var a5 = Belt_Map.remove(a0, 3);
 
 var a6 = Belt_Map.remove(a5, 3);
 
-b("File \"bs_poly_map_test.ml\", line 70, characters 4-11", +(a5 === a6));
+b("File \"bs_poly_map_test.ml\", line 70, characters 4-11", a5 === a6);
 
 b("File \"bs_poly_map_test.ml\", line 71, characters 4-11", Belt_Map.has(a0, 3));
 
-b("File \"bs_poly_map_test.ml\", line 72, characters 4-11", 1 - Belt_Map.has(a5, 3));
+b("File \"bs_poly_map_test.ml\", line 72, characters 4-11", !Belt_Map.has(a5, 3));
 
-b("File \"bs_poly_map_test.ml\", line 73, characters 4-11", +(3 === Belt_Map.getUndefined(a0, 3)));
+b("File \"bs_poly_map_test.ml\", line 73, characters 4-11", 3 === Belt_Map.getUndefined(a0, 3));
 
-b("File \"bs_poly_map_test.ml\", line 74, characters 4-11", +(33 === Belt_Map.getUndefined(a1, 3)));
+b("File \"bs_poly_map_test.ml\", line 74, characters 4-11", 33 === Belt_Map.getUndefined(a1, 3));
 
-b("File \"bs_poly_map_test.ml\", line 75, characters 4-11", +(Belt_Map.getUndefined(a2, 3) === undefined));
+b("File \"bs_poly_map_test.ml\", line 75, characters 4-11", Belt_Map.getUndefined(a2, 3) === undefined);
 
-b("File \"bs_poly_map_test.ml\", line 77, characters 4-11", +(11 === Belt_Map.getUndefined(a3, 3)));
+b("File \"bs_poly_map_test.ml\", line 77, characters 4-11", 11 === Belt_Map.getUndefined(a3, 3));
 
-b("File \"bs_poly_map_test.ml\", line 78, characters 4-11", +(Belt_Map.getUndefined(a4, 3) === undefined));
+b("File \"bs_poly_map_test.ml\", line 78, characters 4-11", Belt_Map.getUndefined(a4, 3) === undefined);
 
 var a7 = Belt_Map.removeMany(a0, /* array */[
       7,
@@ -216,7 +216,7 @@ var x$8 = Belt_Array.makeBy(31, (function (i) {
       }));
 
 b("File \"bs_poly_map_test.ml\", line 103, characters 4-11", Belt_Map.eq(m1, Belt_Map.ofArray(x$8, Icmp), (function (x, y) {
-            return +(x === y);
+            return x === y;
           })));
 
 var v0 = {
@@ -241,7 +241,7 @@ var x$9 = Belt_Array.map(Array_data_util.randomRange(0, 10000), (function (x) {
 var v2 = Belt_Map.ofArray(x$9, Icmp);
 
 b("File \"bs_poly_map_test.ml\", line 117, characters 4-11", Belt_Map.eq(v1, v2, (function (x, y) {
-            return +(x === y);
+            return x === y;
           })));
 
 function inc(x) {

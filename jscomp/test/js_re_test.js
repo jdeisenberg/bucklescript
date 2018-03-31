@@ -78,7 +78,7 @@ var suites_001 = /* :: */[
         /* tuple */[
           "test_str",
           (function () {
-              var res = +new RegExp("foo").test("#foo#");
+              var res = new RegExp("foo").test("#foo#");
               return /* Eq */Block.__(0, [
                         /* boolean */1,
                         res
@@ -92,7 +92,7 @@ var suites_001 = /* :: */[
                 var res = new RegExp("foo", "g");
                 return /* Eq */Block.__(0, [
                           /* boolean */1,
-                          +res.global
+                          res.global
                         ]);
               })
           ],
@@ -143,7 +143,7 @@ var suites_001 = /* :: */[
                     (function () {
                         return /* Eq */Block.__(0, [
                                   /* boolean */1,
-                                  +(/./ig).global
+                                  (/./ig).global
                                 ]);
                       })
                   ],
@@ -153,7 +153,7 @@ var suites_001 = /* :: */[
                       (function () {
                           return /* Eq */Block.__(0, [
                                     /* boolean */1,
-                                    +(/./ig).ignoreCase
+                                    (/./ig).ignoreCase
                                   ]);
                         })
                     ],
@@ -195,7 +195,7 @@ var suites_001 = /* :: */[
                             (function () {
                                 return /* Eq */Block.__(0, [
                                           /* boolean */0,
-                                          +(/./ig).multiline
+                                          (/./ig).multiline
                                         ]);
                               })
                           ],
@@ -215,7 +215,7 @@ var suites_001 = /* :: */[
                                 (function () {
                                     return /* Eq */Block.__(0, [
                                               /* boolean */1,
-                                              +(/./yg).sticky
+                                              (/./yg).sticky
                                             ]);
                                   })
                               ],
@@ -225,7 +225,7 @@ var suites_001 = /* :: */[
                                   (function () {
                                       return /* Eq */Block.__(0, [
                                                 /* boolean */0,
-                                                +(/./yg).unicode
+                                                (/./yg).unicode
                                               ]);
                                     })
                                 ],

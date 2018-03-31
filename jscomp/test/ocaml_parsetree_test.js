@@ -1226,21 +1226,21 @@ function highlight_terminfo(ppf, num_lines, lb, locs) {
     }
     if (List.exists((function(pos){
           return function (loc) {
-            return +(pos === loc[/* loc_start */0][/* pos_cnum */3]);
+            return pos === loc[/* loc_start */0][/* pos_cnum */3];
           }
           }(pos)), locs)) {
       Caml_missing_polyfill.not_implemented("caml_terminfo_standout not implemented by bucklescript yet\n");
     }
     if (List.exists((function(pos){
           return function (loc) {
-            return +(pos === loc[/* loc_end */1][/* pos_cnum */3]);
+            return pos === loc[/* loc_end */1][/* pos_cnum */3];
           }
           }(pos)), locs)) {
       Caml_missing_polyfill.not_implemented("caml_terminfo_standout not implemented by bucklescript yet\n");
     }
     var c = Caml_bytes.get(lb[/* lex_buffer */1], pos + pos0 | 0);
     Pervasives.print_char(c);
-    bol = +(c === /* "\n" */10);
+    bol = c === /* "\n" */10;
   }
   Caml_missing_polyfill.not_implemented("caml_terminfo_standout not implemented by bucklescript yet\n");
   Caml_missing_polyfill.not_implemented("caml_terminfo_resume not implemented by bucklescript yet\n");
@@ -1368,7 +1368,7 @@ function highlight_locations(ppf, locs) {
         if (match$1) {
           var norepeat;
           try {
-            norepeat = +(Caml_sys.caml_sys_getenv("TERM") === "norepeat");
+            norepeat = Caml_sys.caml_sys_getenv("TERM") === "norepeat";
           }
           catch (exn){
             if (exn === Caml_builtin_exceptions.not_found) {
@@ -1822,7 +1822,7 @@ function is_mocha() {
       if (exec === "mocha") {
         return /* true */1;
       } else {
-        return +(exec === "_mocha");
+        return exec === "_mocha";
       }
     } else {
       return /* boolean */0;
@@ -1834,7 +1834,7 @@ function is_mocha() {
 
 function close_enough($staropt$star, a, b) {
   var threshold = $staropt$star ? $staropt$star[0] : 0.0000001;
-  return +(Math.abs(a - b) < threshold);
+  return Math.abs(a - b) < threshold;
 }
 
 function from_pair_suites(name, suites) {
@@ -9686,7 +9686,7 @@ function directive_parse(token_with_comments, lexbuf) {
                     if (pred >= 17049) {
                       if (pred >= 172069535) {
                         if (pred >= 785637236) {
-                          return +(major === l_major);
+                          return major === l_major;
                         } else {
                           return Caml_obj.caml_equal(lversion, version);
                         }
@@ -9699,7 +9699,7 @@ function directive_parse(token_with_comments, lexbuf) {
                       if (pred >= 15949) {
                         return Caml_obj.caml_greaterthan(lversion, version);
                       } else if (major === l_major) {
-                        return +(version[1] === lversion[1]);
+                        return version[1] === lversion[1];
                       } else {
                         return /* false */0;
                       }
@@ -9804,7 +9804,7 @@ function directive_parse(token_with_comments, lexbuf) {
         push(e);
         return v;
       } else {
-        var calc$1 = calc && 1 - v;
+        var calc$1 = calc && !v;
         var b = parse_or_aux(calc$1, parse_and_aux(calc$1, parse_relation(calc$1)));
         if (v) {
           return /* true */1;
@@ -9925,7 +9925,7 @@ function directive_parse(token_with_comments, lexbuf) {
                 var s = t[0];
                 if (calc) {
                   if (Caml_string.get(r, 0) === /* "u" */117) {
-                    return 1 - defined(s);
+                    return !defined(s);
                   } else {
                     return defined(s);
                   }
@@ -11436,7 +11436,7 @@ function __ocaml_lex_comment_rec(lexbuf, ___ocaml_lex_state) {
 
 function at_bol(lexbuf) {
   var pos = lexbuf[/* lex_start_p */10];
-  return +(pos[/* pos_cnum */3] === pos[/* pos_bol */2]);
+  return pos[/* pos_cnum */3] === pos[/* pos_bol */2];
 }
 
 function token_with_comments(lexbuf) {
@@ -11610,7 +11610,7 @@ function token$1(lexbuf) {
                   if (if_then_else$1 !== 0) {
                     return Curry._1(look_ahead, match);
                   } else {
-                    var _else_seen = +(match === /* ELSE */23);
+                    var _else_seen = match === /* ELSE */23;
                     while(true) {
                       var else_seen = _else_seen;
                       var token$2 = token_with_comments(lexbuf$1);

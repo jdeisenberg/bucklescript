@@ -391,7 +391,7 @@ function Make(Ord) {
     return compare_aux(cons_enum(s1, /* End */0), cons_enum(s2, /* End */0));
   };
   var equal = function (s1, s2) {
-    return +(compare(s1, s2) === 0);
+    return compare(s1, s2) === 0;
   };
   var subset = function (_s1, _s2) {
     while(true) {

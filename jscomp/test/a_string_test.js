@@ -75,12 +75,12 @@ var suites_001 = /* :: */[
           (function () {
               return /* Eq */Block.__(0, [
                         List.filter((function (s) {
-                                  return +(s !== "");
+                                  return s !== "";
                                 }))(Ext_string_test.split_by(/* None */0, (function (x) {
                                     if (x === /* " " */32) {
                                       return /* true */1;
                                     } else {
-                                      return +(x === /* "\t" */9);
+                                      return x === /* "\t" */9;
                                     }
                                   }), "h hgso hgso \t hi")),
                         /* :: */[

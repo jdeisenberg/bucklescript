@@ -13,7 +13,7 @@ var Pervasives = require("../../lib/js/pervasives.js");
 var Ext_array_test = require("./ext_array_test.js");
 
 function f(u, v) {
-  return +(u > v);
+  return u > v;
 }
 
 var v = Caml_int64.add(Caml_int64.of_int32(Int32.max_int), Int64.one);
@@ -2140,13 +2140,13 @@ var suites = Pervasives.$at(/* :: */[
                                                                   "generic_compare",
                                                                   (function () {
                                                                       return /* Eq */Block.__(0, [
-                                                                                +(Caml_obj.caml_compare(/* int64 */[
-                                                                                        /* hi */1,
-                                                                                        /* lo */0
-                                                                                      ], /* int64 */[
-                                                                                        /* hi */0,
-                                                                                        /* lo */1
-                                                                                      ]) > 0),
+                                                                                Caml_obj.caml_compare(/* int64 */[
+                                                                                      /* hi */1,
+                                                                                      /* lo */0
+                                                                                    ], /* int64 */[
+                                                                                      /* hi */0,
+                                                                                      /* lo */1
+                                                                                    ]) > 0,
                                                                                 /* boolean */1
                                                                               ]);
                                                                     })
@@ -2172,13 +2172,13 @@ var suites = Pervasives.$at(/* :: */[
                                                                       "generic_compare2",
                                                                       (function () {
                                                                           return /* Eq */Block.__(0, [
-                                                                                    +(Caml_obj.caml_compare(/* int64 */[
-                                                                                            /* hi */0,
-                                                                                            /* lo */2147483648
-                                                                                          ], /* int64 */[
-                                                                                            /* hi */0,
-                                                                                            /* lo */1
-                                                                                          ]) > 0),
+                                                                                    Caml_obj.caml_compare(/* int64 */[
+                                                                                          /* hi */0,
+                                                                                          /* lo */2147483648
+                                                                                        ], /* int64 */[
+                                                                                          /* hi */0,
+                                                                                          /* lo */1
+                                                                                        ]) > 0,
                                                                                     /* boolean */1
                                                                                   ]);
                                                                         })

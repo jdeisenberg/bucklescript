@@ -24,7 +24,7 @@ function eq(loc, x, y) {
   return /* () */0;
 }
 
-var match = +(1 < 1);
+var match = 1 < 1;
 
 var a = 1 < (
   match ? 1 : 10

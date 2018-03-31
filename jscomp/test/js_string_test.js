@@ -140,7 +140,7 @@ var suites_001 = /* :: */[
                             (function () {
                                 return /* Eq */Block.__(0, [
                                           /* boolean */1,
-                                          +"foobar".endsWith("bar")
+                                          "foobar".endsWith("bar")
                                         ]);
                               })
                           ],
@@ -150,7 +150,7 @@ var suites_001 = /* :: */[
                               (function () {
                                   return /* Eq */Block.__(0, [
                                             /* boolean */0,
-                                            +"foobar".endsWith("bar", 1)
+                                            "foobar".endsWith("bar", 1)
                                           ]);
                                 })
                             ],
@@ -160,7 +160,7 @@ var suites_001 = /* :: */[
                                 (function () {
                                     return /* Eq */Block.__(0, [
                                               /* boolean */1,
-                                              +"foobarbaz".includes("bar")
+                                              "foobarbaz".includes("bar")
                                             ]);
                                   })
                               ],
@@ -170,7 +170,7 @@ var suites_001 = /* :: */[
                                   (function () {
                                       return /* Eq */Block.__(0, [
                                                 /* boolean */0,
-                                                +"foobarbaz".includes("bar", 4)
+                                                "foobarbaz".includes("bar", 4)
                                               ]);
                                     })
                                 ],
@@ -455,7 +455,7 @@ var suites_001 = /* :: */[
                                                                                   (function () {
                                                                                       return /* Eq */Block.__(0, [
                                                                                                 /* boolean */1,
-                                                                                                +"foobarbaz".startsWith("foo")
+                                                                                                "foobarbaz".startsWith("foo")
                                                                                               ]);
                                                                                     })
                                                                                 ],
@@ -465,7 +465,7 @@ var suites_001 = /* :: */[
                                                                                     (function () {
                                                                                         return /* Eq */Block.__(0, [
                                                                                                   /* boolean */0,
-                                                                                                  +"foobarbaz".startsWith("foo", 1)
+                                                                                                  "foobarbaz".startsWith("foo", 1)
                                                                                                 ]);
                                                                                       })
                                                                                   ],
@@ -583,7 +583,7 @@ var suites_001 = /* :: */[
                                                                                                           /* tuple */[
                                                                                                             "File \"js_string_test.ml\", line 211, characters 4-11",
                                                                                                             (function () {
-                                                                                                                return /* Ok */Block.__(4, [+"ab".includes("a")]);
+                                                                                                                return /* Ok */Block.__(4, ["ab".includes("a")]);
                                                                                                               })
                                                                                                           ],
                                                                                                           /* [] */0

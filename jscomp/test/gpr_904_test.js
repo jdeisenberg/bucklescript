@@ -26,14 +26,14 @@ function eq(loc, x, y) {
 
 function check_healty(check) {
   if (!check.a && !check.b) {
-    return 1 - check.c;
+    return !check.c;
   } else {
     return /* false */0;
   }
 }
 
 function basic_not(x) {
-  return 1 - x;
+  return !x;
 }
 
 function f(check) {

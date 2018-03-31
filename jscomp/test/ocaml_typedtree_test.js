@@ -1470,21 +1470,21 @@ function highlight_terminfo(ppf, num_lines, lb, locs) {
     }
     if (List.exists((function(pos){
           return function (loc) {
-            return +(pos === loc[/* loc_start */0][/* pos_cnum */3]);
+            return pos === loc[/* loc_start */0][/* pos_cnum */3];
           }
           }(pos)), locs)) {
       Caml_missing_polyfill.not_implemented("caml_terminfo_standout not implemented by bucklescript yet\n");
     }
     if (List.exists((function(pos){
           return function (loc) {
-            return +(pos === loc[/* loc_end */1][/* pos_cnum */3]);
+            return pos === loc[/* loc_end */1][/* pos_cnum */3];
           }
           }(pos)), locs)) {
       Caml_missing_polyfill.not_implemented("caml_terminfo_standout not implemented by bucklescript yet\n");
     }
     var c = Caml_bytes.get(lb[/* lex_buffer */1], pos + pos0 | 0);
     Pervasives.print_char(c);
-    bol = +(c === /* "\n" */10);
+    bol = c === /* "\n" */10;
   }
   Caml_missing_polyfill.not_implemented("caml_terminfo_standout not implemented by bucklescript yet\n");
   Caml_missing_polyfill.not_implemented("caml_terminfo_resume not implemented by bucklescript yet\n");
@@ -1612,7 +1612,7 @@ function highlight_locations(ppf, locs) {
         if (match$1) {
           var norepeat;
           try {
-            norepeat = +(Caml_sys.caml_sys_getenv("TERM") === "norepeat");
+            norepeat = Caml_sys.caml_sys_getenv("TERM") === "norepeat";
           }
           catch (exn){
             if (exn === Caml_builtin_exceptions.not_found) {
@@ -2090,7 +2090,7 @@ function unique_toplevel_name(i) {
 }
 
 function equal(i1, i2) {
-  return +(i1[/* name */1] === i2[/* name */1]);
+  return i1[/* name */1] === i2[/* name */1];
 }
 
 function set_current_time(t) {
@@ -2112,7 +2112,7 @@ function make_global(i) {
 }
 
 function $$global(i) {
-  return +((i[/* flags */2] & 1) !== 0);
+  return (i[/* flags */2] & 1) !== 0;
 }
 
 function print$2(ppf, i) {
@@ -2690,7 +2690,7 @@ function hash(t) {
 }
 
 function equal$1(t1, t2) {
-  return +(t1 === t2);
+  return t1 === t2;
 }
 
 function height(param) {
@@ -2910,7 +2910,7 @@ function inter(v1, v2) {
 }
 
 function subset(v1, v2) {
-  return +((v1 & v2) === v1);
+  return (v1 & v2) === v1;
 }
 
 function set(x, b, v) {
@@ -3311,7 +3311,7 @@ function compare$1(s1, s2) {
 }
 
 function equal$2(s1, s2) {
-  return +(compare$1(s1, s2) === 0);
+  return compare$1(s1, s2) === 0;
 }
 
 function fold$1(f, _s, _accu) {
@@ -3350,7 +3350,7 @@ function equal_tag(t1, t2) {
     case 0 : 
         switch (t2.tag | 0) {
           case 0 : 
-              return +(t2[0] === t1[0]);
+              return t2[0] === t1[0];
           case 1 : 
           case 2 : 
               return /* boolean */0;
@@ -3359,7 +3359,7 @@ function equal_tag(t1, t2) {
     case 1 : 
         switch (t2.tag | 0) {
           case 1 : 
-              return +(t2[0] === t1[0]);
+              return t2[0] === t1[0];
           case 0 : 
           case 2 : 
               return /* boolean */0;
@@ -3372,7 +3372,7 @@ function equal_tag(t1, t2) {
               return /* boolean */0;
           case 2 : 
               if (same(t1[0], t2[0])) {
-                return +(t1[1] === t2[1]);
+                return t1[1] === t2[1];
               } else {
                 return /* false */0;
               }
@@ -4339,7 +4339,7 @@ function is_row_name(s) {
   if (l < 4) {
     return /* boolean */0;
   } else {
-    return +($$String.sub(s, l - 4 | 0, 4) === "#row");
+    return $$String.sub(s, l - 4 | 0, 4) === "#row";
   }
 }
 
@@ -5078,7 +5078,7 @@ function forget_abbrev(mem, path) {
 
 function is_optional(l) {
   if (l.length !== 0) {
-    return +(Caml_string.get(l, 0) === /* "?" */63);
+    return Caml_string.get(l, 0) === /* "?" */63;
   } else {
     return /* false */0;
   }
@@ -5543,7 +5543,7 @@ function extension_descr(path_ext, ext) {
             ext[/* ext_type_params */1],
             [/* Mnil */0]
           ]));
-  var tag_001 = +(ext[/* ext_args */2] === /* [] */0);
+  var tag_001 = ext[/* ext_args */2] === /* [] */0;
   var tag = /* Cstr_extension */Block.__(2, [
       path_ext,
       tag_001
@@ -5567,7 +5567,7 @@ function extension_descr(path_ext, ext) {
           /* cstr_consts */-1,
           /* cstr_nonconsts */-1,
           /* cstr_normal */-1,
-          /* cstr_generalized */+(ext[/* ext_ret_type */3] !== /* None */0),
+          /* cstr_generalized */ext[/* ext_ret_type */3] !== /* None */0,
           /* cstr_private */ext[/* ext_private */4],
           /* cstr_loc */ext[/* ext_loc */5],
           /* cstr_attributes */ext[/* ext_attributes */6]
@@ -8877,11 +8877,11 @@ function typexp(s, ty) {
                   }
                 }
                 if (exit$2 === 4) {
-                  var dup = /* true */1;
+                  var dup = true;
                   if (!s[/* for_saving */3]) {
-                    var tmp$2 = /* true */1;
+                    var tmp$2 = true;
                     if (more[/* level */1] !== 100000000) {
-                      var tmp$3 = /* true */1;
+                      var tmp$3 = true;
                       if (!static_row(row)) {
                         var match$6 = more[/* desc */0];
                         var tmp$4;
@@ -8935,7 +8935,7 @@ function typexp(s, ty) {
                               ]]))]);
                   var row$1 = copy_row((function (param) {
                           return typexp(s, param);
-                        }), /* boolean */1, row, 1 - dup, more$prime);
+                        }), /* boolean */1, row, !dup, more$prime);
                   var match$8 = row$1[/* row_name */5];
                   if (match$8) {
                     var match$9 = match$8[0];
@@ -9522,11 +9522,11 @@ function implicit_coercion(env) {
 }
 
 function is_in_signature(env) {
-  return +((env[/* flags */13] & 1) !== 0);
+  return (env[/* flags */13] & 1) !== 0;
 }
 
 function is_implicit_coercion(env) {
-  return +((env[/* flags */13] & 2) !== 0);
+  return (env[/* flags */13] & 2) !== 0;
 }
 
 var components_of_module$prime = [(function (_, _$1, _$2, _$3) {
@@ -10086,12 +10086,12 @@ function normalize_path(lax, env, path) {
   }
   catch (exn){
     if (exn === Caml_builtin_exceptions.not_found) {
-      var tmp = /* true */1;
+      var tmp = true;
       if (!lax) {
         var tmp$1;
         switch (path$1.tag | 0) {
           case 0 : 
-              tmp$1 = +(path$1[0][/* stamp */0] !== 0);
+              tmp$1 = path$1[0][/* stamp */0] !== 0;
               break;
           case 1 : 
           case 2 : 
@@ -10114,7 +10114,7 @@ function normalize_path(lax, env, path) {
 
 function normalize_path$1(oloc, env, path) {
   try {
-    return normalize_path(+(oloc === /* None */0), env, path);
+    return normalize_path(oloc === /* None */0, env, path);
   }
   catch (exn){
     if (exn === Caml_builtin_exceptions.not_found) {
@@ -10444,7 +10444,7 @@ function lookup_all_simple(proj1, proj2, shadow, lid, env) {
                       match[1]
                     ],
                     do_shadow(List.filter((function (param) {
-                                  return 1 - Curry._2(shadow, x, param[0]);
+                                  return !Curry._2(shadow, x, param[0]);
                                 }))(param[1]))
                   ];
           } else {
@@ -11043,7 +11043,7 @@ function iter_types(f) {
 
 function same_types(env1, env2) {
   if (env1[/* types */3] === env2[/* types */3]) {
-    return +(env1[/* components */6] === env2[/* components */6]);
+    return env1[/* components */6] === env2[/* components */6];
   } else {
     return /* false */0;
   }
@@ -11346,7 +11346,7 @@ function constructors_of_type(ty_path, decl) {
         var cstr_006 = /* cstr_consts */num_consts[0];
         var cstr_007 = /* cstr_nonconsts */num_nonconsts[0];
         var cstr_008 = /* cstr_normal */num_normal[0];
-        var cstr_009 = /* cstr_generalized */+(cd_res !== /* None */0);
+        var cstr_009 = /* cstr_generalized */cd_res !== /* None */0;
         var cstr_011 = /* cstr_loc */match[/* cd_loc */3];
         var cstr_012 = /* cstr_attributes */match[/* cd_attributes */4];
         var cstr = /* record */[
@@ -12996,7 +12996,7 @@ function is_mocha() {
       if (exec === "mocha") {
         return /* true */1;
       } else {
-        return +(exec === "_mocha");
+        return exec === "_mocha";
       }
     } else {
       return /* boolean */0;
@@ -13008,7 +13008,7 @@ function is_mocha() {
 
 function close_enough($staropt$star, a, b) {
   var threshold = $staropt$star ? $staropt$star[0] : 0.0000001;
-  return +(Math.abs(a - b) < threshold);
+  return Math.abs(a - b) < threshold;
 }
 
 function from_pair_suites(name, suites) {
@@ -19642,7 +19642,7 @@ function directive_parse(token_with_comments, lexbuf) {
                     if (pred >= 17049) {
                       if (pred >= 172069535) {
                         if (pred >= 785637236) {
-                          return +(major === l_major);
+                          return major === l_major;
                         } else {
                           return Caml_obj.caml_equal(lversion, version);
                         }
@@ -19655,7 +19655,7 @@ function directive_parse(token_with_comments, lexbuf) {
                       if (pred >= 15949) {
                         return Caml_obj.caml_greaterthan(lversion, version);
                       } else if (major === l_major) {
-                        return +(version[1] === lversion[1]);
+                        return version[1] === lversion[1];
                       } else {
                         return /* false */0;
                       }
@@ -19760,7 +19760,7 @@ function directive_parse(token_with_comments, lexbuf) {
         push(e);
         return v;
       } else {
-        var calc$1 = calc && 1 - v;
+        var calc$1 = calc && !v;
         var b = parse_or_aux(calc$1, parse_and_aux(calc$1, parse_relation(calc$1)));
         if (v) {
           return /* true */1;
@@ -19861,7 +19861,7 @@ function directive_parse(token_with_comments, lexbuf) {
                 var s = t[0];
                 if (calc) {
                   if (Caml_string.get(r, 0) === /* "u" */117) {
-                    return 1 - defined(s);
+                    return !defined(s);
                   } else {
                     return defined(s);
                   }
@@ -21392,7 +21392,7 @@ function __ocaml_lex_comment_rec(lexbuf, ___ocaml_lex_state) {
 
 function at_bol(lexbuf) {
   var pos = lexbuf[/* lex_start_p */10];
-  return +(pos[/* pos_cnum */3] === pos[/* pos_bol */2]);
+  return pos[/* pos_cnum */3] === pos[/* pos_bol */2];
 }
 
 function token_with_comments(lexbuf) {
@@ -21566,7 +21566,7 @@ function token$1(lexbuf) {
                   if (if_then_else$1 !== 0) {
                     return Curry._1(look_ahead, match);
                   } else {
-                    var _else_seen = +(match === /* ELSE */23);
+                    var _else_seen = match === /* ELSE */23;
                     while(true) {
                       var else_seen = _else_seen;
                       var token$2 = token_with_comments(lexbuf$1);
@@ -23817,7 +23817,7 @@ function is_object_type(path) {
             ];
     
   }
-  return +(Caml_string.get(name, 0) === /* "#" */35);
+  return Caml_string.get(name, 0) === /* "#" */35;
 }
 
 var trace_gadt_instances = [/* boolean */0];
@@ -23881,7 +23881,7 @@ var none$2 = newty2(current_level[0], /* Ttuple */Block.__(2, [/* [] */0]));
 
 function equal$3(param, param$1) {
   if (param[0] === param$1[0]) {
-    return +(param[1] === param$1[1]);
+    return param[1] === param$1[1];
   } else {
     return /* false */0;
   }
@@ -24742,7 +24742,7 @@ function closed_type_decl(decl) {
     List.iter(mark_type, decl[/* type_params */0]);
     var match = decl[/* type_kind */2];
     if (typeof match === "number") {
-      +(match === 0);
+      match === 0;
     } else if (match.tag) {
       List.iter((function (param) {
               if (param[/* cd_res */2]) {
@@ -24908,11 +24908,11 @@ function generalize_structure(var_level, ty) {
     if (is_Tvar(ty$1) && ty$1[/* level */1] > var_level) {
       return set_level(ty$1, var_level);
     } else {
-      var tmp = /* false */0;
+      var tmp = false;
       if (ty$1[/* level */1] > current_level[0]) {
         var match = ty$1[/* desc */0];
         var tmp$1;
-        tmp$1 = typeof match === "number" || match.tag !== 3 ? /* boolean */1 : 1 - is_object_type(match[0]) && (match[2][0] = /* Mnil */0, /* boolean */1);
+        tmp$1 = typeof match === "number" || match.tag !== 3 ? /* boolean */1 : !is_object_type(match[0]) && (match[2][0] = /* Mnil */0, /* boolean */1);
         tmp = tmp$1;
       }
       if (tmp) {
@@ -25592,7 +25592,7 @@ function copy(env, partial, keep_names, ty) {
                   }
                 }
                 if (exit$2 === 2) {
-                  var keep = +(more[/* level */1] !== 100000000);
+                  var keep = more[/* level */1] !== 100000000;
                   var match$9 = more[/* desc */0];
                   var more$prime;
                   var exit$3 = 0;
@@ -25668,14 +25668,14 @@ function copy(env, partial, keep_names, ty) {
                           return /* boolean */0;
                         }
                       };
-                      var tmp$2 = /* false */0;
+                      var tmp$2 = false;
                       if (row$1[/* row_closed */3]) {
-                        var tmp$3 = /* false */0;
+                        var tmp$3 = false;
                         if (!row$1[/* row_fixed */4]) {
                           var param$1 = Curry._1(match$13[0], ty$1);
                           tmp$3 = (
                             param$1 ? /* boolean */0 : /* boolean */1
-                          ) && 1 - List.for_all(not_reither, row$1[/* row_fields */0]);
+                          ) && !List.for_all(not_reither, row$1[/* row_fields */0]);
                         }
                         tmp$2 = tmp$3;
                       }
@@ -26062,7 +26062,7 @@ function copy_sep(fixed, free, bound, visited, ty) {
             case 8 : 
                 var row = row_repr_aux(/* [] */0, match$2[0]);
                 var more = repr(row[/* row_more */1]);
-                var keep = is_Tvar(more) && +(more[/* level */1] !== 100000000);
+                var keep = is_Tvar(more) && more[/* level */1] !== 100000000;
                 var more$prime = copy_rec(more);
                 var fixed$prime = fixed && is_Tvar(repr(more$prime));
                 var row$1 = copy_row(copy_rec, fixed$prime, row, keep, more$prime);
@@ -26642,7 +26642,7 @@ function full_expand(env, ty) {
 function generic_abbrev(env, path) {
   try {
     var match = find_type_expansion(path, env);
-    return +(repr(match[1])[/* level */1] === 100000000);
+    return repr(match[1])[/* level */1] === 100000000;
   }
   catch (exn){
     if (exn === Caml_builtin_exceptions.not_found) {
@@ -26660,7 +26660,7 @@ function generic_private_abbrev(env, path) {
     if (typeof match$1 === "number" && !(match$1 !== 0 || match[/* type_private */3])) {
       var match$2 = match[/* type_manifest */4];
       if (match$2) {
-        return +(repr(match$2[0])[/* level */1] === 100000000);
+        return repr(match$2[0])[/* level */1] === 100000000;
       } else {
         return /* boolean */0;
       }
@@ -26848,7 +26848,7 @@ function unify_univar(t1, t2, _param) {
       var find_univ = function (t, cl) {
         try {
           var match = List.find((function (param) {
-                  return +(t === repr(param[0]));
+                  return t === repr(param[0]);
                 }), cl);
           return /* Some */[match[1]];
         }
@@ -26924,7 +26924,7 @@ function occur_univar(env, ty) {
       var ty = _ty;
       var bound = _bound;
       var ty$1 = repr(ty);
-      var tmp = /* false */0;
+      var tmp = false;
       if (ty$1[/* level */1] >= 0) {
         var tmp$1;
         if (bound ? /* boolean */0 : /* boolean */1) {
@@ -26935,7 +26935,7 @@ function occur_univar(env, ty) {
             var bound$prime = find$1(ty$1, visited[0]);
             if (exists((function(bound){
                   return function (x) {
-                    return 1 - mem$3(x, bound);
+                    return !mem$3(x, bound);
                   }
                   }(bound)), bound$prime)) {
               visited[0] = add$4(ty$1, inter$2(bound, bound$prime), visited[0]);
@@ -27392,7 +27392,7 @@ function is_newtype(env, p) {
   try {
     var decl = find_type_full(p, env)[0];
     if (decl[/* type_newtype_level */6] !== /* None */0 && decl[/* type_kind */2] === /* Type_abstract */0) {
-      return +(decl[/* type_private */3] === /* Public */1);
+      return decl[/* type_private */3] === /* Public */1;
     } else {
       return /* false */0;
     }
@@ -27408,7 +27408,7 @@ function is_newtype(env, p) {
 
 function non_aliasable(p, decl) {
   if (in_current_module(p)) {
-    return +(decl[/* type_newtype_level */6] === /* None */0);
+    return decl[/* type_newtype_level */6] === /* None */0;
   } else {
     return /* false */0;
   }
@@ -28702,7 +28702,7 @@ function unify(env, t1, t2) {
 function unify3(env, t1, t1$prime, t2, t2$prime) {
   var d1 = t1$prime[/* desc */0];
   var d2 = t2$prime[/* desc */0];
-  var create_recursion = +(t2 !== t2$prime) && deep_occur(t1$prime, t2);
+  var create_recursion = t2 !== t2$prime && deep_occur(t1$prime, t2);
   var exit = 0;
   var exit$1 = 0;
   if (typeof d1 === "number") {
@@ -28875,7 +28875,7 @@ function unify3(env, t1, t1$prime, t2, t2$prime) {
                             return unify_list(env, tl1, tl2);
                           }));
                   } else {
-                    var tmp = /* true */1;
+                    var tmp = true;
                     if (!in_current_module(p1)) {
                       var partial_arg = env[0];
                       tmp = List.exists((function (param) {
@@ -29530,7 +29530,7 @@ function unify_fields(env, ty1, ty2) {
   var miss1 = match$2[1];
   var l1 = repr(ty1)[/* level */1];
   var l2 = repr(ty2)[/* level */1];
-  var va = make_rowvar(l1 < l2 ? l1 : l2, +(miss2 === /* [] */0), rest1, +(miss1 === /* [] */0), rest2);
+  var va = make_rowvar(l1 < l2 ? l1 : l2, miss2 === /* [] */0, rest1, miss1 === /* [] */0, rest2);
   var d1 = rest1[/* desc */0];
   var d2 = rest2[/* desc */0];
   try {
@@ -29640,20 +29640,20 @@ function unify_row(env, row1, row2) {
                     if (row_field_repr_aux(/* [] */0, match[0]) === /* Rabsent */0) {
                       return /* true */1;
                     } else {
-                      return +(row_field_repr_aux(/* [] */0, match[1]) !== /* Rabsent */0);
+                      return row_field_repr_aux(/* [] */0, match[1]) !== /* Rabsent */0;
                     }
                   }), pairs);
     };
     var empty = function (fields) {
       return List.for_all((function (param) {
-                    return +(row_field_repr_aux(/* [] */0, param[1]) === /* Rabsent */0);
+                    return row_field_repr_aux(/* [] */0, param[1]) === /* Rabsent */0;
                   }), fields);
     };
     if (closed && (empty(r1) || row2$1[/* row_closed */3]) && (empty(r2) || row1$1[/* row_closed */3]) && List.for_all((function (param) {
               if (row_field_repr_aux(/* [] */0, param[1]) === /* Rabsent */0) {
                 return /* true */1;
               } else {
-                return +(row_field_repr_aux(/* [] */0, param[2]) === /* Rabsent */0);
+                return row_field_repr_aux(/* [] */0, param[2]) === /* Rabsent */0;
               }
             }), pairs)) {
       throw [
@@ -29802,7 +29802,7 @@ function unify_row(env, row1, row2) {
                               var m2 = f2$2[2];
                               var tl2 = f2$2[1];
                               var c2 = f2$2[0];
-                              var redo = /* false */0;
+                              var redo = false;
                               if (m1 || m2 || fixed1$1 || fixed2$1 || rigid_variants[0] && (List.length(tl1) === 1 || List.length(tl2) === 1)) {
                                 var match = Pervasives.$at(tl1, tl2);
                                 var tmp;
@@ -29819,7 +29819,7 @@ function unify_row(env, row1, row2) {
                                         return unify(env$1, t1, param);
                                       }
                                       }(t1)), match[1]);
-                                  tmp = +(e1[0] !== /* None */0 || e2[0] !== /* None */0);
+                                  tmp = e1[0] !== /* None */0 || e2[0] !== /* None */0;
                                 } else {
                                   tmp = /* boolean */0;
                                 }
@@ -30341,9 +30341,9 @@ function moregen_occur(env, level, ty) {
 
 function may_instantiate(inst_nongen, t1) {
   if (inst_nongen) {
-    return +(t1[/* level */1] !== 99999999);
+    return t1[/* level */1] !== 99999999;
   } else {
-    return +(t1[/* level */1] === 100000000);
+    return t1[/* level */1] === 100000000;
   }
 }
 
@@ -30539,7 +30539,7 @@ function moregen(inst_nongen, type_pairs, env, t1, t2) {
                           if (rm1 === rm2) {
                             return /* () */0;
                           } else {
-                            var may_inst = is_Tvar(rm1) && may_instantiate(inst_nongen$1, rm1) || +(rm1[/* desc */0] === /* Tnil */0);
+                            var may_inst = is_Tvar(rm1) && may_instantiate(inst_nongen$1, rm1) || rm1[/* desc */0] === /* Tnil */0;
                             var match$4 = merge_row_fields(row1$1[/* row_fields */0], row2$1[/* row_fields */0]);
                             var r2 = match$4[1];
                             var r1 = match$4[0];
@@ -31208,7 +31208,7 @@ function eqtype(rename, type_pairs, subst, env, t1, t2) {
                   catch (exn){
                     if (exn === Caml_builtin_exceptions.not_found) {
                       if (List.exists((function (param) {
-                                return +(param[1] === t2$1);
+                                return param[1] === t2$1;
                               }), subst[0])) {
                         throw [
                               Unify,
@@ -31299,7 +31299,7 @@ function eqtype(rename, type_pairs, subst, env, t1, t2) {
                           catch (exn$2){
                             if (exn$2 === Caml_builtin_exceptions.not_found) {
                               if (List.exists((function (param) {
-                                        return +(param[1] === t2$prime$1);
+                                        return param[1] === t2$prime$1;
                                       }), subst[0])) {
                                 throw [
                                       Unify,
@@ -31743,7 +31743,7 @@ function eqtype_fields(rename, type_pairs, subst, env, ty1, _ty2) {
     var rest1 = match[1];
     var match$1 = flatten_fields(ty2);
     var rest2 = match$1[1];
-    var same_row = +(rest1 === rest2) || Curry._2(TypePairs[/* mem */9], type_pairs, /* tuple */[
+    var same_row = rest1 === rest2 || Curry._2(TypePairs[/* mem */9], type_pairs, /* tuple */[
           rest1,
           rest2
         ]) || rename && List.mem(/* tuple */[
@@ -32705,7 +32705,7 @@ function build_subtype(env, visited, loops, posi, level, t) {
               t$1,
               visited
             ];
-            var match$1 = build_subtype(env, visited$1, loops, 1 - posi, level, match[1]);
+            var match$1 = build_subtype(env, visited$1, loops, !posi, level, match[1]);
             var match$2 = build_subtype(env, visited$1, loops, posi, level, match[2]);
             var c = Caml_primitive.caml_int_max(match$1[1], match$2[1]);
             if (c > /* Unchanged */0) {
@@ -32904,7 +32904,7 @@ function build_subtype(env, visited, loops, posi, level, t) {
                                   /* Unchanged */0
                                 ];
                         } else {
-                          return build_subtype(env, visited$3, loops, 1 - posi, level, t);
+                          return build_subtype(env, visited$3, loops, !posi, level, t);
                         }
                       } else if (co) {
                         return build_subtype(env, visited$3, loops, posi, level, t);
@@ -34213,7 +34213,7 @@ function normalize_type_rec(env, visited, ty) {
             var fields$1 = List.sort((function (param, param$1) {
                     return Caml_primitive.caml_string_compare(param[0], param$1[0]);
                   }), List.filter((function (param) {
-                          return +(param[1] !== /* Rabsent */0);
+                          return param[1] !== /* Rabsent */0;
                         }))(fields));
             log_type(ty$1);
             var newrecord = row.slice();
@@ -39115,7 +39115,7 @@ function find$4(x, _param) {
 var printing_map = [/* Empty */0];
 
 function same_type(t, t$prime) {
-  return +(repr(t) === repr(t$prime));
+  return repr(t) === repr(t$prime);
 }
 
 function index(l, x) {
@@ -39163,7 +39163,7 @@ function normalize_type_path($staropt$star, env, p) {
       var p1 = match$1[0];
       var tyl = List.map(repr, match$1[1]);
       if (List.length(params) === List.length(tyl) && List.for_all2((function (prim, prim$1) {
-                return +(prim === prim$1);
+                return prim === prim$1;
               }), params, tyl)) {
         return normalize_type_path(/* Some */[cache], env, p1);
       } else if (cache || List.length(params) <= List.length(tyl) || !uniq(tyl)) {
@@ -39375,7 +39375,7 @@ function best_type_path(p) {
       };
     };
     while((function () {
-            var tmp = /* false */0;
+            var tmp = false;
             if (printing_cont[0] !== /* [] */0) {
               var tmp$1;
               try {
@@ -39477,7 +39477,7 @@ function new_name(_param) {
     name_counter[0] = name_counter[0] + 1 | 0;
     if (List.mem(name, named_vars[0]) || List.exists((function(name){
           return function (param) {
-            return +(name === param[1]);
+            return name === param[1];
           }
           }(name)), names[0])) {
       _param = /* () */0;
@@ -39516,7 +39516,7 @@ function name_of_type(t) {
           var current_name = [name$1];
           var i = 0;
           while(List.exists((function (param) {
-                    return +(current_name[0] === param[1]);
+                    return current_name[0] === param[1];
                   }), names[0])) {
             current_name[0] = name$1 + String(i);
             i = i + 1 | 0;
@@ -39550,7 +39550,7 @@ function check_name_of_type(t) {
 function remove_names(tyl) {
   var tyl$1 = List.map(repr, tyl);
   names[0] = List.filter((function (param) {
-            return 1 - List.memq(param[0], tyl$1);
+            return !List.memq(param[0], tyl$1);
           }))(names[0]);
   return /* () */0;
 }
@@ -39597,7 +39597,7 @@ function aliasable(ty) {
   } else {
     switch (match.tag | 0) {
       case 3 : 
-          return 1 - is_nth(best_type_path(match[0])[1]);
+          return !is_nth(best_type_path(match[0])[1]);
       case 0 : 
       case 9 : 
       case 10 : 
@@ -39618,9 +39618,9 @@ function namable_row(row) {
                     var l = match[1];
                     if (row[/* row_closed */3]) {
                       if (match[0]) {
-                        return +(l === /* [] */0);
+                        return l === /* [] */0;
                       } else {
-                        return +(List.length(l) === 1);
+                        return List.length(l) === 1;
                       }
                     } else {
                       return /* false */0;
@@ -39870,7 +39870,7 @@ function tree_of_typexp(sch, ty) {
           case 8 : 
               var row = row_repr_aux(/* [] */0, match[0]);
               var fields = row[/* row_closed */3] ? List.filter((function (param) {
-                          return +(row_field_repr_aux(/* [] */0, param[1]) !== /* Rabsent */0);
+                          return row_field_repr_aux(/* [] */0, param[1]) !== /* Rabsent */0;
                         }))(row[/* row_fields */0]) : row[/* row_fields */0];
               var present = List.filter((function (param) {
                         var match = row_field_repr_aux(/* [] */0, param[1]);
@@ -39880,7 +39880,7 @@ function tree_of_typexp(sch, ty) {
                           return /* boolean */1;
                         }
                       }))(fields);
-              var all_present = +(List.length(present) === List.length(fields));
+              var all_present = List.length(present) === List.length(fields);
               var match$4 = row[/* row_name */5];
               var exit = 0;
               if (match$4) {
@@ -39946,7 +39946,7 @@ function tree_of_typexp(sch, ty) {
                 exit = 1;
               }
               if (exit === 1) {
-                var non_gen$1 = 1 - (row[/* row_closed */3] && all_present) && is_non_gen(sch, px);
+                var non_gen$1 = !(row[/* row_closed */3] && all_present) && is_non_gen(sch, px);
                 var fields$1 = List.map((function (param) {
                         var sch$1 = sch;
                         var param$1 = param;
@@ -40067,7 +40067,7 @@ function tree_of_typexp(sch, ty) {
     };
     if (List.memq(px, delayed[0])) {
       delayed[0] = List.filter((function (param) {
-                return +(px !== param);
+                return px !== param;
               }))(delayed[0]);
     }
     if (is_aliased(px) && aliasable(ty$1)) {
@@ -40142,7 +40142,7 @@ function tree_of_typobject(sch, fi, nm) {
 
 function is_non_gen(sch, ty) {
   if (sch && is_Tvar(ty)) {
-    return +(ty[/* level */1] !== 100000000);
+    return ty[/* level */1] !== 100000000;
   } else {
     return /* false */0;
   }
@@ -40275,7 +40275,7 @@ function tree_of_constructor(cd) {
 function tree_of_label(l) {
   return /* tuple */[
           l[/* ld_id */0][/* name */1],
-          +(l[/* ld_mutable */1] === /* Mutable */1),
+          l[/* ld_mutable */1] === /* Mutable */1,
           tree_of_typexp(/* boolean */0, l[/* ld_type */2])
         ];
 }
@@ -40344,7 +40344,7 @@ function tree_of_type_decl(id, decl) {
   }
   var match$6 = decl[/* type_kind */2];
   if (typeof match$6 === "number") {
-    +(match$6 === 0);
+    match$6 === 0;
   } else if (match$6.tag) {
     List.iter((function (c) {
             List.iter(mark_loops, c[/* cd_args */1]);
@@ -40366,11 +40366,11 @@ function tree_of_type_decl(id, decl) {
     var match = decl[/* type_kind */2];
     var abstr;
     abstr = typeof match === "number" ? (
-        match === 0 ? +(decl[/* type_manifest */4] === /* None */0 || decl[/* type_private */3] === /* Private */0) : +(decl[/* type_manifest */4] === /* None */0)
+        match === 0 ? decl[/* type_manifest */4] === /* None */0 || decl[/* type_private */3] === /* Private */0 : decl[/* type_manifest */4] === /* None */0
       ) : (
-        match.tag ? +(decl[/* type_private */3] === /* Private */0) || List.exists((function (cd) {
-                  return +(cd[/* cd_res */2] !== /* None */0);
-                }), match[0]) : +(decl[/* type_private */3] === /* Private */0)
+        match.tag ? decl[/* type_private */3] === /* Private */0 || List.exists((function (cd) {
+                  return cd[/* cd_res */2] !== /* None */0;
+                }), match[0]) : decl[/* type_private */3] === /* Private */0
       );
     var vari = List.map2((function (ty, v) {
             if (abstr || !is_Tvar(repr(ty))) {
@@ -40659,8 +40659,8 @@ function tree_of_class_type(sch, params, _param) {
                   return /* :: */[
                           /* Ocsg_value */Block.__(2, [
                               param[0],
-                              +(param[1] === /* Mutable */1),
-                              +(param[2] === /* Virtual */0),
+                              param[1] === /* Mutable */1,
+                              param[2] === /* Virtual */0,
                               tree_of_typexp(sch, param[3])
                             ]),
                           csil
@@ -40676,8 +40676,8 @@ function tree_of_class_type(sch, params, _param) {
                 var lab = param$2[0];
                 if (lab !== dummy_method) {
                   var kind = field_kind_repr(param$2[1]);
-                  var priv = +(kind !== /* Fpresent */0);
-                  var virt = 1 - mem$2(lab, concrete);
+                  var priv = kind !== /* Fpresent */0;
+                  var virt = !mem$2(lab, concrete);
                   var match = method_type(/* tuple */[
                         lab,
                         kind,
@@ -40779,7 +40779,7 @@ function tree_of_class_declaration(id, cl, rs) {
     var t = proxy(sty);
     name_of_type(t);
   }
-  var vir_flag = +(cl[/* cty_new */3] === /* None */0);
+  var vir_flag = cl[/* cty_new */3] === /* None */0;
   return /* Osig_class */Block.__(0, [
             vir_flag,
             id[/* name */1],
@@ -40809,7 +40809,7 @@ function tree_of_cltype_declaration(id, cl, rs) {
   var match = flatten_fields(object_fields(sign[/* csig_self */0]));
   var virt = List.exists((function (param) {
           var lab = param[0];
-          return 1 - (+(lab === dummy_method) || mem$2(lab, sign[/* csig_concr */2]));
+          return !(lab === dummy_method || mem$2(lab, sign[/* csig_concr */2]));
         }), match[0]) || fold((function (_, param, b) {
           if (param[1] === /* Virtual */0) {
             return /* true */1;
@@ -41588,7 +41588,7 @@ function has_explanation(_, t3, t4) {
               case 5 : 
                   var match$3 = match$1[3][/* desc */0];
                   if (typeof match$3 === "number") {
-                    return +(match[0] === match$1[0]);
+                    return match[0] === match$1[0];
                   } else {
                     return /* boolean */0;
                   }
@@ -42493,12 +42493,12 @@ function report_unification_error(ppf, env, $staropt$star, tr, txt1, txt2) {
                   var match = tr$2[1];
                   if (match) {
                     try {
-                      var tr$3 = filter_trace(+(mis === /* None */0), match[1]);
-                      var match$1 = may_prepare_expansion(+(tr$3 === /* [] */0), tr$2[0]);
+                      var tr$3 = filter_trace(mis === /* None */0, match[1]);
+                      var match$1 = may_prepare_expansion(tr$3 === /* [] */0, tr$2[0]);
                       var t1 = match$1[0];
-                      var match$2 = may_prepare_expansion(+(tr$3 === /* [] */0), match[0]);
+                      var match$2 = may_prepare_expansion(tr$3 === /* [] */0, match[0]);
                       var t2 = match$2[0];
-                      print_labels[0] = 1 - classic[0];
+                      print_labels[0] = !classic[0];
                       var tr$4 = List.map(prepare_expansion, tr$3);
                       Curry.app(Format.fprintf(ppf$1, /* Format */[
                                 /* Formatting_gen */Block.__(18, [
@@ -42595,7 +42595,7 @@ function report_unification_error(ppf, env, $staropt$star, tr, txt1, txt2) {
 }
 
 function trace$1(fst, keep_last, txt, ppf, tr) {
-  print_labels[0] = 1 - classic[0];
+  print_labels[0] = !classic[0];
   trace_same_names(tr);
   try {
     if (tr) {
@@ -43063,7 +43063,7 @@ function private_flags(decl1, decl2) {
     if (decl2[/* type_manifest */4] === /* None */0) {
       return /* true */1;
     } else {
-      return +(decl1[/* type_kind */2] !== /* Type_abstract */0);
+      return decl1[/* type_kind */2] !== /* Type_abstract */0;
     }
   } else {
     return /* false */0;
@@ -43773,7 +43773,7 @@ function type_declarations$1($staropt$star, env, name, decl1, id, decl2) {
         var rep2 = match$1[1];
         var err$1 = compare_records(env, decl1, decl2, 1, match[0], match$1[0]);
         err = err$1 !== /* [] */0 || match[1] === rep2 ? err$1 : /* :: */[
-            /* Record_representation */Block.__(5, [+(rep2 === /* Record_float */1)]),
+            /* Record_representation */Block.__(5, [rep2 === /* Record_float */1]),
             /* [] */0
           ];
       }
@@ -43821,10 +43821,10 @@ function type_declarations$1($staropt$star, env, name, decl1, id, decl2) {
       if (err$2 !== /* [] */0) {
         return err$2;
       } else {
-        var abstr = +(decl2[/* type_private */3] === /* Private */0 || decl2[/* type_kind */2] === /* Type_abstract */0 && decl2[/* type_manifest */4] === /* None */0);
-        var opn = +(decl2[/* type_kind */2] === /* Type_open */1 && decl2[/* type_manifest */4] === /* None */0);
+        var abstr = decl2[/* type_private */3] === /* Private */0 || decl2[/* type_kind */2] === /* Type_abstract */0 && decl2[/* type_manifest */4] === /* None */0;
+        var opn = decl2[/* type_kind */2] === /* Type_open */1 && decl2[/* type_manifest */4] === /* None */0;
         var constrained = function (ty) {
-          return 1 - is_Tvar(repr(ty));
+          return !is_Tvar(repr(ty));
         };
         if (List.for_all2((function (ty, param) {
                   var v2 = param[1];
@@ -43835,12 +43835,12 @@ function type_declarations$1($staropt$star, env, name, decl1, id, decl2) {
                   var match$1 = Curry._1(Types_003[/* get_upper */10], v2);
                   var cn2 = match$1[1];
                   var co2 = match$1[0];
-                  if (abstr ? (1 - co1 || co2) && (1 - cn1 || cn2) : (
-                        opn || constrained(ty) ? +(co1 === co2 && cn1 === cn2) : /* boolean */1
+                  if (abstr ? (!co1 || co2) && (!cn1 || cn2) : (
+                        opn || constrained(ty) ? co1 === co2 && cn1 === cn2 : /* boolean */1
                       )) {
                     var match$2 = Curry._1(Types_003[/* get_lower */11], v1);
                     var match$3 = Curry._1(Types_003[/* get_lower */11], v2);
-                    var b = (1 - match$3[0] || match$2[0]) && (1 - match$3[1] || match$2[1]) && (1 - match$3[2] || match$2[2]) && (1 - match$3[3] || match$2[3]);
+                    var b = (!match$3[0] || match$2[0]) && (!match$3[1] || match$2[1]) && (!match$3[2] || match$2[2]) && (!match$3[3] || match$2[3]);
                     return abstr ? b : /* true */1;
                   } else {
                     return /* false */0;
@@ -44157,7 +44157,7 @@ function nondep_supertype(env, mid, mty) {
             return /* :: */[
                     /* Sig_type */Block.__(1, [
                         id,
-                        nondep_type_decl(env, mid, id, +(va === /* Co */0), item[1]),
+                        nondep_type_decl(env, mid, id, va === /* Co */0, item[1]),
                         item[2]
                       ]),
                     rem$prime
@@ -47370,7 +47370,7 @@ function omegas(i) {
 var zero = make_pat(/* Tpat_constant */Block.__(2, [/* Const_int */Block.__(0, [0])]), none$2, empty);
 
 function is_absent(tag, row) {
-  return +(row_field(tag, row[0]) === /* Rabsent */0);
+  return row_field(tag, row[0]) === /* Rabsent */0;
 }
 
 function is_absent_pat(p) {
@@ -47515,7 +47515,7 @@ function compat(_p, _q) {
                     exit = 1;
                     break;
                 case 2 : 
-                    return +(const_compare(match[0], match$1[0]) === 0);
+                    return const_compare(match[0], match$1[0]) === 0;
                 case 8 : 
                     exit = 2;
                     break;
@@ -47606,7 +47606,7 @@ function compat(_p, _q) {
                     if (match$1[1]) {
                       return /* boolean */0;
                     } else {
-                      return +(l1 === match$1[0]);
+                      return l1 === match$1[0];
                     }
                 case 8 : 
                     exit = 2;
@@ -48522,7 +48522,7 @@ function simple_match(p1, p2) {
                   exit = 1;
                   break;
               case 2 : 
-                  return +(const_compare(match[0], match$1[0]) === 0);
+                  return const_compare(match[0], match$1[0]) === 0;
               default:
                 return /* boolean */0;
             }
@@ -48567,7 +48567,7 @@ function simple_match(p1, p2) {
                   exit = 1;
                   break;
               case 5 : 
-                  return +(match[0] === match$1[0]);
+                  return match[0] === match$1[0];
               default:
                 return /* boolean */0;
             }
@@ -48597,7 +48597,7 @@ function simple_match(p1, p2) {
                   exit = 1;
                   break;
               case 7 : 
-                  return +(List.length(match[0]) === List.length(match$1[0]));
+                  return List.length(match[0]) === List.length(match$1[0]);
               default:
                 return /* boolean */0;
             }
@@ -48645,7 +48645,7 @@ function record_arg(p) {
 
 function get_field(pos, arg) {
   return List.find((function (param) {
-                  return +(pos === param[1][/* lbl_pos */4]);
+                  return pos === param[1][/* lbl_pos */4];
                 }), arg)[2];
 }
 
@@ -48998,7 +48998,7 @@ function do_set_args(erase_mutable, q, r) {
                           List.map2((function (param, arg) {
                                   var lbl = param[1];
                                   var lid = param[0];
-                                  var tmp = /* false */0;
+                                  var tmp = false;
                                   if (erase_mutable) {
                                     var match = lbl[/* lbl_mut */3];
                                     tmp = match ? /* boolean */1 : /* boolean */0;
@@ -49558,7 +49558,7 @@ function full_match(ignore_generalized, closing, env) {
       switch (match.tag | 0) {
         case 2 : 
             if (match[0].tag === 1) {
-              return +(List.length(env) === 256);
+              return List.length(env) === 256;
             } else {
               return /* boolean */0;
             }
@@ -49568,9 +49568,9 @@ function full_match(ignore_generalized, closing, env) {
               return /* boolean */0;
             } else if (ignore_generalized) {
               var env$1 = clean_env(env);
-              return +(List.length(env$1) === c[/* cstr_normal */8]);
+              return List.length(env$1) === c[/* cstr_normal */8];
             } else {
-              return +(List.length(env) === (c[/* cstr_consts */6] + c[/* cstr_nonconsts */7] | 0));
+              return List.length(env) === (c[/* cstr_consts */6] + c[/* cstr_nonconsts */7] | 0);
             }
         case 5 : 
             var fields = List.map((function (param) {
@@ -49641,7 +49641,7 @@ function full_match_gadt(env) {
       return /* boolean */1;
     } else {
       var c = match[1];
-      return +(List.length(env) === (c[/* cstr_consts */6] + c[/* cstr_nonconsts */7] | 0));
+      return List.length(env) === (c[/* cstr_consts */6] + c[/* cstr_nonconsts */7] | 0);
     }
   } else {
     return /* boolean */1;
@@ -50205,7 +50205,7 @@ function build_other(ext, env) {
                               ];
                       } else {
                         return /* :: */[
-                                make_other_pat(tag, +(match[0] === /* None */0)),
+                                make_other_pat(tag, match[0] === /* None */0),
                                 others
                               ];
                       }
@@ -50745,7 +50745,7 @@ function pressure_variants(_tdefs, _pss) {
             }
           }
           }(tdefs));
-          if (full_match(/* boolean */1, +(tdefs === /* None */0), constrs)) {
+          if (full_match(/* boolean */1, tdefs === /* None */0, constrs)) {
             return try_non_omega(constrs);
           } else if (tdefs === /* None */0) {
             _pss = filter_extra(pss);
@@ -51327,7 +51327,7 @@ function le_pat(_p, _q) {
                     exit$1 = 2;
                     break;
                 case 2 : 
-                    return +(const_compare(match[0], match$1[0]) === 0);
+                    return const_compare(match[0], match$1[0]) === 0;
                 default:
                   exit = 1;
               }
@@ -51402,7 +51402,7 @@ function le_pat(_p, _q) {
                     if (match$1[1]) {
                       return /* boolean */0;
                     } else {
-                      return +(l1 === match$1[0]);
+                      return l1 === match$1[0];
                     }
                 default:
                   exit = 1;
@@ -51478,7 +51478,7 @@ function le_pat(_p, _q) {
       }
     }
     if (exit === 1) {
-      return 1 - satisfiable(/* :: */[
+      return !satisfiable(/* :: */[
                   /* :: */[
                     p,
                     /* [] */0
@@ -51593,7 +51593,7 @@ function initial_all(no_guard, param) {
               ],
               pat[/* pat_loc */1]
             ],
-            initial_all(no_guard && +(match[/* c_guard */1] === /* None */0), param[1])
+            initial_all(no_guard && match[/* c_guard */1] === /* None */0, param[1])
           ];
   } else if (no_guard) {
     throw NoGuard;
@@ -52052,7 +52052,7 @@ function add_path(path, paths) {
 }
 
 function extendable_path(path) {
-  return 1 - (same(path, path_bool) || same(path, path_list) || same(path, path_unit) || same(path, path_option));
+  return !(same(path, path_bool) || same(path, path_list) || same(path, path_unit) || same(path, path_option));
 }
 
 function collect_paths_from_pat(_r, _p) {
@@ -52773,7 +52773,7 @@ function strict_lowercase(c) {
   if (c === /* "_" */95) {
     return /* true */1;
   } else if (c >= /* "a" */97) {
-    return +(c <= /* "z" */122);
+    return c <= /* "z" */122;
   } else {
     return /* false */0;
   }
@@ -53670,7 +53670,7 @@ function transl_type(env, policy, styp) {
           }
           var row_000 = /* row_fields */List.rev(fields$2);
           var row_001$1 = /* row_more */newvar$1(/* None */0, /* () */0);
-          var row_003 = /* row_closed */+(closed === /* Closed */0);
+          var row_003 = /* row_closed */closed === /* Closed */0;
           var row_005$1 = /* row_name */name$1[0];
           var row$3 = /* record */[
             row_000,
@@ -55461,7 +55461,7 @@ function enter_variable($staropt$star, $staropt$star$1, loc, name, ty) {
   var is_module = $staropt$star ? $staropt$star[0] : /* boolean */0;
   var is_as_variable = $staropt$star$1 ? $staropt$star$1[0] : /* boolean */0;
   if (List.exists((function (param) {
-            return +(param[0][/* name */1] === name[/* txt */0]);
+            return param[0][/* name */1] === name[/* txt */0];
           }), pattern_variables[0])) {
     throw [
           $$Error$7,
@@ -55614,7 +55614,7 @@ function build_as_type(env, _p) {
         case 4 : 
             var pl = match[2];
             var cstr = match[1];
-            var keep = +(cstr[/* cstr_private */10] === /* Private */0 || cstr[/* cstr_existentials */2] !== /* [] */0);
+            var keep = cstr[/* cstr_private */10] === /* Private */0 || cstr[/* cstr_existentials */2] !== /* [] */0;
             if (keep) {
               return p[/* pat_type */3];
             } else {
@@ -55670,9 +55670,9 @@ function build_as_type(env, _p) {
                 var ty_arg = match[1];
                 var newrecord = p.slice();
                 unify_pat(env, (newrecord[/* pat_type */3] = ty$1, newrecord), match[2]);
-                var refinable = /* false */0;
+                var refinable = false;
                 if (lbl[/* lbl_mut */3] === /* Immutable */0) {
-                  var tmp = /* false */0;
+                  var tmp = false;
                   if (List.mem_assoc(lbl[/* lbl_pos */4], ppl)) {
                     var match$1 = repr(lbl[/* lbl_arg */2])[/* desc */0];
                     var tmp$1;
@@ -56015,7 +56015,7 @@ function lookup_from_type(env, tpath, lid) {
         var s = match[0];
         try {
           return List.find((function (nd) {
-                        return +(nd[/* lbl_name */0] === s);
+                        return nd[/* lbl_name */0] === s;
                       }), descrs);
         }
         catch (exn){
@@ -56241,7 +56241,7 @@ function disambiguate_label_by_ids(keep, _, closed, ids, labels) {
   };
   var check_closed = function (param) {
     if (closed) {
-      return +(List.length(ids) === param[0][/* lbl_all */5].length);
+      return List.length(ids) === param[0][/* lbl_all */5].length;
     } else {
       return /* true */1;
     }
@@ -56331,7 +56331,7 @@ function disambiguate_lid_a_list(loc, closed, env, opath, lid_a_list) {
       exit = 1;
     }
     if (exit === 1) {
-      match = disambiguate_label_by_ids(+(opath === /* None */0), env, closed, ids, scope);
+      match = disambiguate_label_by_ids(opath === /* None */0, env, closed, ids, scope);
     }
     var labels = match[1];
     if (match[0]) {
@@ -56573,7 +56573,7 @@ function lookup_from_type$1(env, tpath, lid) {
         var s = match[0];
         try {
           return List.find((function (nd) {
-                        return +(nd[/* cstr_name */0] === s);
+                        return nd[/* cstr_name */0] === s;
                       }), descrs);
         }
         catch (exn){
@@ -57125,7 +57125,7 @@ function type_pat(constrs, labels, no_existentials, mode, env, sp, expected_ty) 
             /* tuple */[
               l,
               /* Reither */Block.__(1, [
-                  +(sarg$1 === /* None */0),
+                  sarg$1 === /* None */0,
                   arg_type,
                   /* boolean */1,
                   [/* None */0]
@@ -57224,7 +57224,7 @@ function type_pat(constrs, labels, no_existentials, mode, env, sp, expected_ty) 
               var instantiated = function (tv) {
                 var tv$1 = expand_head(env[0], tv);
                 if (is_Tvar(tv$1)) {
-                  return +(tv$1[/* level */1] !== 100000000);
+                  return tv$1[/* level */1] !== 100000000;
                 } else {
                   return /* true */1;
                 }
@@ -57512,7 +57512,7 @@ function type_pat$1($staropt$star, constrs, labels, $staropt$star$1, env, sp, ex
   var lev = $staropt$star$1 ? $staropt$star$1[0] : current_level[0];
   newtype_level$1[0] = /* Some */[lev];
   try {
-    var r = type_pat(constrs, labels, 1 - allow_existentials, /* Normal */0, env, sp, expected_ty);
+    var r = type_pat(constrs, labels, !allow_existentials, /* Normal */0, env, sp, expected_ty);
     iter_pattern((function (p) {
             p[/* pat_env */4] = env[0];
             return /* () */0;
@@ -57907,10 +57907,10 @@ function is_nonexpansive(_exp) {
                 }(count)), match$2[/* cstr_fields */1]) && fold((function(count){
                 return function (_, param, b) {
                   count[0] = count[0] - 1 | 0;
-                  return b ? +(param[0] === /* Immutable */0) : /* false */0;
+                  return b ? param[0] === /* Immutable */0 : /* false */0;
                 }
                 }(count)), match$2[/* cstr_type */2][/* csig_vars */1], /* boolean */1)) {
-            return +(count[0] === 0);
+            return count[0] === 0;
           } else {
             return /* false */0;
           }
@@ -58482,7 +58482,7 @@ function check_absent_variant(env) {
                       var row = row_repr_aux(/* [] */0, match[2][0]);
                       if (List.exists((function (param) {
                                 if (s === param[0]) {
-                                  return +(row_field_repr_aux(/* [] */0, param[1]) !== /* Rabsent */0);
+                                  return row_field_repr_aux(/* [] */0, param[1]) !== /* Rabsent */0;
                                 } else {
                                   return /* false */0;
                                 }
@@ -58497,7 +58497,7 @@ function check_absent_variant(env) {
                           /* tuple */[
                             s,
                             /* Reither */Block.__(1, [
-                                +(arg === /* None */0),
+                                arg === /* None */0,
                                 ty_arg,
                                 /* boolean */1,
                                 [/* None */0]
@@ -59070,7 +59070,7 @@ function type_expect_(in_function, env, sexp, ty_expected) {
           opath = /* Some */[/* tuple */[
               match$17[0],
               match$17[1],
-              +(ty_expected$1[/* level */1] === 100000000) || 1 - principal[0]
+              ty_expected$1[/* level */1] === 100000000 || !principal[0]
             ]];
         }
         catch (exn){
@@ -59313,7 +59313,7 @@ function type_expect_(in_function, env, sexp, ty_expected) {
             return /* Some */[/* tuple */[
                       match[0],
                       match[1],
-                      +(ty[/* level */1] === 100000000) || 1 - principal[0]
+                      ty[/* level */1] === 100000000 || !principal[0]
                     ]];
           }
           catch (exn){
@@ -59358,7 +59358,7 @@ function type_expect_(in_function, env, sexp, ty_expected) {
         }
         var opath$1 = match$30[1];
         var ty_record = match$30[0];
-        var closed = +(opt_sexp === /* None */0);
+        var closed = opt_sexp === /* None */0;
         var lbl_exp_list = wrap_disambiguate("This record expression is expected to have", ty_record, (function (param) {
                 return type_label_a_list(/* None */0, loc, closed, env, (function (param) {
                               return type_label_exp(/* boolean */1, env, loc, ty_record, param);
@@ -59400,7 +59400,7 @@ function type_expect_(in_function, env, sexp, ty_expected) {
             var ty_exp$1 = instance(/* None */0, env, exp$1[/* exp_type */3]);
             var unify_kept = function (lbl) {
               if (List.for_all((function (param) {
-                        return +(param[1][/* lbl_pos */4] !== lbl[/* lbl_pos */4]);
+                        return param[1][/* lbl_pos */4] !== lbl[/* lbl_pos */4];
                       }), lbl_exp_list)) {
                 var match = instance_label(/* boolean */0, lbl);
                 var match$1 = instance_label(/* boolean */0, lbl);
@@ -59774,7 +59774,7 @@ function type_expect_(in_function, env, sexp, ty_expected) {
           }
           if (exit$2 === 1) {
             if (free_variables$1(/* Some */[env], arg$4[/* exp_type */3]) === /* [] */0 && free_variables$1(/* Some */[env], ty$prime$1) === /* [] */0) {
-              var tmp$3 = /* false */0;
+              var tmp$3 = false;
               if (!gen$1) {
                 var snap = snapshot(/* () */0);
                 var match$45 = enlarge_type(env, ty$prime$1);
@@ -60194,7 +60194,7 @@ function type_expect_(in_function, env, sexp, ty_expected) {
         List.fold_right((function (param, l) {
                 var lab = param[0];
                 if (List.exists((function (l) {
-                          return +(l[/* txt */0] === lab[/* txt */0]);
+                          return l[/* txt */0] === lab[/* txt */0];
                         }), l)) {
                   throw [
                         $$Error$7,
@@ -60660,7 +60660,7 @@ function type_function(in_function, loc, attrs, env, ty_expected, l, caselist) {
               loc_fun,
               env,
               /* Too_many_arguments */Block.__(26, [
-                  +(in_function !== /* None */0),
+                  in_function !== /* None */0,
                   ty_fun
                 ])
             ];
@@ -60710,7 +60710,7 @@ function type_function(in_function, loc, attrs, env, ty_expected, l, caselist) {
   var not_function = function (ty) {
     var match = list_labels(env, ty);
     if (match[0] === /* [] */0) {
-      return 1 - match[1];
+      return !match[1];
     } else {
       return /* false */0;
     }
@@ -60753,7 +60753,7 @@ function type_label_access(env, _, srecord, lid) {
     opath = /* Some */[/* tuple */[
         match[0],
         match[1],
-        +(ty_exp[/* level */1] === 100000000) || 1 - principal[0]
+        ty_exp[/* level */1] === 100000000 || !principal[0]
       ]];
   }
   catch (exn){
@@ -61526,7 +61526,7 @@ function type_format(loc, str, env) {
         }
       }
     };
-    var legacy_behavior = 1 - strict_formats[0];
+    var legacy_behavior = !strict_formats[0];
     var match = CamlinternalFormat.fmt_ebb_of_string(/* Some */[legacy_behavior], str);
     return mk_constr("Format", /* :: */[
                 mk_fmt(match[0]),
@@ -61626,7 +61626,7 @@ function type_label_exp(create, env, loc, ty_expected, param) {
   end_def(/* () */0);
   var arg$1;
   try {
-    check_univars(env, +(vars !== /* [] */0), "field value", arg, label[/* lbl_arg */2], vars);
+    check_univars(env, vars !== /* [] */0, "field value", arg, label[/* lbl_arg */2], vars);
     arg$1 = arg;
   }
   catch (exn$1){
@@ -61786,7 +61786,7 @@ function type_argument(env, sarg, ty_expected$prime, ty_expected) {
       var match$2 = make_args(/* [] */0, texp[/* exp_type */3]);
       var ty_fun$prime = match$2[1];
       var args = match$2[0];
-      var warn = principal[0] && +(lv !== 100000000 || repr(ty_fun$prime)[/* level */1] !== 100000000);
+      var warn = principal[0] && (lv !== 100000000 || repr(ty_fun$prime)[/* level */1] !== 100000000);
       var newrecord = texp.slice();
       newrecord[/* exp_type */3] = instance(/* None */0, env, texp[/* exp_type */3]);
       var ty_fun = instance(/* None */0, env, ty_fun$prime);
@@ -61950,18 +61950,18 @@ function type_application(env, funct, sargs) {
     }
   };
   var ignored = [/* [] */0];
-  var ignore_labels = /* true */1;
+  var ignore_labels = true;
   if (!classic[0]) {
     var match = list_labels(env, funct[/* exp_type */3]);
-    var tmp = /* false */0;
+    var tmp = false;
     if (!match[1]) {
       var labels = List.filter((function (l) {
-                return 1 - is_optional(l);
+                return !is_optional(l);
               }))(match[0]);
-      tmp = +(List.length(labels) === List.length(sargs)) && List.for_all((function (param) {
-              return +(param[0] === "");
+      tmp = List.length(labels) === List.length(sargs) && List.for_all((function (param) {
+              return param[0] === "";
             }), sargs) && List.exists((function (l) {
-              return +(l !== "");
+              return l !== "";
             }), labels) && (prerr_warning(funct[/* exp_loc */1], /* Labels_omitted */3), /* boolean */1);
     }
     ignore_labels = tmp;
@@ -62743,7 +62743,7 @@ function type_let($staropt$star, $staropt$star$1, env, rec_flag, spat_sexp_list,
   var unpacks = match$3[3];
   var new_env = match$3[1];
   var pat_list = match$3[0];
-  var is_recursive = +(rec_flag === /* Recursive */1);
+  var is_recursive = rec_flag === /* Recursive */1;
   if (is_recursive) {
     List.iter2((function (pat, binding) {
             var match = pat[/* pat_type */3][/* desc */0];
@@ -64031,7 +64031,7 @@ register_error_of_exn((function (param) {
                                                               reset(/* () */0);
                                                               var tr1$1 = List.map(prepare_expansion, tr1);
                                                               var tr2$1 = List.map(prepare_expansion, tr2);
-                                                              var partial_arg = +(tr2$1 === /* [] */0);
+                                                              var partial_arg = tr2$1 === /* [] */0;
                                                               Curry._2(Format.fprintf(ppf$5, /* Format */[
                                                                         /* Formatting_gen */Block.__(18, [
                                                                             /* Open_box */Block.__(1, [/* Format */[
@@ -64057,7 +64057,7 @@ register_error_of_exn((function (param) {
                                                                           ]);
                                                               } else {
                                                                 var mis = mismatch(/* boolean */1, tr2$1);
-                                                                var partial_arg$1 = +(mis === /* None */0);
+                                                                var partial_arg$1 = mis === /* None */0;
                                                                 return Curry._3(Format.fprintf(ppf$5, /* Format */[
                                                                                 /* Alpha */Block.__(15, [/* Theta */Block.__(16, [/* Formatting_lit */Block.__(17, [
                                                                                             /* Close_box */0,
@@ -64803,7 +64803,7 @@ function generalize_decl(decl) {
   List.iter(generalize, decl[/* type_params */0]);
   var match = decl[/* type_kind */2];
   if (typeof match === "number") {
-    +(match === 0);
+    match === 0;
   } else if (match.tag) {
     List.iter((function (c) {
             List.iter(generalize, c[/* cd_args */1]);
@@ -65176,7 +65176,7 @@ function check_well_founded(env, loc, path, to_check, ty) {
       catch (raw_exn){
         var exn$1 = Js_exn.internalToOCamlException(raw_exn);
         if (exn$1 === Cannot_expand) {
-          var tmp$1 = /* true */1;
+          var tmp$1 = true;
           if (!(recursive_types[0] && is_contractive(env, ty$1))) {
             var match$3 = ty$1[/* desc */0];
             var tmp$2;
@@ -65542,7 +65542,7 @@ function compute_variance_type(env, check, param, decl, tyl) {
     var args = newty2(100000000, /* Ttuple */Block.__(2, [params]));
     var fvl = free_variables$1(/* None */0, args);
     var fvl$1 = List.filter((function (v) {
-              return 1 - List.memq(v, params);
+              return !List.memq(v, params);
             }))(fvl);
     if (fvl$1 !== /* [] */0) {
       var tvl2 = [/* Empty */0];
@@ -65625,7 +65625,7 @@ function compute_variance_type(env, check, param, decl, tyl) {
   return List.map2((function (ty, param) {
                 var v = get_variance(ty, tvl);
                 var tr = decl[/* type_private */3];
-                var concr = +(decl[/* type_kind */2] !== /* Type_abstract */0);
+                var concr = decl[/* type_kind */2] !== /* Type_abstract */0;
                 var match = tr === /* Private */0 || !is_Tvar(ty) ? /* tuple */[
                     param[0],
                     param[1]
@@ -65635,7 +65635,7 @@ function compute_variance_type(env, check, param, decl, tyl) {
                   ];
                 var n = match[1];
                 var p = match[0];
-                var i = concr || param[2] && +(tr === /* Private */0);
+                var i = concr || param[2] && tr === /* Private */0;
                 var v$1 = Curry._2(Types_003[/* union */4], v, make(p, n, i));
                 var v$2 = concr ? (
                     Curry._2(Types_003[/* mem */8], /* Pos */4, v$1) && Curry._2(Types_003[/* mem */8], /* Neg */5, v$1) ? Types_003[/* full */1] : (
@@ -65755,7 +65755,7 @@ function compute_variance_extension(env, check, decl, ext, rloc) {
 function compute_variance_decl(env, check, decl, rloc) {
   if ((decl[/* type_kind */2] === /* Type_abstract */0 || decl[/* type_kind */2] === /* Type_open */1) && decl[/* type_manifest */4] === /* None */0) {
     return List.map((function (param) {
-                  return make(1 - param[1], 1 - param[0], +(decl[/* type_kind */2] !== /* Type_abstract */0) || param[2]);
+                  return make(!param[1], !param[0], decl[/* type_kind */2] !== /* Type_abstract */0 || param[2]);
                 }), rloc[0]);
   } else {
     var match = decl[/* type_manifest */4];
@@ -65772,7 +65772,7 @@ function compute_variance_decl(env, check, decl, rloc) {
     } else if (match$1.tag) {
       var tll = match$1[0];
       if (List.for_all((function (c) {
-                return +(c[/* cd_res */2] === /* None */0);
+                return c[/* cd_res */2] === /* None */0;
               }), tll)) {
         return compute_variance_type(env, check, rloc, decl, Pervasives.$at(mn, add_false(List.flatten(List.map((function (c) {
                                       return c[/* cd_args */1];
@@ -65822,7 +65822,7 @@ function compute_variance_decl(env, check, decl, rloc) {
     } else {
       return compute_variance_type(env, check, rloc, decl, Pervasives.$at(mn, List.map((function (param) {
                             return /* tuple */[
-                                    +(param[/* ld_mutable */1] === /* Mutable */1),
+                                    param[/* ld_mutable */1] === /* Mutable */1,
                                     param[/* ld_type */2]
                                   ];
                           }), match$1[0])));
@@ -65833,7 +65833,7 @@ function compute_variance_decl(env, check, decl, rloc) {
 function is_sharp(id) {
   var s = id[/* name */1];
   if (s.length !== 0) {
-    return +(Caml_string.get(s, 0) === /* "#" */35);
+    return Caml_string.get(s, 0) === /* "#" */35;
   } else {
     return /* false */0;
   }
@@ -66224,7 +66224,7 @@ function transl_type_decl(env, rec_flag, sdecl_list) {
               return /* () */0;
             }), scstrs);
       if (List.length(List.filter((function (cd) {
-                      return +(cd[/* pcd_args */1] !== /* [] */0);
+                      return cd[/* pcd_args */1] !== /* [] */0;
                     }))(scstrs)) > 246) {
         throw [
               $$Error$8,
@@ -66273,7 +66273,7 @@ function transl_type_decl(env, rec_flag, sdecl_list) {
     var match$3 = sdecl[/* ptype_manifest */5];
     var match$4;
     if (match$3) {
-      var no_row = 1 - is_fixed_type(sdecl);
+      var no_row = !is_fixed_type(sdecl);
       var cty = transl_simple_type(env, no_row, match$3[0]);
       match$4 = /* tuple */[
         /* Some */[cty],
@@ -66494,7 +66494,7 @@ function transl_type_decl(env, rec_flag, sdecl_list) {
           var visited = [/* Empty */0];
           var match = decl[/* type_kind */2];
           if (typeof match === "number") {
-            +(match === 0);
+            match === 0;
           } else if (match.tag) {
             var find_pl = function (param) {
               if (typeof param === "number") {
@@ -66898,8 +66898,8 @@ function transl_type_extension(check_open, env, loc, styext) {
   var type_variance = List.map((function (v) {
           var match = Curry._1(Types_003[/* get_upper */10], v);
           return /* tuple */[
-                  1 - match[1],
-                  1 - match[0],
+                  !match[1],
+                  !match[0],
                   /* boolean */0
                 ];
         }), type_decl[/* type_variance */5]);
@@ -67094,7 +67094,7 @@ function transl_with_constraint(env, id, row_path, orig_decl, sdecl) {
           return param[0][/* ctyp_type */1];
         }), tparams);
   var orig_decl$1 = instance_declaration(orig_decl);
-  var arity_ok = +(List.length(params) === orig_decl$1[/* type_arity */1]);
+  var arity_ok = List.length(params) === orig_decl$1[/* type_arity */1];
   if (arity_ok) {
     List.iter2((function (param, param$1) {
             return unify_var(env, param, param$1);
@@ -67130,7 +67130,7 @@ function transl_with_constraint(env, id, row_path, orig_decl, sdecl) {
             }
           }
         }), sdecl[/* ptype_cstrs */2]);
-  var no_row = 1 - is_fixed_type(sdecl);
+  var no_row = !is_fixed_type(sdecl);
   var match = sdecl[/* ptype_manifest */5];
   var match$1;
   if (match) {
@@ -68108,7 +68108,7 @@ function report_error$5(ppf, param) {
             }
           };
           var suffix = function (n) {
-            var teen = +((n % 100 / 10 | 0) === 1);
+            var teen = (n % 100 / 10 | 0) === 1;
             var match = n % 10;
             var switcher = match - 1 | 0;
             if (switcher > 2 || switcher < 0) {
@@ -69575,7 +69575,7 @@ function class_structure(cl_num, $$final, val_env, met_env, loc, param) {
                                                       ovf$1,
                                                       exp
                                                     ]),
-                                                  +(met_env === met_env$prime)
+                                                  met_env === met_env$prime
                                                 ]));
                                   })]),
                             fields
@@ -69610,7 +69610,7 @@ function class_structure(cl_num, $$final, val_env, met_env, loc, param) {
                                                   mut,
                                                   id$1,
                                                   /* Tcfk_virtual */Block.__(0, [cty]),
-                                                  +(met_env === met_env$prime$1)
+                                                  met_env === met_env$prime$1
                                                 ]));
                                   })]),
                             fields
@@ -69914,7 +69914,7 @@ function class_structure(cl_num, $$final, val_env, met_env, loc, param) {
   ];
   var methods = get_methods(self_type);
   var priv_meths = List.filter((function (param) {
-            return +(field_kind_repr(param[1]) !== /* Fpresent */0);
+            return field_kind_repr(param[1]) !== /* Fpresent */0;
           }))(methods);
   if ($$final) {
     close_object(self_type);
@@ -70015,7 +70015,7 @@ function class_structure(cl_num, $$final, val_env, met_env, loc, param) {
           return param[0];
         }), meths[0]);
   var pub_meths$prime = List.filter((function (param) {
-            return +(field_kind_repr(param[1]) === /* Fpresent */0);
+            return field_kind_repr(param[1]) === /* Fpresent */0;
           }))(get_methods(public_self));
   var names = function (param) {
     return List.map((function (param) {
@@ -70310,13 +70310,13 @@ function class_expr(cl_num, val_env, met_env, _scl) {
               }
             };
           };
-          var ignore_labels = /* true */1;
+          var ignore_labels = true;
           if (!classic[0]) {
             var labels = nonopt_labels(/* [] */0, cl$2[/* cl_type */2]);
-            ignore_labels = +(List.length(labels) === List.length(sargs)) && List.for_all((function (param) {
-                    return +(param[0] === "");
+            ignore_labels = List.length(labels) === List.length(sargs) && List.for_all((function (param) {
+                    return param[0] === "";
                   }), sargs) && List.exists((function (l) {
-                    return +(l !== "");
+                    return l !== "";
                   }), labels) && (prerr_warning(cl$2[/* cl_loc */1], /* Labels_omitted */3), /* boolean */1);
           }
           var type_args = (function(cl$2,ignore_labels){
@@ -72851,8 +72851,8 @@ function merge_constraint(initial_env, loc, sg, constr) {
                                       break;
                                   
                                 }
-                                var p = 1 - match[1];
-                                var n = 1 - match[0];
+                                var p = !match[1];
+                                var n = !match[0];
                                 var i = /* boolean */0;
                                 return Curry._3(Types_003[/* set */7], /* May_pos */0, p, Curry._3(Types_003[/* set */7], /* May_neg */1, n, Curry._3(Types_003[/* set */7], /* May_weak */2, n, Curry._3(Types_003[/* set */7], /* Inj */3, i, Types_003[/* null */0]))));
                               }), sdecl[/* ptype_params */1]);
@@ -73293,7 +73293,7 @@ function map_rec_type_with_row_types(rec_flag, fn, decls, rem) {
 function rec_flag_of_ptype_declarations(tds) {
   var is_nonrec = List.exists((function (td) {
           return List.exists((function (param) {
-                        return +(param[0][/* txt */0] === "nonrec");
+                        return param[0][/* txt */0] === "nonrec";
                       }), td[/* ptype_attributes */6]);
         }), tds);
   if (is_nonrec) {
@@ -73949,7 +73949,7 @@ function transl_signature(env, sg) {
             var rem$1 = match$6[1];
             var constructors = List.filter((function (ext) {
                       var partial_arg = ext[/* ext_id */0];
-                      return 1 - List.exists((function (param) {
+                      return !List.exists((function (param) {
                                     return equal(partial_arg, param);
                                   }), get_extension_constructors(rem$1));
                     }))(tyext[/* tyext_constructors */3]);
@@ -74757,7 +74757,7 @@ function modtype_of_package(env, loc, p, nl, tl) {
 function package_subtype$1(env, p1, nl1, tl1, p2, nl2, tl2) {
   var mkmty = function (p, nl, tl) {
     var ntl = List.filter((function (param) {
-              return +(free_variables$1(/* None */0, param[1]) === /* [] */0);
+              return free_variables$1(/* None */0, param[1]) === /* [] */0;
             }))(List.combine(nl, tl));
     var match = List.split(ntl);
     return modtype_of_package(env, none, p, match[0], match[1]);
@@ -74765,7 +74765,7 @@ function package_subtype$1(env, p1, nl1, tl1, p2, nl2, tl2) {
   var mty1 = mkmty(p1, nl1, tl1);
   var mty2 = mkmty(p2, nl2, tl2);
   try {
-    return +(modtypes$1(env, mty1, mty2) === /* Tcoerce_none */0);
+    return modtypes$1(env, mty1, mty2) === /* Tcoerce_none */0;
   }
   catch (raw_exn){
     var exn = Js_exn.internalToOCamlException(raw_exn);
@@ -74817,7 +74817,7 @@ function type_module$1($staropt$star, sttn, funct_body, anchor, env, smod) {
   switch (match.tag | 0) {
     case 0 : 
         var lid = match[0];
-        var path = lookup_module$1(/* Some */[1 - alias], env, smod[/* pmod_loc */1], lid[/* txt */0]);
+        var path = lookup_module$1(/* Some */[!alias], env, smod[/* pmod_loc */1], lid[/* txt */0]);
         var md_000 = /* mod_desc : Tmod_ident */Block.__(0, [
             path,
             lid
@@ -74931,13 +74931,13 @@ function type_module$1($staropt$star, sttn, funct_body, anchor, env, smod) {
         var sfunct = match[0];
         var arg = type_module$1(/* None */0, /* boolean */1, funct_body, /* None */0, env, sarg);
         var path$1 = path_of_module$1(arg);
-        var funct = type_module$1(/* None */0, sttn && +(path$1 !== /* None */0), funct_body, /* None */0, env, sfunct);
+        var funct = type_module$1(/* None */0, sttn && path$1 !== /* None */0, funct_body, /* None */0, env, sfunct);
         var mty_functor = scrape_alias(env, /* None */0, funct[/* mod_type */2]);
         if (mty_functor.tag === 2) {
           var mty_res = mty_functor[2];
           var mty_param = mty_functor[1];
           var param = mty_functor[0];
-          var generative = +(mty_param === /* None */0);
+          var generative = mty_param === /* None */0;
           var mty_param$1 = default_mty(mty_param);
           if (generative) {
             if (Caml_obj.caml_notequal(sarg[/* pmod_desc */0], /* Pmod_structure */Block.__(1, [/* [] */0]))) {
@@ -75054,7 +75054,7 @@ function type_module$1($staropt$star, sttn, funct_body, anchor, env, smod) {
             case 11 : 
                 var tl = match$5[2];
                 if (List.exists((function (t) {
-                          return +(free_variables$1(/* None */0, t) !== /* [] */0);
+                          return free_variables$1(/* None */0, t) !== /* [] */0;
                         }), tl)) {
                   throw [
                         $$Error$10,

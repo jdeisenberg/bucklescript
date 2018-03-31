@@ -5,7 +5,7 @@ var Block = require("../../lib/js/block.js");
 var Js_option = require("../../lib/js/js_option.js");
 
 function simpleEq(a, b) {
-  return +(a === b);
+  return a === b;
 }
 
 var option_suites_000 = /* tuple */[
@@ -193,7 +193,7 @@ var option_suites_001 = /* :: */[
                                         return /* Eq */Block.__(0, [
                                                   /* boolean */1,
                                                   Js_option.isSomeValue(simpleEq, 2, Js_option.filter((function (a) {
-                                                              return +(a % 2 === 0);
+                                                              return a % 2 === 0;
                                                             }), /* Some */[2]))
                                                 ]);
                                       })
@@ -205,7 +205,7 @@ var option_suites_001 = /* :: */[
                                           return /* Eq */Block.__(0, [
                                                     /* None */0,
                                                     Js_option.filter((function (a) {
-                                                            return +(a % 3 === 0);
+                                                            return a % 3 === 0;
                                                           }), /* Some */[2])
                                                   ]);
                                         })
@@ -217,7 +217,7 @@ var option_suites_001 = /* :: */[
                                             return /* Eq */Block.__(0, [
                                                       /* None */0,
                                                       Js_option.filter((function (a) {
-                                                              return +(a % 3 === 0);
+                                                              return a % 3 === 0;
                                                             }), /* None */0)
                                                     ]);
                                           })

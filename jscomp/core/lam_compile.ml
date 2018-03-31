@@ -280,7 +280,7 @@ and compile_recursive_let ~all_bindings
               params)
           [
             S.while_ (* ~label:continue_label *)
-              E.caml_true
+              E.js_true
               (
                 Ident_map.fold
                   (fun old new_param  acc ->
@@ -748,7 +748,7 @@ and
                     (
                       l_block @
                       [S.if_ l_expr (r_block @ [ S.assign v r_expr])
-                         ~else_:[S.assign v E.caml_false]
+                         ~else_:[S.assign v E.js_false]
                       ]
                     )
                 | Declare (_kind,v) ->
@@ -756,14 +756,14 @@ and
                   Js_output.make
                     (
                       l_block @
-                      [ S.define_variable ~kind:Variable v E.caml_false ;
+                      [ S.define_variable ~kind:Variable v E.js_false ;
                         S.if_ l_expr
                           (r_block @ [S.assign v r_expr])])
                 | EffectCall
                 | NeedValue ->
                   let v = Ext_ident.create_tmp () in
                   Js_output.make
-                    (S.define_variable ~kind:Variable v E.caml_false ::
+                    (S.define_variable ~kind:Variable v E.js_false ::
                      l_block @
                      [S.if_ l_expr
                         (r_block @ [
@@ -803,12 +803,12 @@ and
                          (r_block @ [
                              S.assign v r_expr
                            ])
-                         ~else_:[S.assign v E.caml_true] ])
+                         ~else_:[S.assign v E.js_true] ])
                 | Declare(_kind,v) ->
                   Js_output.make
                     (
                       l_block @
-                      [ S.define_variable ~kind:Variable v E.caml_true;
+                      [ S.define_variable ~kind:Variable v E.js_true;
                         S.if_ (E.not l_expr)
                           (r_block @ [S.assign v r_expr])
                       ]
@@ -818,7 +818,7 @@ and
                   let v = Ext_ident.create_tmp () in
                   Js_output.make
                     ( l_block @
-                      [S.define_variable ~kind:Variable v E.caml_true;
+                      [S.define_variable ~kind:Variable v E.js_true;
                        S.if_ (E.not l_expr)
                          (r_block @ [
                              S.assign v r_expr

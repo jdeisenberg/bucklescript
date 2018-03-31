@@ -61,7 +61,7 @@ var suites_001 = /* :: */[
             (function () {
                 return /* Eq */Block.__(0, [
                           /* boolean */1,
-                          /* true */1
+                          true
                         ]);
               })
           ],
@@ -71,7 +71,7 @@ var suites_001 = /* :: */[
               (function () {
                   return /* Eq */Block.__(0, [
                             /* boolean */1,
-                            /* true */1
+                            true
                           ]);
                 })
             ],
@@ -81,7 +81,7 @@ var suites_001 = /* :: */[
                 (function () {
                     return /* Eq */Block.__(0, [
                               /* boolean */1,
-                              /* true */1
+                              true
                             ]);
                   })
               ],
@@ -91,7 +91,7 @@ var suites_001 = /* :: */[
                   (function () {
                       return /* Eq */Block.__(0, [
                                 /* boolean */0,
-                                /* false */0
+                                false
                               ]);
                     })
                 ],
@@ -227,28 +227,28 @@ var suites_001 = /* :: */[
                                       /* tuple */[
                                         "null <> undefined",
                                         (function () {
-                                            return /* Ok */Block.__(4, [/* true */1]);
+                                            return /* Ok */Block.__(4, [true]);
                                           })
                                       ],
                                       /* :: */[
                                         /* tuple */[
                                           "null <> empty",
                                           (function () {
-                                              return /* Ok */Block.__(4, [/* true */1]);
+                                              return /* Ok */Block.__(4, [true]);
                                             })
                                         ],
                                         /* :: */[
                                           /* tuple */[
                                             "undefined = empty",
                                             (function () {
-                                                return /* Ok */Block.__(4, [/* true */1]);
+                                                return /* Ok */Block.__(4, [true]);
                                               })
                                           ],
                                           /* :: */[
                                             /* tuple */[
                                               "File \"js_null_undefined_test.ml\", line 42, characters 2-9",
                                               (function () {
-                                                  return /* Ok */Block.__(4, [/* true */1]);
+                                                  return /* Ok */Block.__(4, [!false]);
                                                 })
                                             ],
                                             /* [] */0

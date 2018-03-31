@@ -101,7 +101,7 @@ function string_of_rank(param) {
 
 function find_ticker_by_name(all_tickers, ticker) {
   return List.find((function (param) {
-                return +(param[/* ticker_name */2] === ticker);
+                return param[/* ticker_name */2] === ticker;
               }), all_tickers);
 }
 

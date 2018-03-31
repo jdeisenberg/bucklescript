@@ -50,13 +50,13 @@ function uFromJs(param) {
 }
 
 function eqU(x, y) {
-  return +(x === y);
+  return x === y;
 }
 
 function eqUOpt(x, y) {
   if (x) {
     if (y) {
-      return +(x[0] === y[0]);
+      return x[0] === y[0];
     } else {
       return /* boolean */0;
     }
@@ -101,13 +101,13 @@ function vFromJs(param) {
 }
 
 function eqV(x, y) {
-  return +(x === y);
+  return x === y;
 }
 
 function eqVOpt(x, y) {
   if (x) {
     if (y) {
-      return +(x[0] === y[0]);
+      return x[0] === y[0];
     } else {
       return /* boolean */0;
     }

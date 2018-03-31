@@ -333,7 +333,7 @@ var seed = [0];
 
 function random() {
   seed[0] = Caml_int32.imul(seed[0], 25173) + 17431 | 0;
-  return +((seed[0] & 1) > 0);
+  return (seed[0] & 1) > 0;
 }
 
 function random_vars(n) {

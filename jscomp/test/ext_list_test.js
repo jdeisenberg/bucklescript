@@ -508,7 +508,7 @@ function length_larger_than_n(n, _xs, _ys) {
         return /* boolean */0;
       }
     } else {
-      return +(length_compare(xs, n) === /* Eq */15500);
+      return length_compare(xs, n) === /* Eq */15500;
     }
   };
 }

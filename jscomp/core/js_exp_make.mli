@@ -1,5 +1,5 @@
 (* Copyright (C) 2015-2016 Bloomberg Finance L.P.
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -17,7 +17,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA. *)
@@ -29,16 +29,16 @@
 
 
 
-(** Creator utilities for the [J] module *) 
+(** Creator utilities for the [J] module *)
 
 
 
 
 
 
-(** check if a javascript ast is constant 
+(** check if a javascript ast is constant
 
-    The better signature might be 
+    The better signature might be
     {[
       J.expresssion -> Js_output.t
     ]}
@@ -49,23 +49,23 @@
                          if(e){print_int(3)}
     ]}
 *)
-type t = J.expression 
+type t = J.expression
 
 val remove_pure_sub_exp : t -> t option
 
-type binary_op =   ?comment:string -> t -> t -> t 
+type binary_op =   ?comment:string -> t -> t -> t
 
 type unary_op =  ?comment:string -> t -> t
 
-(** simplify 
+(** simplify
     {[if b then ]}
     there is no need to convert b into OCaml boolean under this scenario
 *)
-val ocaml_boolean_under_condition : t -> t 
+val ocaml_boolean_under_condition : t -> t
 
 
 
-val var : ?comment:string  -> J.ident -> t 
+val var : ?comment:string  -> J.ident -> t
 
 val js_global : ?comment:string -> string -> t
 
@@ -80,39 +80,39 @@ val ml_var_dot : ?comment:string -> Ident.t -> string -> t
 (** [external_var_dot ~external_name ~dot id]
   Used in FFI
 *)
-val external_var_dot : 
-  ?comment:string ->  
-  external_name:string -> 
-  ?dot:string -> 
+val external_var_dot :
+  ?comment:string ->
+  external_name:string ->
+  ?dot:string ->
   Ident.t ->
   t
 
-val runtime_call : 
-  ?comment:string -> 
+val runtime_call :
+  ?comment:string ->
   string -> (* module_name *)
   string -> (* fn_name *)
   t list -> (* args *)
   t
 
-val runtime_ref : 
-  string -> 
-  string -> 
-  t  
+val runtime_ref :
+  string ->
+  string ->
+  t
 
 val public_method_call : string -> t -> t -> Int32.t -> t list -> t
 
 
-val str : 
-  ?pure:bool -> 
-  ?comment:string -> 
-  string -> 
-  t 
-
-val unicode : 
-  ?comment:string -> 
-  string -> 
+val str :
+  ?pure:bool ->
+  ?comment:string ->
+  string ->
   t
-  
+
+val unicode :
+  ?comment:string ->
+  string ->
+  t
+
 val ocaml_fun : ?comment:string ->
   ?immutable_mask:bool array -> J.ident list -> J.block -> t
 
@@ -121,16 +121,16 @@ val method_ : ?comment:string ->
 
 val econd : ?comment:string -> t -> t -> t -> t
 
-val int : ?comment:string -> ?c:char ->  int32 -> t 
-val nint : ?comment:string -> nativeint -> t 
+val int : ?comment:string -> ?c:char ->  int32 -> t
+val nint : ?comment:string -> nativeint -> t
 val small_int : int -> t
 val float : ?comment:string -> string -> t
 
-val empty_string_literal : t 
+val empty_string_literal : t
 (* TODO: we can do hash consing for small integers *)
 val zero_int_literal : t
 val one_int_literal : t
-val zero_float_lit : t 
+val zero_float_lit : t
 val obj_int_tag_literal : t
 
 (** [is_out e range] is equivalent to [e > range or e <0]
@@ -160,7 +160,7 @@ val array_copy : unary_op
 val string_append : binary_op
 (**
    When in ES6 mode, we can use Symbol to guarantee its uniquess,
-   we can not tag [js] object, since it can be frozen 
+   we can not tag [js] object, since it can be frozen
 *)
 
 
@@ -176,38 +176,38 @@ val js_global_dot : ?comment:string -> string -> string -> t
 
 val string_access : binary_op
 
-val access : 
-  ?comment:string -> 
-  t -> 
+val access :
+  ?comment:string ->
+  t ->
   t ->
   t
-val index : 
-  ?comment:string -> 
-  t -> 
+val index :
+  ?comment:string ->
+  t ->
   Int32.t ->
    t
 
-(** 
+(**
     [assign_addr  e i v]
-    if the expression [e] is a temporay block 
+    if the expression [e] is a temporay block
     which has no side effect,
-    write to it does not really make sense, 
+    write to it does not really make sense,
     optimize it away *)
-val assign_addr : 
-  ?comment:string -> 
-  t -> 
-  Js_op.jsint -> 
-  assigned_value:t -> 
+val assign_addr :
+  ?comment:string ->
+  t ->
+  Js_op.jsint ->
+  assigned_value:t ->
   t
 
 val assign :  binary_op
 
 val triple_equal : binary_op
-(* TODO: reduce [triple_equal] use *)    
+(* TODO: reduce [triple_equal] use *)
 
 val float_equal : binary_op
 val int_equal : binary_op
-val string_equal : binary_op    
+val string_equal : binary_op
 val eq_null_undefined_boolean: binary_op
 val neq_null_undefined_boolean: binary_op
 val is_type_number : unary_op
@@ -239,7 +239,7 @@ val float_minus : binary_op
 val float_mul : binary_op
 val float_div : binary_op
 val float_notequal : binary_op
-val float_mod : binary_op  
+val float_mod : binary_op
 
 val int_comp : Lambda.comparison -> binary_op
 val string_comp : Js_op.binop -> binary_op
@@ -249,7 +249,7 @@ val js_comp :  Lambda.comparison -> binary_op
 
 val not : t -> t
 
-val call : ?comment:string  -> info:Js_call_info.t -> t -> t list -> t 
+val call : ?comment:string  -> info:Js_call_info.t -> t -> t list -> t
 
 val flat_call : binary_op
 
@@ -264,45 +264,45 @@ val int_to_string : unary_op
 
 val new_ : ?comment:string -> J.expression -> J.expression list -> t
 
-val array : 
-  ?comment:string -> 
-  J.mutable_flag -> 
+val array :
+  ?comment:string ->
+  J.mutable_flag ->
   J.expression list ->
   t
 
-val make_block : 
+val make_block :
   ?comment:string ->
   J.expression -> (* tag *)
   J.tag_info ->  (* tag_info *)
-  J.expression list -> 
+  J.expression list ->
   J.mutable_flag ->
   t
 
 
 val seq : binary_op
-val fuse_to_seq : t -> t list -> t 
+val fuse_to_seq : t -> t list -> t
 
-val obj : 
-  ?comment:string -> 
-  J.property_map -> 
-  t 
+val obj :
+  ?comment:string ->
+  J.property_map ->
+  t
 
-val caml_true : t 
+(* val caml_true : t
 
 val caml_false : t
 
-val bool : bool -> t
+val bool : bool -> t *)
 
 
 
 val unit :   t
 (** [unit] in ocaml will be compiled into [0]  in js *)
 
-(** [math "abs"] --> Math["abs"] *)    
-val math : 
-  ?comment:string -> 
-  string -> 
-  t list -> 
+(** [math "abs"] --> Math["abs"] *)
+val math :
+  ?comment:string ->
+  string ->
+  t list ->
   t
 
 
@@ -314,9 +314,9 @@ val is_caml_block : ?comment:string -> t -> t
 val tag : ?comment:string -> J.expression -> t
 val set_tag : ?comment:string -> J.expression -> J.expression -> t
 
-(** Note that this is coupled with how we encode block, if we use the 
+(** Note that this is coupled with how we encode block, if we use the
     `Object.defineProperty(..)` since the array already hold the length,
-    this should be a nop 
+    this should be a nop
 *)
 
 val set_length : ?comment:string -> J.expression -> J.expression -> t
@@ -329,17 +329,19 @@ val or_ : binary_op
 (** we don't expose a general interface, since a general interface is generally not safe *)
 
 (** used combined with [caml_update_dummy]*)
-val dummy_obj : ?comment:string ->  unit -> t 
+val dummy_obj : ?comment:string ->  unit -> t
 
-(** convert a block to expresion by using IIFE *)    
+(** convert a block to expresion by using IIFE *)
 val of_block : ?comment:string -> ?e:J.expression -> J.statement list -> t
 
 val raw_js_code : ?comment:string -> J.code_info ->  string -> t
 
-val nil : t 
+val nil : t
 val is_null : unary_op
 
-val js_bool :  bool -> t 
+val js_bool :  bool -> t
+val js_true : t
+val js_false : t 
 val is_undef : unary_op
 val for_sure_js_null_undefined_boolean : J.expression -> bool
 val is_null_undefined : unary_op

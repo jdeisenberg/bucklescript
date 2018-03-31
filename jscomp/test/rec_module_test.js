@@ -517,7 +517,7 @@ function compare(s1, s2) {
 }
 
 function equal(s1, s2) {
-  return +(compare(s1, s2) === 0);
+  return compare(s1, s2) === 0;
 }
 
 function subset(_s1, _s2) {

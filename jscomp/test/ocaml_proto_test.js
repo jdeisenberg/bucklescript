@@ -3955,7 +3955,7 @@ function type_id_of_type(param) {
 
 function type_of_id(all_types, id) {
   return List.find((function (t) {
-                return +(type_id_of_type(t) === id);
+                return type_id_of_type(t) === id;
               }), all_types);
 }
 
@@ -4004,7 +4004,7 @@ function unresolved_of_string(s) {
     return /* record */[
             /* scope */List.rev(match[1]),
             /* type_name */match[0],
-            /* from_root */+(Caml_string.get(s, 0) === /* "." */46)
+            /* from_root */Caml_string.get(s, 0) === /* "." */46
           ];
   } else {
     throw [
@@ -4403,7 +4403,7 @@ function type_scope_of_type(param) {
 function is_empty_message(param) {
   var match = param[/* spec */4];
   if (match.tag) {
-    return +(0 === List.length(match[0][/* message_body */2]));
+    return 0 === List.length(match[0][/* message_body */2]);
   } else {
     return /* boolean */0;
   }
@@ -4536,7 +4536,7 @@ function compile_message_p2(types, param, message) {
               var types$2 = find_all_types_in_field_scope(types$1, scope$1);
               try {
                 var t = List.find((function (t) {
-                        return +(type_name$1 === type_name_of_type(t));
+                        return type_name$1 === type_name_of_type(t);
                       }), types$2);
                 return /* Some */[type_id_of_type(t)];
               }
@@ -4712,7 +4712,7 @@ function group(proto) {
                               return List.find((function (param) {
                                             var input_id = id;
                                             var param$1 = param;
-                                            return +(input_id === param$1[/* id */1]);
+                                            return input_id === param$1[/* id */1];
                                           }), proto);
                             }), l);
               }), sccs);
@@ -6239,7 +6239,7 @@ var Codegen_default = /* module */[
 function rev_split_by_naming_convention(s) {
   var is_uppercase = function (c) {
     if (64 < c) {
-      return +(c < 91);
+      return c < 91;
     } else {
       return /* false */0;
     }
@@ -7003,7 +7003,7 @@ function compile(proto_definition) {
                                         var has_encoded = first ? Curry._3(f, /* None */0, type_, sc) : Curry._3(f, /* Some */[/* () */0], type_, sc);
                                         line$1(sc, "");
                                         if (first) {
-                                          return 1 - has_encoded;
+                                          return !has_encoded;
                                         } else {
                                           return /* false */0;
                                         }
